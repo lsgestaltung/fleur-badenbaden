@@ -3246,3 +3246,140 @@ hr {
         font-size: 1rem;
     }
 }
+
+/* ============================================
+   TARGETED FIX: Hero Scroll Indicator zentrieren
+   ============================================ */
+@media (max-width: 768px) {
+    .hero-scroll {
+        /* Fix: Animation überschreibt transform, daher left/right nutzen */
+        left: 0;
+        right: 0;
+        transform: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+/* ============================================
+   TARGETED FIX: "Dein Tisch" Cards zentrieren
+   ============================================ */
+@media (max-width: 768px) {
+    /* Booking Section - Grid auf Column */
+    .booking-grid {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0 16px;
+        box-sizing: border-box;
+    }
+
+    /* Booking Info Bereich */
+    .booking-info {
+        width: 100%;
+        max-width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Booking Options Container */
+    .booking-options {
+        width: 100%;
+        max-width: 92%;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+
+    /* Einzelne Booking Cards - VIP, High Table, etc. */
+    .booking-option {
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        transform: none;
+        position: relative;
+        left: auto;
+        right: auto;
+        box-sizing: border-box;
+    }
+
+    /* Booking CTA Container */
+    .booking-cta {
+        width: 100%;
+        max-width: 92%;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* WhatsApp Button */
+    .booking-cta .btn,
+    .booking-cta .btn-primary {
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        transform: none;
+        display: flex;
+        justify-content: center;
+        box-sizing: border-box;
+    }
+
+    /* Booking Text zentrieren */
+    .booking-text {
+        text-align: center;
+        width: 100%;
+        max-width: 92%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* Booking Note zentrieren */
+    .booking-note {
+        text-align: center;
+        width: 100%;
+    }
+}
+
+/* ============================================
+   TARGETED FIX: Grundriss/Floorplan zentrieren
+   ============================================ */
+@media (max-width: 768px) {
+    /* Floorplan Wrapper */
+    .booking-map {
+        width: 100%;
+        max-width: 92%;
+        margin-left: auto;
+        margin-right: auto;
+        transform: none;
+        position: relative;
+        left: auto;
+        right: auto;
+        box-sizing: border-box;
+    }
+
+    /* Floorplan Container */
+    .floorplan {
+        width: 100%;
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        transform: none;
+        position: relative;
+        left: auto;
+        right: auto;
+        box-sizing: border-box;
+    }
+
+    /* Floorplan Hint Text */
+    .booking-map-hint {
+        text-align: center;
+        width: 100%;
+    }
+}
