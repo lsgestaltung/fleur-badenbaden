@@ -1,0 +1,29 @@
+{
+  "name": "fleur-telegram-bot",
+  "version": "1.0.0",
+  "description": "Telegram Bot für FLEUR Baden-Baden Ankündigungen",
+  "main": "bot.js",
+  "scripts": {
+    "start": "node bot.js",
+    "dev": "nodemon bot.js",
+    "setup": "node setup.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "node-telegram-bot-api": "^0.64.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "telegram",
+    "bot",
+    "fleur",
+    "announcements"
+  ],
+  "author": "FLEUR Baden-Baden",
+  "license": "MIT"
+}

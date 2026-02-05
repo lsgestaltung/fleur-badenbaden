@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "lastUpdated": "2025-02-05T12:00:00Z",
+  "announcement": {
+    "active": true,
+    "text": "Valentine's Day Special am 14. Februar mit MAALEEK + KEZRULESEVERYTHING!",
+    "link": "#events",
+    "linkText": "Mehr erfahren \u2192",
+    "icon": "\u2726",
+    "priority": "normal",
+    "expiresAt": "2025-02-15T06:00:00Z"
+  },
+  "events": [
+    {
+      "id": "evt-001",
+      "title": "DEEP HOUSE NIGHT",
+      "date": "2025-02-14",
+      "time": "22:00",
+      "djs": ["MAALEEK", "KEZRULESEVERYTHING"],
+      "description": "Valentine's Day Special",
+      "image": "",
+      "active": true
+    }
+  ],
+  "meta": {
+    "updatedBy": "initial",
+    "updateCount": 0
+  }
+}
