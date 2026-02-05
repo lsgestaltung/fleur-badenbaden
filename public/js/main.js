@@ -532,7 +532,7 @@
         announcementText: null,
         announcementLink: null,
         announcementIcon: null,
-        dataUrl: 'public/data/announcement.json',
+        dataUrl: '/api/data',
         cacheKey: 'fleur_announcement_cache',
         cacheDuration: 5 * 60 * 1000, // 5 minutes
 
