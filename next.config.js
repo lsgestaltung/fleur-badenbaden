@@ -33,6 +33,10 @@ const nextConfig = {
         source: '/jobs',
         destination: '/jobs.html',
       },
+      {
+        source: '/event-location',
+        destination: '/event-location.html',
+      },
     ];
   },
 };

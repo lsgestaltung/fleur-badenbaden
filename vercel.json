@@ -36,12 +36,14 @@
     { "source": "/index.html", "destination": "/", "permanent": true },
     { "source": "/impressum.html", "destination": "/impressum", "permanent": true },
     { "source": "/datenschutz.html", "destination": "/datenschutz", "permanent": true },
-    { "source": "/jobs.html", "destination": "/jobs", "permanent": true }
+    { "source": "/jobs.html", "destination": "/jobs", "permanent": true },
+    { "source": "/event-location.html", "destination": "/event-location", "permanent": true }
   ],
   "rewrites": [
     { "source": "/", "destination": "/index.html" },
     { "source": "/impressum", "destination": "/impressum.html" },
     { "source": "/datenschutz", "destination": "/datenschutz.html" },
-    { "source": "/jobs", "destination": "/jobs.html" }
+    { "source": "/jobs", "destination": "/jobs.html" },
+    { "source": "/event-location", "destination": "/event-location.html" }
   ]
 }

@@ -3383,3 +3383,584 @@ hr {
         width: 100%;
     }
 }
+
+/* ============================================
+   EVENT LOCATION PAGE STYLES
+   ============================================ */
+
+/* Event Hero Section */
+.event-hero {
+    position: relative;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.event-hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.event-hero-image {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.4);
+}
+
+.event-hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: var(--space-xl) var(--space-md);
+    max-width: 800px;
+}
+
+.event-hero-title {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-bottom: var(--space-md);
+}
+
+.event-hero-title .section-title-outline {
+    font-size: clamp(2.5rem, 8vw, 5rem);
+}
+
+.event-hero-title .section-title-filled {
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    margin-top: -0.2em;
+}
+
+.event-hero-subtitle {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: var(--fleur-cream);
+    opacity: 0.9;
+    margin-bottom: var(--space-lg);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Event Types Section */
+.event-types {
+    padding: var(--space-xl) 0;
+    background: var(--fleur-black);
+}
+
+.section-subtitle {
+    text-align: center;
+    color: var(--fleur-light-grey);
+    font-size: 1rem;
+    max-width: 600px;
+    margin: var(--space-md) auto 0;
+}
+
+.event-types-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-md);
+    margin-top: var(--space-lg);
+}
+
+.event-type-card {
+    background: var(--fleur-anthracite);
+    border: 1px solid var(--fleur-dark-grey);
+    border-radius: 8px;
+    padding: var(--space-lg) var(--space-md);
+    text-align: center;
+    transition: all var(--transition-base);
+}
+
+.event-type-card:hover {
+    border-color: var(--fleur-orange);
+    transform: translateY(-4px);
+}
+
+.event-type-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto var(--space-md);
+    color: var(--fleur-orange);
+}
+
+.event-type-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.event-type-card h3 {
+    font-size: 1.25rem;
+    color: var(--fleur-cream);
+    margin-bottom: var(--space-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.event-type-card p {
+    color: var(--fleur-light-grey);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+/* Event Gallery */
+.event-gallery {
+    padding: var(--space-lg) 0;
+    background: var(--fleur-anthracite);
+}
+
+.event-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 200px);
+    gap: var(--space-xs);
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 var(--space-md);
+}
+
+.event-gallery-item {
+    overflow: hidden;
+    position: relative;
+}
+
+.event-gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+}
+
+.event-gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+.event-gallery-large {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+/* Event Services Section */
+.event-services {
+    padding: var(--space-xl) 0;
+    background: var(--fleur-black);
+}
+
+.event-services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--space-md);
+    margin-top: var(--space-lg);
+}
+
+.event-service-card {
+    background: var(--fleur-anthracite);
+    border: 1px solid var(--fleur-dark-grey);
+    border-radius: 8px;
+    padding: var(--space-md);
+    text-align: center;
+    transition: all var(--transition-base);
+}
+
+.event-service-card:hover {
+    border-color: rgba(232, 121, 58, 0.5);
+}
+
+.event-service-icon {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto var(--space-sm);
+    color: var(--fleur-orange);
+}
+
+.event-service-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.event-service-card h3 {
+    font-size: 1rem;
+    color: var(--fleur-cream);
+    margin-bottom: var(--space-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.event-service-card p {
+    color: var(--fleur-light-grey);
+    font-size: 0.85rem;
+}
+
+.event-cta-section {
+    text-align: center;
+    margin-top: var(--space-xl);
+}
+
+.event-cta-note {
+    margin-top: var(--space-md);
+    color: var(--fleur-light-grey);
+    font-size: 0.9rem;
+}
+
+.event-cta-note a {
+    color: var(--fleur-orange);
+}
+
+/* Event FAQ Section */
+.event-faq {
+    padding: var(--space-xl) 0;
+    background: var(--fleur-anthracite);
+}
+
+/* ============================================
+   EVENT MODAL STYLES
+   ============================================ */
+.event-modal {
+    position: fixed;
+    inset: 0;
+    z-index: var(--z-modal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--transition-base), visibility var(--transition-base);
+}
+
+.event-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.event-modal-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(4px);
+}
+
+.event-modal-content {
+    position: relative;
+    background: var(--fleur-anthracite);
+    border: 1px solid var(--fleur-dark-grey);
+    border-radius: 12px;
+    width: 90%;
+    max-width: 560px;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: var(--space-lg);
+    transform: translateY(20px);
+    transition: transform var(--transition-base);
+}
+
+.event-modal.active .event-modal-content {
+    transform: translateY(0);
+}
+
+.event-modal-close {
+    position: absolute;
+    top: var(--space-sm);
+    right: var(--space-sm);
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: 1px solid var(--fleur-dark-grey);
+    border-radius: 50%;
+    color: var(--fleur-cream);
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.event-modal-close:hover {
+    background: var(--fleur-orange);
+    border-color: var(--fleur-orange);
+}
+
+.event-modal-header {
+    text-align: center;
+    margin-bottom: var(--space-md);
+}
+
+.event-modal-title {
+    font-size: 1.5rem;
+    color: var(--fleur-cream);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: var(--space-xs);
+}
+
+.event-modal-subtitle {
+    color: var(--fleur-light-grey);
+    font-size: 0.9rem;
+}
+
+/* Event Form Fields */
+.event-modal-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.event-form-field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+}
+
+.event-form-field label {
+    color: var(--fleur-cream);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.event-form-field label .required {
+    color: var(--fleur-orange);
+}
+
+.event-form-field input,
+.event-form-field select,
+.event-form-field textarea {
+    background: var(--fleur-black);
+    border: 1px solid var(--fleur-dark-grey);
+    border-radius: 6px;
+    padding: 12px 16px;
+    color: var(--fleur-cream);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    transition: border-color var(--transition-fast);
+}
+
+.event-form-field input:focus,
+.event-form-field select:focus,
+.event-form-field textarea:focus {
+    outline: none;
+    border-color: var(--fleur-orange);
+}
+
+.event-form-field select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 18px;
+    padding-right: 44px;
+}
+
+.event-form-field textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.event-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-sm);
+}
+
+/* Add-ons Grid */
+.event-addons-field {
+    margin-top: var(--space-sm);
+}
+
+.event-addons-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-sm);
+    margin-top: var(--space-sm);
+}
+
+.event-addon-card {
+    position: relative;
+    cursor: pointer;
+}
+
+.event-addon-card input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.event-addon-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-xs);
+    padding: var(--space-md) var(--space-sm);
+    background: var(--fleur-black);
+    border: 2px solid var(--fleur-dark-grey);
+    border-radius: 8px;
+    transition: all var(--transition-fast);
+}
+
+.event-addon-card:hover .event-addon-content {
+    border-color: var(--fleur-grey);
+}
+
+.event-addon-card input:checked + .event-addon-content {
+    border-color: var(--fleur-orange);
+    background: rgba(232, 121, 58, 0.1);
+}
+
+.event-addon-icon {
+    width: 32px;
+    height: 32px;
+    color: var(--fleur-light-grey);
+    transition: color var(--transition-fast);
+}
+
+.event-addon-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.event-addon-card input:checked + .event-addon-content .event-addon-icon {
+    color: var(--fleur-orange);
+}
+
+.event-addon-label {
+    font-size: 0.75rem;
+    color: var(--fleur-cream);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-align: center;
+}
+
+.event-addon-check {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 20px;
+    height: 20px;
+    background: var(--fleur-orange);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: scale(0.5);
+    transition: all var(--transition-fast);
+}
+
+.event-addon-check svg {
+    width: 12px;
+    height: 12px;
+    color: white;
+}
+
+.event-addon-card input:checked ~ .event-addon-check {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* WhatsApp Button for Event Modal */
+.btn-whatsapp-event {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+    width: 100%;
+    padding: 16px 24px;
+    background: #25D366;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    margin-top: var(--space-sm);
+}
+
+.btn-whatsapp-event:hover {
+    background: #128C7E;
+    transform: translateY(-2px);
+}
+
+.btn-whatsapp-event svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* ============================================
+   EVENT PAGE RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+    .event-hero {
+        min-height: 60vh;
+    }
+
+    .event-hero-content {
+        padding: var(--space-lg) var(--space-sm);
+    }
+
+    .event-types-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-sm);
+    }
+
+    .event-gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(3, 150px);
+    }
+
+    .event-gallery-large {
+        grid-column: span 2;
+        grid-row: span 1;
+    }
+
+    .event-services-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-sm);
+    }
+
+    .event-modal-content {
+        padding: var(--space-md);
+        width: 95%;
+        max-height: 85vh;
+    }
+
+    .event-form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .event-addons-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .event-addon-content {
+        padding: var(--space-sm);
+    }
+
+    .event-addon-icon {
+        width: 28px;
+        height: 28px;
+    }
+
+    .event-addon-label {
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .event-services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .event-addons-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
