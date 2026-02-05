@@ -273,10 +273,10 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ ok: true });
     }
 
-    const { message } = update;
+    const message = update.message!;
     const chatId = message.chat.id;
-    const userId = message.from.id;
-    const text = message.text;
+    const userId = message.from!.id;
+    const text = message.text!;
 
     // 3. Check authorization (Chat ID whitelist)
     if (ALLOWED_CHAT_IDS.length > 0 && !ALLOWED_CHAT_IDS.includes(chatId)) {
