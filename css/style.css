@@ -87,6 +87,8 @@ html {
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    /* MOBILE FIX: Prevent horizontal scroll globally */
+    overflow-x: hidden;
 }
 
 body {
@@ -96,6 +98,10 @@ body {
     color: var(--fleur-cream);
     background-color: var(--fleur-black);
     overflow-x: hidden;
+    /* MOBILE FIX: Prevent any overflow issues */
+    position: relative;
+    width: 100%;
+    max-width: 100vw;
 }
 
 body.nav-open {
@@ -3010,4 +3016,233 @@ hr {
         rgba(232, 121, 58, 0.2) 0%,
         rgba(232, 121, 58, 0.08) 50%,
         rgba(18, 18, 18, 0.95) 100%);
+}
+
+/* ============================================
+   MOBILE FIX - Kein horizontaler Scroll
+   ============================================ */
+@media (max-width: 768px) {
+    /* Global overflow prevention */
+    html, body {
+        overflow-x: hidden !important;
+        max-width: 100vw !important;
+    }
+
+    /* Ensure all sections don't overflow */
+    section,
+    .container,
+    .hero,
+    .events,
+    .booking,
+    .djs,
+    .gallery,
+    .impressions,
+    .faq,
+    .footer {
+        max-width: 100vw;
+        overflow-x: hidden;
+    }
+
+    /* Fix marquee overflow */
+    .marquee {
+        max-width: 100vw;
+        overflow: hidden;
+    }
+
+    /* Fix impressions overflow - contained scroll */
+    .impressions-strip {
+        max-width: 100vw;
+        overflow: hidden;
+    }
+
+    /* Fix events scroll container */
+    .events-scroll-container {
+        max-width: 100vw;
+    }
+
+    /* Fix any absolute positioned elements */
+    .hero::after {
+        max-width: 100vw;
+    }
+}
+
+/* ============================================
+   MOBILE FIX - Zentrierung aller Elemente
+   ============================================ */
+@media (max-width: 768px) {
+    /* Container centering */
+    .container {
+        width: 100%;
+        max-width: 100%;
+        padding-left: 16px;
+        padding-right: 16px;
+        margin-left: auto;
+        margin-right: auto;
+        box-sizing: border-box;
+    }
+
+    /* Booking section centering */
+    .booking-grid {
+        padding: 0 16px;
+    }
+
+    .booking-options {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .booking-option {
+        width: 100%;
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        box-sizing: border-box;
+    }
+
+    /* Booking CTA button centering */
+    .booking-cta {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .booking-cta .btn {
+        width: 100%;
+        max-width: 100%;
+        justify-content: center;
+        box-sizing: border-box;
+    }
+
+    /* Floorplan centering */
+    .floorplan {
+        width: 100%;
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        box-sizing: border-box;
+    }
+
+    /* Section headers centering */
+    .section-header {
+        padding-left: 16px;
+        padding-right: 16px;
+        text-align: center;
+    }
+
+    .section-header::after {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* Event cards centering */
+    .events-scroll {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .event-card {
+        width: 260px;
+        flex-shrink: 0;
+    }
+
+    /* Gallery grid centering */
+    .gallery-grid {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    /* Footer centering */
+    .footer-grid {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    /* Hero content centering */
+    .hero-content {
+        padding-left: 16px;
+        padding-right: 16px;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* DJ slider centering */
+    .djs-track {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    /* Resident card centering */
+    .resident-card {
+        margin-left: 16px;
+        margin-right: 16px;
+        max-width: calc(100% - 32px);
+    }
+
+    /* FAQ grid centering */
+    .faq-grid {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    /* Impressions centering */
+    .impressions .container {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    /* All buttons full width on mobile */
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+}
+
+/* ============================================
+   MOBILE FIX - Kleinere Bildschirme (< 480px)
+   ============================================ */
+@media (max-width: 480px) {
+    /* Noch kompaktere Paddings */
+    .container {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .section-header {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .events-scroll {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .event-card {
+        width: 240px;
+    }
+
+    .resident-card {
+        margin-left: 12px;
+        margin-right: 12px;
+        max-width: calc(100% - 24px);
+    }
+
+    /* Booking options kompakter */
+    .booking-option {
+        padding: var(--space-sm);
+        gap: var(--space-sm);
+    }
+
+    .booking-option-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .booking-option-content h3 {
+        font-size: 1rem;
+    }
 }

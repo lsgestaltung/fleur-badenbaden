@@ -19,11 +19,12 @@ export interface Event {
   date: string; // YYYY-MM-DD
   time: string; // HH:MM
   endTime?: string;
-  djs: string[];
+  djs: string[]; // Artists performing
   description: string;
   image: string;
   active: boolean;
   featured: boolean;
+  month?: string; // e.g., "FEBRUAR"
   createdAt: string;
   updatedAt: string;
 }
