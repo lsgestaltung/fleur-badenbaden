@@ -1,13 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Output as static export for simple hosting, or 'standalone' for serverless
-  // We use default for Vercel with API routes
-
-  // Revalidation settings
-  experimental: {
-    // Enable ISR
-  },
-
   // Headers for security
   async headers() {
     return [
@@ -22,9 +14,26 @@ const nextConfig = {
     ];
   },
 
-  // Redirects (optional)
-  async redirects() {
-    return [];
+  // Rewrites - serve static HTML files
+  async rewrites() {
+    return [
+      {
+        source: '/',
+        destination: '/index.html',
+      },
+      {
+        source: '/impressum',
+        destination: '/impressum.html',
+      },
+      {
+        source: '/datenschutz',
+        destination: '/datenschutz.html',
+      },
+      {
+        source: '/jobs',
+        destination: '/jobs.html',
+      },
+    ];
   },
 };
 
