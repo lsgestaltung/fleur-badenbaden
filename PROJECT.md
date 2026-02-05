@@ -4,7 +4,7 @@
 
 **Projekt:** FLEUR Baden-Baden Website
 **Typ:** Premium Nightclub Website mit dynamischem Content-Management
-**Agentur:** [LS-Gestaltung.de](https://lsgestaltung.de)
+**Agentur:** [lsgestaltung.de](https://lsgestaltung.de)
 **Live URL:** https://fleur-badenbaden.vercel.app
 **Repository:** https://github.com/lsgestaltung/fleur-badenbaden
 
@@ -293,7 +293,7 @@ Alle in Vercel Dashboard unter Settings → Environment Variables konfiguriert.
 ## Kontakt
 
 **Technische Betreuung:**
-LS-Gestaltung.de
+lsgestaltung.de
 https://lsgestaltung.de
 
 ---
