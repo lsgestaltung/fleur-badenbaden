@@ -1,4 +1,5 @@
-// Minimal page - actual content served via rewrite to /index.html
-export default function Page() {
-  return null;
+import { redirect } from 'next/navigation';
+
+export default function Home() {
+  redirect('/index.html');
 }

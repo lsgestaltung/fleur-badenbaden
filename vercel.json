@@ -32,5 +32,10 @@
       ]
     }
   ],
-  "rewrites": []
+  "rewrites": [
+    { "source": "/", "destination": "/index.html" },
+    { "source": "/impressum", "destination": "/impressum.html" },
+    { "source": "/datenschutz", "destination": "/datenschutz.html" },
+    { "source": "/jobs", "destination": "/jobs.html" }
+  ]
 }
