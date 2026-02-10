@@ -657,6 +657,37 @@
     };
 
     // ============================================
+    // EVENT WEEKDAY CALCULATOR
+    // ============================================
+    const EventWeekday = {
+        weekdays: ['SO', 'MO', 'DI', 'MI', 'DO', 'FR', 'SA'],
+        months: ['JAN', 'FEB', 'MÄR', 'APR', 'MAI', 'JUN', 'JUL', 'AUG', 'SEP', 'OKT', 'NOV', 'DEZ'],
+
+        init() {
+            const eventCards = document.querySelectorAll('.event-card[data-date]');
+
+            eventCards.forEach(card => {
+                const dateStr = card.dataset.date;
+                if (!dateStr) return;
+
+                const date = new Date(dateStr + 'T00:00:00');
+                if (isNaN(date.getTime())) return;
+
+                const dayElement = card.querySelector('.event-day');
+                const monthElement = card.querySelector('.event-month');
+
+                if (dayElement) {
+                    dayElement.textContent = this.weekdays[date.getDay()];
+                }
+
+                if (monthElement) {
+                    monthElement.textContent = this.months[date.getMonth()];
+                }
+            });
+        }
+    };
+
+    // ============================================
     // INITIALIZE ALL MODULES
     // ============================================
     document.addEventListener('DOMContentLoaded', () => {
@@ -672,6 +703,7 @@
         Parallax.init();
         Preloader.init();
         AnnouncementLoader.init();
+        EventWeekday.init();
 
         console.log('FLEUR Baden-Baden - Website initialized');
     });
