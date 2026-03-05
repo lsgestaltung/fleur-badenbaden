@@ -688,6 +688,90 @@
     };
 
     // ============================================
+    // COOKIE BANNER
+    // ============================================
+    const CookieBanner = {
+        banner: null,
+        acceptBtn: null,
+        declineBtn: null,
+        cookieName: 'fleur_cookie_consent',
+        cookieDuration: 365, // days
+
+        init() {
+            this.banner = document.getElementById('cookieBanner');
+            this.acceptBtn = document.getElementById('cookieAccept');
+            this.declineBtn = document.getElementById('cookieDecline');
+
+            if (!this.banner) return;
+
+            // Check if user has already made a choice
+            const consent = this.getCookie(this.cookieName);
+            if (!consent) {
+                // Show banner after a short delay
+                setTimeout(() => this.show(), 1000);
+            }
+
+            this.bindEvents();
+        },
+
+        bindEvents() {
+            if (this.acceptBtn) {
+                this.acceptBtn.addEventListener('click', () => {
+                    this.setCookie(this.cookieName, 'accepted', this.cookieDuration);
+                    this.hide();
+                    this.enableAnalytics();
+                });
+            }
+
+            if (this.declineBtn) {
+                this.declineBtn.addEventListener('click', () => {
+                    this.setCookie(this.cookieName, 'declined', this.cookieDuration);
+                    this.hide();
+                });
+            }
+        },
+
+        show() {
+            if (this.banner) {
+                this.banner.classList.add('active');
+                this.banner.setAttribute('aria-hidden', 'false');
+            }
+        },
+
+        hide() {
+            if (this.banner) {
+                this.banner.classList.remove('active');
+                this.banner.setAttribute('aria-hidden', 'true');
+            }
+        },
+
+        enableAnalytics() {
+            // Google Analytics can be loaded here if consent is given
+            // Example: load GA script dynamically
+            console.log('Analytics cookies enabled');
+        },
+
+        setCookie(name, value, days) {
+            const date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            const expires = 'expires=' + date.toUTCString();
+            document.cookie = name + '=' + value + ';' + expires + ';path=/;SameSite=Lax';
+        },
+
+        getCookie(name) {
+            const nameEQ = name + '=';
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                let cookie = cookies[i].trim();
+                if (cookie.indexOf(nameEQ) === 0) {
+                    return cookie.substring(nameEQ.length);
+                }
+            }
+            return null;
+        }
+    };
+
+    // ============================================
     // INITIALIZE ALL MODULES
     // ============================================
     document.addEventListener('DOMContentLoaded', () => {
@@ -704,6 +788,7 @@
         Preloader.init();
         AnnouncementLoader.init();
         EventWeekday.init();
+        CookieBanner.init();
 
         console.log('FLEUR Baden-Baden - Website initialized');
     });
