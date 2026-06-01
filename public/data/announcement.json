@@ -1,29 +1,29 @@
 {
-  "version": 2,
+  "version": 3,
   "lastUpdated": "2026-06-01T12:00:00Z",
   "announcement": {
     "active": true,
-    "text": "Urban Fleur am 13. Juni mit MAALEEK & KEZRULESEVERYTHING!",
+    "text": "Freitag, 6. Juni: NIKLAS BEUSCHER & NOAH!",
     "link": "#events",
     "linkText": "Mehr erfahren \u2192",
     "icon": "\u2726",
     "priority": "normal",
-    "expiresAt": "2026-06-14T06:00:00Z"
+    "expiresAt": "2026-06-07T06:00:00Z"
   },
   "events": [
     {
-      "id": "evt-urban-fleur-jun",
-      "title": "URBAN FLEUR",
-      "date": "2026-06-13",
+      "id": "evt-niklas-noah-jun",
+      "title": "NIKLAS BEUSCHER & NOAH",
+      "date": "2026-06-06",
       "time": "23:00",
-      "djs": ["MAALEEK", "KEZRULESEVERYTHING"],
-      "description": "Urban Fleur",
+      "djs": ["NIKLAS BEUSCHER", "NOAH"],
+      "description": "",
       "image": "",
       "active": true
     }
   ],
   "meta": {
     "updatedBy": "manual",
-    "updateCount": 1
+    "updateCount": 2
   }
 }
