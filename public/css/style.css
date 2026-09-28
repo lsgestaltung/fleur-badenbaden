@@ -3646,7 +3646,7 @@ hr {
 
 /* Event Gallery - Premium Marquee Strip */
 .event-gallery {
-    padding: var(--space-xl) 0;
+    padding: var(--space-xl) 0 var(--space-md);
     background: var(--fleur-anthracite);
     overflow: hidden;
 }
@@ -3704,56 +3704,6 @@ hr {
 
 .event-gallery-img:hover img {
     transform: scale(1.08);
-}
-
-/* Event Stats Section */
-.event-stats {
-    padding: var(--space-lg) 0;
-    background: var(--fleur-anthracite);
-    border-top: 1px solid var(--fleur-dark-grey);
-}
-
-.event-stats-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-lg);
-    text-align: center;
-}
-
-.event-stat {
-    position: relative;
-    padding: var(--space-md);
-}
-
-.event-stat::after {
-    content: '';
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 1px;
-    height: 60%;
-    background: var(--fleur-dark-grey);
-}
-
-.event-stat:last-child::after {
-    display: none;
-}
-
-.event-stat-number {
-    display: block;
-    font-family: var(--font-display);
-    font-size: clamp(3rem, 6vw, 5rem);
-    color: var(--fleur-orange);
-    line-height: 1;
-    margin-bottom: var(--space-xs);
-}
-
-.event-stat-label {
-    font-size: 0.9rem;
-    color: var(--fleur-light-grey);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
 }
 
 /* Event Services Section - Premium Design */
@@ -4313,19 +4263,6 @@ hr {
     .event-gallery-img {
         width: 300px;
         height: 200px;
-    }
-
-    .event-stats-grid {
-        grid-template-columns: 1fr;
-        gap: var(--space-md);
-    }
-
-    .event-stat::after {
-        display: none;
-    }
-
-    .event-stat-number {
-        font-size: 3rem;
     }
 
     .event-services-grid {
