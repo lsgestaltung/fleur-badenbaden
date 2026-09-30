@@ -62,7 +62,7 @@ Neue Events wie bisher als Karte in `public/index.html` (`#eventsGrid`) anlegen.
 - die Inhaltsseiten aus `scripts/seiten/*.html` (`/tisch-reservieren`, `/geburtstag-feiern-baden-baden`)
 - `public/sitemap.xml`
 
-Lokal: `npm run pages`. Die erzeugten Dateien nicht von Hand bearbeiten – Texte der Inhaltsseiten in `scripts/seiten/` ändern.
+Lokal: `npm run pages`. Schritt-für-Schritt-Anleitung mit Kartenvorlage: [`docs/EVENTS-PFLEGEN.md`](docs/EVENTS-PFLEGEN.md). Die erzeugten Dateien nicht von Hand bearbeiten – Texte der Inhaltsseiten in `scripts/seiten/` ändern.
 
 ## Deployment
 
