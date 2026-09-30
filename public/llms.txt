@@ -13,6 +13,8 @@
 - Getränke: individuelles Getränke-Bundle für Lounge oder Hightable nach Absprache
 - Private Anmietung: bis 180 Gäste, auch Teilbereiche; optional Barteam, Catering (Partner-Netzwerk), DJ, Licht- und Tontechnik, Deko; für Wochenenden 4–6 Wochen Vorlauf empfohlen
 - Anfahrt: aus Karlsruhe ca. 40 Minuten mit dem Auto, aus Rastatt und Bühl ca. 20 Minuten; Parkhäuser in der Umgebung
+- Firmen- und Weihnachtsfeiern: exklusive Anmietung oder Lounge in der Clubnacht
+- Events im Kalender: jede Event-Seite bietet eine .ics-Datei (Apple/Outlook) und einen Google-Kalender-Link
 - Instagram: https://instagram.com/fleurbadenbaden
 
 ## Seiten
@@ -20,6 +22,7 @@
 - [Startseite mit nächsten Events und FAQ](https://fleur-bar.de/)
 - [Alle Events](https://fleur-bar.de/events): kommende Clubnächte, jede mit eigener Seite
 - [Geburtstag feiern in Baden-Baden](https://fleur-bar.de/geburtstag-feiern-baden-baden): Lounge + Getränke-Bundle oder private Feier
-- [Tisch reservieren](https://fleur-bar.de/tisch-reservieren): VIP Lounge, Hightables, Ablauf
+- [Weihnachtsfeier in Baden-Baden](https://fleur-bar.de/weihnachtsfeier-baden-baden): Location exklusiv für Firmen und Teams oder Lounge in der Clubnacht
+- [Tisch reservieren](https://fleur-bar.de/tisch-reservieren): VIP Lounge, Hightables, Getränke-Bundle, Anfrage
 - [Event Location](https://fleur-bar.de/event-location): Firmenevents, private Feiern, Workshops
 - [Jobs](https://fleur-bar.de/jobs): Bartender, Service, Runner

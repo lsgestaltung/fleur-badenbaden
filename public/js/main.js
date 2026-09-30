@@ -811,13 +811,25 @@
 
         init() {
             document.querySelectorAll('.event-card[data-date] .event-artist').forEach(h => {
-                if (h.querySelector('a')) return;
                 const karte = h.closest('.event-card');
-                const a = document.createElement('a');
-                a.href = `/events/${karte.dataset.date}-${this.slug(h.textContent.trim())}`;
-                a.textContent = h.textContent.trim();
-                h.textContent = '';
-                h.appendChild(a);
+                const slug = `${karte.dataset.date}-${this.slug(h.textContent.trim())}`;
+                if (!h.querySelector('a')) {
+                    const a = document.createElement('a');
+                    a.href = `/events/${slug}`;
+                    a.textContent = h.textContent.trim();
+                    h.textContent = '';
+                    h.appendChild(a);
+                }
+                // "In Kalender speichern" – .ics erzeugt scripts/build-pages.mjs
+                const meta = karte.querySelector('.event-meta');
+                if (meta && !karte.querySelector('.event-kalender-link')) {
+                    const k = document.createElement('a');
+                    k.className = 'event-kalender-link';
+                    k.href = `/kalender/${slug}.ics`;
+                    k.setAttribute('download', `${slug}.ics`);
+                    k.textContent = '+ in kalender speichern';
+                    meta.insertAdjacentElement('afterend', k);
+                }
             });
 
             // Event-Seite: vergangener Abend -> Hinweis statt Reservierung
@@ -828,6 +840,72 @@
                 const aktionen = detail.querySelector('.event-actions');
                 if (aktionen) aktionen.hidden = true;
             }
+        }
+    };
+
+    // ============================================
+    // LOUNGE-ANFRAGE (Formular -> WhatsApp / E-Mail)
+    // ============================================
+    // Keine Preise, keine Pakete: die Anfrage sammelt die Eckdaten und oeffnet
+    // WhatsApp bzw. das Mailprogramm mit vorbereiteter Nachricht. Es wird nichts
+    // an einen Server geschickt. Markup erzeugt scripts/build-pages.mjs.
+    const LoungeAnfrage = {
+        whatsapp: '4917661455163',
+        mail: 'info@fleur.management',
+
+        init() {
+            document.querySelectorAll('form.anfrage').forEach(form => {
+                let kanal = 'whatsapp';
+                form.querySelectorAll('button[data-kanal]').forEach(btn =>
+                    btn.addEventListener('click', () => { kanal = btn.dataset.kanal; }));
+
+                const hinweis = form.querySelector('.anfrage-hinweis');
+                const pruefeTag = () => {
+                    if (!hinweis) return;
+                    const datum = form.elements.datum.value;
+                    const bereich = (form.querySelector('input[name="bereich"]:checked') || {}).value;
+                    const tag = datum ? new Date(datum + 'T12:00:00').getDay() : null;
+                    hinweis.hidden = !(datum && ['VIP Lounge', 'Hightable'].includes(bereich) && tag !== 5 && tag !== 6);
+                };
+                form.addEventListener('change', pruefeTag);
+
+                form.addEventListener('submit', e => {
+                    e.preventDefault();
+                    for (const feld of [form.elements.datum, form.elements.personen]) {
+                        if (!feld.checkValidity()) { feld.reportValidity(); feld.focus(); return; }
+                    }
+                    const text = this.nachricht(form);
+                    if (kanal === 'mail') {
+                        const betreff = `Anfrage: ${form.elements.anlass.value || 'Reservierung'} am ${this.datumKurz(form.elements.datum.value)}`;
+                        window.location.href = `mailto:${this.mail}?subject=${encodeURIComponent(betreff)}&body=${encodeURIComponent(text)}`;
+                    } else {
+                        window.open(`https://wa.me/${this.whatsapp}?text=${encodeURIComponent(text)}`, '_blank');
+                    }
+                });
+            });
+        },
+
+        datumLang(wert) {
+            return new Date(wert + 'T12:00:00').toLocaleDateString('de-DE', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+        },
+
+        datumKurz(wert) {
+            return new Date(wert + 'T12:00:00').toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit' });
+        },
+
+        nachricht(form) {
+            const f = form.elements;
+            const bereich = (form.querySelector('input[name="bereich"]:checked') || {}).value;
+            const zeilen = ['Hi, ich möchte gerne bei euch anfragen.', ''];
+            if (f.anlass.value) zeilen.push(`Anlass: ${f.anlass.value}`);
+            zeilen.push(`Datum: ${this.datumLang(f.datum.value)}`);
+            zeilen.push(`Personen: ${f.personen.value}`);
+            if (bereich) zeilen.push(`Bereich: ${bereich}`);
+            if (f.getraenke.value.trim()) zeilen.push('', `Getränkewünsche: ${f.getraenke.value.trim()}`);
+            if (f.wuensche.value.trim()) zeilen.push('', `Sonstiges: ${f.wuensche.value.trim()}`);
+            if (f.name.value.trim()) zeilen.push('', `Name: ${f.name.value.trim()}`);
+            zeilen.push('', 'Danke!');
+            return zeilen.join('\n');
         }
     };
 
@@ -965,6 +1043,7 @@
         EventWeekday.init();
         EventsNext.init();
         EventLinks.init();
+        LoungeAnfrage.init();
         CookieBanner.init();
 
         console.log('FLEUR Baden-Baden - Website initialized');
