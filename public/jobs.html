@@ -7,9 +7,13 @@
     <title>Jobs | FLEUR Baden-Baden</title>
 
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="img/Element 1.svg">
+    <link rel="icon" href="/favicon.ico" sizes="32x32">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
 
     <!-- Styles -->
+    <link rel="preload" href="fonts/tox-typewriter.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="css/style.css">
     <style>
         .jobs-hero {
@@ -26,7 +30,8 @@
             content: '';
             position: absolute;
             inset: 0;
-            background-image: url('img/texture-finger-prints-texture-black-white.png');
+            background-image: url('img/opt/fingerprint-texture.jpg');
+            background-image: image-set(url('img/opt/fingerprint-texture.webp') type('image/webp'), url('img/opt/fingerprint-texture.jpg') type('image/jpeg'));
             background-size: cover;
             opacity: 0.05;
         }
@@ -461,7 +466,7 @@
             </div>
 
             <div class="footer-bottom">
-                <p class="footer-copy">© 2025 FLEUR Baden-Baden. Alle Rechte vorbehalten.</p>
+                <p class="footer-copy">© <span class="js-year">2026</span> FLEUR Baden-Baden. Alle Rechte vorbehalten.</p>
                 <nav class="footer-legal">
                     <a href="/impressum">Impressum</a>
                     <a href="/datenschutz">Datenschutz</a>
