@@ -37,6 +37,23 @@ const nextConfig = {
         source: '/event-location',
         destination: '/event-location.html',
       },
+      // Von scripts/build-pages.mjs erzeugte Seiten
+      {
+        source: '/tisch-reservieren',
+        destination: '/tisch-reservieren.html',
+      },
+      {
+        source: '/geburtstag-feiern-baden-baden',
+        destination: '/geburtstag-feiern-baden-baden.html',
+      },
+      {
+        source: '/events',
+        destination: '/events/index.html',
+      },
+      {
+        source: '/events/:slug',
+        destination: '/events/:slug.html',
+      },
     ];
   },
 };

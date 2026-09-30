@@ -764,6 +764,7 @@
         init() {
             const grid = document.getElementById('eventsGrid');
             if (!grid) return;
+            const anzahl = parseInt(grid.dataset.anzahl, 10) || this.anzahl;
 
             const stichtag = AnnouncementLoader.currentClubDate();
             const karten = [...grid.querySelectorAll('.event-card[data-date]')]
@@ -772,14 +773,14 @@
             const kommend = karten.filter(k => k.dataset.date >= stichtag);
 
             karten.forEach(k => k.classList.toggle('is-past', k.dataset.date < stichtag));
-            kommend.forEach((k, i) => k.classList.toggle('is-later', i >= this.anzahl));
+            kommend.forEach((k, i) => k.classList.toggle('is-later', i >= anzahl));
 
             const leer = document.getElementById('eventsEmpty');
             if (leer) leer.hidden = kommend.length > 0;
 
             const btn = document.getElementById('eventsMore');
             if (!btn) return;
-            if (kommend.length <= this.anzahl) { btn.hidden = true; return; }
+            if (kommend.length <= anzahl) { btn.hidden = true; return; }
 
             const beschriftung = offen => offen ? 'Weniger anzeigen' : `Alle Termine anzeigen (${kommend.length})`;
             btn.textContent = beschriftung(false);
@@ -790,6 +791,43 @@
                 btn.textContent = beschriftung(offen);
                 if (!offen) grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
             });
+        }
+    };
+
+    // ============================================
+    // EVENT-LINKS & EVENT-SEITE
+    // ============================================
+    // Jede Event-Karte hat eine eigene Seite unter /events/<datum>-<name>
+    // (erzeugt von scripts/build-pages.mjs). Auf der Startseite werden die
+    // Namen hier verlinkt, damit neue Karten nichts extra brauchen.
+    const EventLinks = {
+        /** Muss identisch sein mit slugify() in scripts/build-pages.mjs */
+        slug(s) {
+            return s.toLowerCase()
+                .replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue').replace(/ß/g, 'ss')
+                .normalize('NFKD').replace(/[\u0300-\u036f]/g, '')
+                .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+        },
+
+        init() {
+            document.querySelectorAll('.event-card[data-date] .event-artist').forEach(h => {
+                if (h.querySelector('a')) return;
+                const karte = h.closest('.event-card');
+                const a = document.createElement('a');
+                a.href = `/events/${karte.dataset.date}-${this.slug(h.textContent.trim())}`;
+                a.textContent = h.textContent.trim();
+                h.textContent = '';
+                h.appendChild(a);
+            });
+
+            // Event-Seite: vergangener Abend -> Hinweis statt Reservierung
+            const detail = document.querySelector('.event-detail[data-event-date]');
+            if (detail && detail.dataset.eventDate < AnnouncementLoader.currentClubDate()) {
+                const hinweis = detail.querySelector('.event-vorbei');
+                if (hinweis) hinweis.hidden = false;
+                const aktionen = detail.querySelector('.event-actions');
+                if (aktionen) aktionen.hidden = true;
+            }
         }
     };
 
@@ -926,6 +964,7 @@
         AnnouncementLoader.init();
         EventWeekday.init();
         EventsNext.init();
+        EventLinks.init();
         CookieBanner.init();
 
         console.log('FLEUR Baden-Baden - Website initialized');
