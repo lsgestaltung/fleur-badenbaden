@@ -401,12 +401,12 @@ function eventSeite(e, alle) {
     const andere = alle.filter(x => x !== e);
     const krumen = [['Start', '/'], ['Events', '/events'], [e.artist, e.url]];
 
-    const inhalt = `        <section class="page-header event-hero">
+    const inhalt = `        <section class="page-header evp-hero">
             <div class="container">
                 ${brotkrumenHtml(krumen)}
-                <p class="event-hero-kicker">[${WT_KURZ[wochentagIndex(e.date)].toLowerCase()}] ${d}. ${MONATE[m - 1].toLowerCase()} ${y} · ${e.uhrzeit} uhr</p>
-${e.special ? `                <span class="event-special">${esc(e.special)}</span>\n` : ''}                <h1 class="page-title event-hero-title">${esc(e.artist)}</h1>
-                <p class="event-hero-sub">im FLEUR Baden-Baden</p>
+                <p class="evp-kicker">[${WT_KURZ[wochentagIndex(e.date)].toLowerCase()}] ${d}. ${MONATE[m - 1].toLowerCase()} ${y} · ${e.uhrzeit} uhr</p>
+${e.special ? `                <span class="event-special">${esc(e.special)}</span>\n` : ''}                <h1 class="page-title evp-title">${esc(e.artist)}</h1>
+                <p class="evp-sub">im FLEUR Baden-Baden</p>
             </div>
         </section>
 
