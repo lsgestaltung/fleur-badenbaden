@@ -1674,6 +1674,13 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 1.8;
 }
 
+.footer-hours-note {
+    color: var(--fleur-orange);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+}
+
 .footer-link,
 .footer-contact a {
     color: var(--fleur-cream);
