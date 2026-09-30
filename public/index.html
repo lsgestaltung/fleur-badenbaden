@@ -38,10 +38,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="img/Element 1.svg">
-    <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+    <link rel="icon" href="/favicon.ico" sizes="32x32">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
 
     <!-- Styles -->
+    <link rel="preload" href="fonts/tox-typewriter.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="css/style.css">
 
     <!-- JSON-LD Structured Data -->
@@ -669,7 +672,7 @@
         <!-- Hero Section -->
         <section id="hero" class="hero">
             <div class="hero-bg">
-                <div class="hero-image" style="background-image: url('img/location bilder/_DSC1339.jpg');"></div>
+                <div class="hero-image" style="background-image: url('img/opt/hero-bg.jpg'); background-image: image-set(url('img/opt/hero-bg.webp') type('image/webp'), url('img/opt/hero-bg.jpg') type('image/jpeg'));"></div>
                 <div class="hero-texture"></div>
                 <div class="hero-gradient"></div>
             </div>
@@ -1150,9 +1153,9 @@
                 <div class="resident-card">
                     <div class="resident-badge">Resident DJ</div>
                     <div class="resident-image-carousel" id="niklasCarousel">
-                        <img src="img/niklas beuscher/A7401077.jpg" alt="Niklas Beuscher" class="resident-img active" data-index="0">
-                        <img src="img/niklas beuscher/A7400885.jpg" alt="Niklas Beuscher" class="resident-img" data-index="1">
-                        <img src="img/niklas beuscher/A7401360-Editbw.jpg" alt="Niklas Beuscher" class="resident-img" data-index="2">
+                        <picture><source type="image/avif" srcset="img/opt/a7401077-450.avif 450w" sizes="(max-width: 768px) 90vw, 500px"><source type="image/webp" srcset="img/opt/a7401077-450.webp 450w" sizes="(max-width: 768px) 90vw, 500px"><img src="img/opt/a7401077-450.jpg" alt="Niklas Beuscher" class="resident-img active" data-index="0" width="450" height="800" loading="lazy" decoding="async"></picture>
+                        <picture><source type="image/avif" srcset="img/opt/a7400885-450.avif 450w" sizes="(max-width: 768px) 90vw, 500px"><source type="image/webp" srcset="img/opt/a7400885-450.webp 450w" sizes="(max-width: 768px) 90vw, 500px"><img src="img/opt/a7400885-450.jpg" alt="Niklas Beuscher" class="resident-img" data-index="1" width="450" height="800" loading="lazy" decoding="async"></picture>
+                        <picture><source type="image/avif" srcset="img/opt/a7401360-editbw-499.avif 499w" sizes="(max-width: 768px) 90vw, 500px"><source type="image/webp" srcset="img/opt/a7401360-editbw-499.webp 499w" sizes="(max-width: 768px) 90vw, 500px"><img src="img/opt/a7401360-editbw-499.jpg" alt="Niklas Beuscher" class="resident-img" data-index="2" width="499" height="800" loading="lazy" decoding="async"></picture>
                     </div>
                     <div class="resident-info">
                         <h3 class="resident-name">Niklas Beuscher</h3>
@@ -1182,23 +1185,23 @@
             <!-- Image Marquee Strip - Portrait Format -->
             <div class="impressions-strip">
                 <div class="impressions-track">
-                    <div class="impressions-img"><img src="img/location bilder/_DSC1339.jpg" alt="FLEUR Interior" loading="lazy"></div>
-                    <div class="impressions-img"><img src="img/pics/_DSC4560.jpg" alt="FLEUR Party" loading="lazy"></div>
-                    <div class="impressions-img"><img src="img/location bilder/_DSC1208.jpg" alt="FLEUR Bar" loading="lazy"></div>
-                    <div class="impressions-img"><img src="img/niklas beuscher/A7401077.jpg" alt="DJ Niklas" loading="lazy"></div>
-                    <div class="impressions-img"><img src="img/pics/_DSC4684.jpg" alt="FLEUR Atmosphere" loading="lazy"></div>
-                    <div class="impressions-img"><img src="img/location bilder/_DSC1149.jpg" alt="FLEUR Location" loading="lazy"></div>
-                    <div class="impressions-img"><img src="img/pics/_DSC4810.jpg" alt="FLEUR Night" loading="lazy"></div>
-                    <div class="impressions-img"><img src="img/pics/A7406191.jpg" alt="FLEUR Vibes" loading="lazy"></div>
+                    <div class="impressions-img"><picture><source type="image/avif" srcset="img/opt/dsc1339-675.avif 675w" sizes="(max-width: 768px) 316px, 200px"><source type="image/webp" srcset="img/opt/dsc1339-675.webp 675w" sizes="(max-width: 768px) 316px, 200px"><img src="img/opt/dsc1339-675.jpg" alt="FLEUR Interior" width="675" height="1200" loading="lazy" decoding="async"></picture></div>
+                    <div class="impressions-img"><picture><source type="image/avif" srcset="img/opt/dsc4560-400.avif 400w, img/opt/dsc4560-687.avif 687w" sizes="(max-width: 768px) 316px, 200px"><source type="image/webp" srcset="img/opt/dsc4560-400.webp 400w, img/opt/dsc4560-687.webp 687w" sizes="(max-width: 768px) 316px, 200px"><img src="img/opt/dsc4560-687.jpg" alt="FLEUR Party" width="687" height="1200" loading="lazy" decoding="async"></picture></div>
+                    <div class="impressions-img"><picture><source type="image/avif" srcset="img/opt/dsc1208-640.avif 640w, img/opt/dsc1208-1200.avif 1200w" sizes="(max-width: 768px) 846px, 356px"><source type="image/webp" srcset="img/opt/dsc1208-640.webp 640w, img/opt/dsc1208-1200.webp 1200w" sizes="(max-width: 768px) 846px, 356px"><img src="img/opt/dsc1208-1200.jpg" alt="FLEUR Bar" width="1200" height="675" loading="lazy" decoding="async"></picture></div>
+                    <div class="impressions-img"><picture><source type="image/avif" srcset="img/opt/a7401077-450.avif 450w" sizes="(max-width: 768px) 316px, 200px"><source type="image/webp" srcset="img/opt/a7401077-450.webp 450w" sizes="(max-width: 768px) 316px, 200px"><img src="img/opt/a7401077-450.jpg" alt="DJ Niklas" width="450" height="800" loading="lazy" decoding="async"></picture></div>
+                    <div class="impressions-img"><picture><source type="image/avif" srcset="img/opt/dsc4684-400.avif 400w, img/opt/dsc4684-675.avif 675w" sizes="(max-width: 768px) 316px, 200px"><source type="image/webp" srcset="img/opt/dsc4684-400.webp 400w, img/opt/dsc4684-675.webp 675w" sizes="(max-width: 768px) 316px, 200px"><img src="img/opt/dsc4684-675.jpg" alt="FLEUR Atmosphere" width="675" height="1200" loading="lazy" decoding="async"></picture></div>
+                    <div class="impressions-img"><picture><source type="image/avif" srcset="img/opt/dsc1149-640.avif 640w, img/opt/dsc1149-1200.avif 1200w" sizes="(max-width: 768px) 846px, 356px"><source type="image/webp" srcset="img/opt/dsc1149-640.webp 640w, img/opt/dsc1149-1200.webp 1200w" sizes="(max-width: 768px) 846px, 356px"><img src="img/opt/dsc1149-1200.jpg" alt="FLEUR Location" width="1200" height="675" loading="lazy" decoding="async"></picture></div>
+                    <div class="impressions-img"><picture><source type="image/avif" srcset="img/opt/dsc4810-400.avif 400w, img/opt/dsc4810-675.avif 675w" sizes="(max-width: 768px) 316px, 200px"><source type="image/webp" srcset="img/opt/dsc4810-400.webp 400w, img/opt/dsc4810-675.webp 675w" sizes="(max-width: 768px) 316px, 200px"><img src="img/opt/dsc4810-675.jpg" alt="FLEUR Night" width="675" height="1200" loading="lazy" decoding="async"></picture></div>
+                    <div class="impressions-img"><picture><source type="image/avif" srcset="img/opt/a7406191-400.avif 400w, img/opt/a7406191-675.avif 675w" sizes="(max-width: 768px) 316px, 200px"><source type="image/webp" srcset="img/opt/a7406191-400.webp 400w, img/opt/a7406191-675.webp 675w" sizes="(max-width: 768px) 316px, 200px"><img src="img/opt/a7406191-675.jpg" alt="FLEUR Vibes" width="675" height="1200" loading="lazy" decoding="async"></picture></div>
                     <!-- Duplicate for seamless loop -->
-                    <div class="impressions-img"><img src="img/location bilder/_DSC1339.jpg" alt="FLEUR Interior" loading="lazy"></div>
-                    <div class="impressions-img"><img src="img/pics/_DSC4560.jpg" alt="FLEUR Party" loading="lazy"></div>
-                    <div class="impressions-img"><img src="img/location bilder/_DSC1208.jpg" alt="FLEUR Bar" loading="lazy"></div>
-                    <div class="impressions-img"><img src="img/niklas beuscher/A7401077.jpg" alt="DJ Niklas" loading="lazy"></div>
-                    <div class="impressions-img"><img src="img/pics/_DSC4684.jpg" alt="FLEUR Atmosphere" loading="lazy"></div>
-                    <div class="impressions-img"><img src="img/location bilder/_DSC1149.jpg" alt="FLEUR Location" loading="lazy"></div>
-                    <div class="impressions-img"><img src="img/pics/_DSC4810.jpg" alt="FLEUR Night" loading="lazy"></div>
-                    <div class="impressions-img"><img src="img/pics/A7406191.jpg" alt="FLEUR Vibes" loading="lazy"></div>
+                    <div class="impressions-img"><picture><source type="image/avif" srcset="img/opt/dsc1339-675.avif 675w" sizes="(max-width: 768px) 316px, 200px"><source type="image/webp" srcset="img/opt/dsc1339-675.webp 675w" sizes="(max-width: 768px) 316px, 200px"><img src="img/opt/dsc1339-675.jpg" alt="FLEUR Interior" width="675" height="1200" loading="lazy" decoding="async"></picture></div>
+                    <div class="impressions-img"><picture><source type="image/avif" srcset="img/opt/dsc4560-400.avif 400w, img/opt/dsc4560-687.avif 687w" sizes="(max-width: 768px) 316px, 200px"><source type="image/webp" srcset="img/opt/dsc4560-400.webp 400w, img/opt/dsc4560-687.webp 687w" sizes="(max-width: 768px) 316px, 200px"><img src="img/opt/dsc4560-687.jpg" alt="FLEUR Party" width="687" height="1200" loading="lazy" decoding="async"></picture></div>
+                    <div class="impressions-img"><picture><source type="image/avif" srcset="img/opt/dsc1208-640.avif 640w, img/opt/dsc1208-1200.avif 1200w" sizes="(max-width: 768px) 846px, 356px"><source type="image/webp" srcset="img/opt/dsc1208-640.webp 640w, img/opt/dsc1208-1200.webp 1200w" sizes="(max-width: 768px) 846px, 356px"><img src="img/opt/dsc1208-1200.jpg" alt="FLEUR Bar" width="1200" height="675" loading="lazy" decoding="async"></picture></div>
+                    <div class="impressions-img"><picture><source type="image/avif" srcset="img/opt/a7401077-450.avif 450w" sizes="(max-width: 768px) 316px, 200px"><source type="image/webp" srcset="img/opt/a7401077-450.webp 450w" sizes="(max-width: 768px) 316px, 200px"><img src="img/opt/a7401077-450.jpg" alt="DJ Niklas" width="450" height="800" loading="lazy" decoding="async"></picture></div>
+                    <div class="impressions-img"><picture><source type="image/avif" srcset="img/opt/dsc4684-400.avif 400w, img/opt/dsc4684-675.avif 675w" sizes="(max-width: 768px) 316px, 200px"><source type="image/webp" srcset="img/opt/dsc4684-400.webp 400w, img/opt/dsc4684-675.webp 675w" sizes="(max-width: 768px) 316px, 200px"><img src="img/opt/dsc4684-675.jpg" alt="FLEUR Atmosphere" width="675" height="1200" loading="lazy" decoding="async"></picture></div>
+                    <div class="impressions-img"><picture><source type="image/avif" srcset="img/opt/dsc1149-640.avif 640w, img/opt/dsc1149-1200.avif 1200w" sizes="(max-width: 768px) 846px, 356px"><source type="image/webp" srcset="img/opt/dsc1149-640.webp 640w, img/opt/dsc1149-1200.webp 1200w" sizes="(max-width: 768px) 846px, 356px"><img src="img/opt/dsc1149-1200.jpg" alt="FLEUR Location" width="1200" height="675" loading="lazy" decoding="async"></picture></div>
+                    <div class="impressions-img"><picture><source type="image/avif" srcset="img/opt/dsc4810-400.avif 400w, img/opt/dsc4810-675.avif 675w" sizes="(max-width: 768px) 316px, 200px"><source type="image/webp" srcset="img/opt/dsc4810-400.webp 400w, img/opt/dsc4810-675.webp 675w" sizes="(max-width: 768px) 316px, 200px"><img src="img/opt/dsc4810-675.jpg" alt="FLEUR Night" width="675" height="1200" loading="lazy" decoding="async"></picture></div>
+                    <div class="impressions-img"><picture><source type="image/avif" srcset="img/opt/a7406191-400.avif 400w, img/opt/a7406191-675.avif 675w" sizes="(max-width: 768px) 316px, 200px"><source type="image/webp" srcset="img/opt/a7406191-400.webp 400w, img/opt/a7406191-675.webp 675w" sizes="(max-width: 768px) 316px, 200px"><img src="img/opt/a7406191-675.jpg" alt="FLEUR Vibes" width="675" height="1200" loading="lazy" decoding="async"></picture></div>
                 </div>
             </div>
 
@@ -1309,7 +1312,7 @@
                 </div>
 
                 <div class="footer-bottom">
-                    <p class="footer-copy">© 2025 FLEUR Baden-Baden. Alle Rechte vorbehalten.</p>
+                    <p class="footer-copy">© <span class="js-year">2026</span> FLEUR Baden-Baden. Alle Rechte vorbehalten.</p>
                     <nav class="footer-legal">
                         <a href="/impressum">Impressum</a>
                         <a href="/datenschutz">Datenschutz</a>

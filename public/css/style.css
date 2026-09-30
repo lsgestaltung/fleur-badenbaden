@@ -62,7 +62,8 @@
 /* TOX Typewriter - Local Custom Font */
 @font-face {
     font-family: 'TOX Typewriter';
-    src: url('../fonts/Tox Typewriter.ttf') format('truetype');
+    src: url('../fonts/tox-typewriter.woff2') format('woff2'),
+         url('../fonts/Tox Typewriter.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -638,7 +639,8 @@ h1, h2, h3, h4, h5, h6 {
 .hero-texture {
     position: absolute;
     inset: 0;
-    background-image: url('../img/textur1.png');
+    background-image: url('../img/opt/textur.png');
+    background-image: image-set(url('../img/opt/textur.webp') type('image/webp'), url('../img/opt/textur.png') type('image/png'));
     background-size: 300px;
     opacity: 0.03;
     mix-blend-mode: overlay;
@@ -908,7 +910,8 @@ h1, h2, h3, h4, h5, h6 {
     content: '';
     position: absolute;
     inset: 0;
-    background-image: url('../img/location bilder/_DSC1339.jpg');
+    background-image: url('../img/opt/events-bg.jpg');
+    background-image: image-set(url('../img/opt/events-bg.webp') type('image/webp'), url('../img/opt/events-bg.jpg') type('image/jpeg'));
     background-size: cover;
     background-position: center;
     opacity: 0.05;
@@ -1197,7 +1200,8 @@ h1, h2, h3, h4, h5, h6 {
     content: '';
     position: absolute;
     inset: 0;
-    background: url('../img/Zeichenfläche 1 Kopie 2.jpg') center/cover;
+    background: url('../img/opt/booking-bg.jpg') center/cover;
+    background-image: image-set(url('../img/opt/booking-bg.webp') type('image/webp'), url('../img/opt/booking-bg.jpg') type('image/jpeg'));
     opacity: 0.1;
     pointer-events: none;
 }
@@ -1525,7 +1529,8 @@ h1, h2, h3, h4, h5, h6 {
     content: '';
     position: absolute;
     inset: 0;
-    background: url('../img/location bilder/_DSC1208.jpg') center/cover;
+    background: url('../img/opt/gallery-bg.jpg') center/cover;
+    background-image: image-set(url('../img/opt/gallery-bg.webp') type('image/webp'), url('../img/opt/gallery-bg.jpg') type('image/jpeg'));
     opacity: 0.03;
     pointer-events: none;
 }
@@ -1636,7 +1641,8 @@ h1, h2, h3, h4, h5, h6 {
 .footer-texture {
     position: absolute;
     inset: 0;
-    background-image: url('../img/textur1.png');
+    background-image: url('../img/opt/textur.png');
+    background-image: image-set(url('../img/opt/textur.webp') type('image/webp'), url('../img/opt/textur.png') type('image/png'));
     background-size: 400px;
     opacity: 0.02;
     pointer-events: none;
@@ -1751,7 +1757,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .footer-copy {
     font-size: 0.75rem;
-    color: var(--fleur-grey);
+    color: var(--fleur-light-grey);
 }
 
 .footer-legal {
@@ -1761,7 +1767,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .footer-legal a {
     font-size: 0.75rem;
-    color: var(--fleur-grey);
+    color: var(--fleur-light-grey);
     transition: color var(--transition-fast);
 }
 
@@ -1887,7 +1893,7 @@ hr {
     margin-top: var(--space-sm);
     border-top: 1px solid rgba(255, 114, 0, 0.1);
     font-size: 0.75rem;
-    color: var(--fleur-grey);
+    color: var(--fleur-light-grey);
 }
 
 .footer-credit a {
@@ -2111,7 +2117,7 @@ hr {
     font-size: 0.65rem;
     text-transform: uppercase;
     letter-spacing: 0.15em;
-    color: var(--fleur-grey);
+    color: var(--fleur-light-grey);
 }
 
 /* ============================================
@@ -2844,7 +2850,7 @@ hr {
 /* Disabled / Non-bookable areas */
 .floorplan-disabled {
     cursor: not-allowed;
-    opacity: 0.5;
+    opacity: 1;
     background: rgba(80, 80, 80, 0.2) !important;
     border-color: rgba(100, 100, 100, 0.3) !important;
 }
@@ -2856,24 +2862,22 @@ hr {
 }
 
 .floorplan-disabled span {
-    color: var(--fleur-grey) !important;
+    color: var(--fleur-light-grey) !important;
 }
 
 .floorplan-disabled-badge {
     display: block;
-    font-size: 0.5rem !important;
+    font-size: 0.6rem !important;
     color: var(--fleur-light-grey) !important;
     margin-top: 4px;
-    opacity: 0.7;
 }
 
 .floorplan-subline {
     display: block;
-    font-size: 0.45rem !important;
+    font-size: 0.6rem !important;
     font-style: italic;
     color: var(--fleur-light-grey) !important;
     margin-top: 2px;
-    opacity: 0.8;
 }
 
 /* ============================================
@@ -4597,4 +4601,28 @@ hr {
         padding: 0.65rem 1.25rem;
         font-size: 0.8rem;
     }
+}
+
+
+/* ============================================
+   TIPPFLAECHEN
+   Kleine Textlinks bekommen eine unsichtbare Trefferzone von mind. 44px Hoehe.
+   Per Pseudo-Element, damit sich Zeilenabstand und Layout nicht veraendern.
+   ============================================ */
+a[href^="tel:"],
+a[href^="mailto:"],
+.announcement-link,
+.footer-legal a,
+.footer-credit a {
+    position: relative;
+}
+
+a[href^="tel:"]::after,
+a[href^="mailto:"]::after,
+.announcement-link::after,
+.footer-legal a::after,
+.footer-credit a::after {
+    content: '';
+    position: absolute;
+    inset: -14px -6px;
 }

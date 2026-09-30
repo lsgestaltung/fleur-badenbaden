@@ -524,6 +524,9 @@
         }
     };
 
+    // Copyright-Jahr aktuell halten
+    document.querySelectorAll('.js-year').forEach(el => { el.textContent = new Date().getFullYear(); });
+
     // ============================================
     // ANNOUNCEMENT LOADER (Telegram Bot Integration)
     // ============================================

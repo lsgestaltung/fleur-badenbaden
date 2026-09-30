@@ -38,10 +38,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="img/Element 1.svg">
-    <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+    <link rel="icon" href="/favicon.ico" sizes="32x32">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
 
     <!-- Styles -->
+    <link rel="preload" href="fonts/tox-typewriter.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="css/style.css">
 
     <!-- JSON-LD Structured Data for EventVenue -->
@@ -180,7 +183,7 @@
         <!-- Hero Section for Event Location -->
         <section class="event-hero">
             <div class="event-hero-bg">
-                <div class="event-hero-image" style="background-image: url('img/location bilder/_DSC1339.jpg');"></div>
+                <div class="event-hero-image" style="background-image: url('img/opt/hero-bg.jpg'); background-image: image-set(url('img/opt/hero-bg.webp') type('image/webp'), url('img/opt/hero-bg.jpg') type('image/jpeg'));"></div>
                 <div class="hero-texture"></div>
                 <div class="hero-gradient"></div>
             </div>
@@ -322,19 +325,19 @@
             <!-- Image Marquee Strip -->
             <div class="event-gallery-strip">
                 <div class="event-gallery-track">
-                    <div class="event-gallery-img"><img src="img/location bilder/_DSC1339.jpg" alt="FLEUR Event Location - Hauptbereich" loading="lazy"></div>
-                    <div class="event-gallery-img"><img src="img/location bilder/_DSC1208.jpg" alt="FLEUR Event Location - Bar" loading="lazy"></div>
-                    <div class="event-gallery-img"><img src="img/location bilder/_DSC1149.jpg" alt="FLEUR Event Location - Lounge" loading="lazy"></div>
-                    <div class="event-gallery-img"><img src="img/location bilder/_DSC1355-2.jpg" alt="FLEUR Event Location - Atmosphäre" loading="lazy"></div>
-                    <div class="event-gallery-img"><img src="img/pics/_DSC4560.jpg" alt="FLEUR Event" loading="lazy"></div>
-                    <div class="event-gallery-img"><img src="img/pics/_DSC4684.jpg" alt="FLEUR Atmosphere" loading="lazy"></div>
+                    <div class="event-gallery-img"><picture><source type="image/avif" srcset="img/opt/dsc1339-675.avif 675w" sizes="(max-width: 768px) 90vw, 400px"><source type="image/webp" srcset="img/opt/dsc1339-675.webp 675w" sizes="(max-width: 768px) 90vw, 400px"><img src="img/opt/dsc1339-675.jpg" alt="FLEUR Event Location - Hauptbereich" width="675" height="1200" loading="lazy" decoding="async"></picture></div>
+                    <div class="event-gallery-img"><picture><source type="image/avif" srcset="img/opt/dsc1208-640.avif 640w, img/opt/dsc1208-1200.avif 1200w" sizes="(max-width: 768px) 90vw, 500px"><source type="image/webp" srcset="img/opt/dsc1208-640.webp 640w, img/opt/dsc1208-1200.webp 1200w" sizes="(max-width: 768px) 90vw, 500px"><img src="img/opt/dsc1208-1200.jpg" alt="FLEUR Event Location - Bar" width="1200" height="675" loading="lazy" decoding="async"></picture></div>
+                    <div class="event-gallery-img"><picture><source type="image/avif" srcset="img/opt/dsc1149-640.avif 640w, img/opt/dsc1149-1200.avif 1200w" sizes="(max-width: 768px) 90vw, 500px"><source type="image/webp" srcset="img/opt/dsc1149-640.webp 640w, img/opt/dsc1149-1200.webp 1200w" sizes="(max-width: 768px) 90vw, 500px"><img src="img/opt/dsc1149-1200.jpg" alt="FLEUR Event Location - Lounge" width="1200" height="675" loading="lazy" decoding="async"></picture></div>
+                    <div class="event-gallery-img"><picture><source type="image/avif" srcset="img/opt/dsc1355-2-640.avif 640w, img/opt/dsc1355-2-1200.avif 1200w" sizes="(max-width: 768px) 90vw, 500px"><source type="image/webp" srcset="img/opt/dsc1355-2-640.webp 640w, img/opt/dsc1355-2-1200.webp 1200w" sizes="(max-width: 768px) 90vw, 500px"><img src="img/opt/dsc1355-2-1200.jpg" alt="FLEUR Event Location - Atmosphäre" width="1200" height="675" loading="lazy" decoding="async"></picture></div>
+                    <div class="event-gallery-img"><picture><source type="image/avif" srcset="img/opt/dsc4560-400.avif 400w, img/opt/dsc4560-687.avif 687w" sizes="(max-width: 768px) 90vw, 400px"><source type="image/webp" srcset="img/opt/dsc4560-400.webp 400w, img/opt/dsc4560-687.webp 687w" sizes="(max-width: 768px) 90vw, 400px"><img src="img/opt/dsc4560-687.jpg" alt="FLEUR Event" width="687" height="1200" loading="lazy" decoding="async"></picture></div>
+                    <div class="event-gallery-img"><picture><source type="image/avif" srcset="img/opt/dsc4684-400.avif 400w, img/opt/dsc4684-675.avif 675w" sizes="(max-width: 768px) 90vw, 400px"><source type="image/webp" srcset="img/opt/dsc4684-400.webp 400w, img/opt/dsc4684-675.webp 675w" sizes="(max-width: 768px) 90vw, 400px"><img src="img/opt/dsc4684-675.jpg" alt="FLEUR Atmosphere" width="675" height="1200" loading="lazy" decoding="async"></picture></div>
                     <!-- Duplicate for seamless loop -->
-                    <div class="event-gallery-img"><img src="img/location bilder/_DSC1339.jpg" alt="FLEUR Event Location - Hauptbereich" loading="lazy"></div>
-                    <div class="event-gallery-img"><img src="img/location bilder/_DSC1208.jpg" alt="FLEUR Event Location - Bar" loading="lazy"></div>
-                    <div class="event-gallery-img"><img src="img/location bilder/_DSC1149.jpg" alt="FLEUR Event Location - Lounge" loading="lazy"></div>
-                    <div class="event-gallery-img"><img src="img/location bilder/_DSC1355-2.jpg" alt="FLEUR Event Location - Atmosphäre" loading="lazy"></div>
-                    <div class="event-gallery-img"><img src="img/pics/_DSC4560.jpg" alt="FLEUR Event" loading="lazy"></div>
-                    <div class="event-gallery-img"><img src="img/pics/_DSC4684.jpg" alt="FLEUR Atmosphere" loading="lazy"></div>
+                    <div class="event-gallery-img"><picture><source type="image/avif" srcset="img/opt/dsc1339-675.avif 675w" sizes="(max-width: 768px) 90vw, 400px"><source type="image/webp" srcset="img/opt/dsc1339-675.webp 675w" sizes="(max-width: 768px) 90vw, 400px"><img src="img/opt/dsc1339-675.jpg" alt="FLEUR Event Location - Hauptbereich" width="675" height="1200" loading="lazy" decoding="async"></picture></div>
+                    <div class="event-gallery-img"><picture><source type="image/avif" srcset="img/opt/dsc1208-640.avif 640w, img/opt/dsc1208-1200.avif 1200w" sizes="(max-width: 768px) 90vw, 500px"><source type="image/webp" srcset="img/opt/dsc1208-640.webp 640w, img/opt/dsc1208-1200.webp 1200w" sizes="(max-width: 768px) 90vw, 500px"><img src="img/opt/dsc1208-1200.jpg" alt="FLEUR Event Location - Bar" width="1200" height="675" loading="lazy" decoding="async"></picture></div>
+                    <div class="event-gallery-img"><picture><source type="image/avif" srcset="img/opt/dsc1149-640.avif 640w, img/opt/dsc1149-1200.avif 1200w" sizes="(max-width: 768px) 90vw, 500px"><source type="image/webp" srcset="img/opt/dsc1149-640.webp 640w, img/opt/dsc1149-1200.webp 1200w" sizes="(max-width: 768px) 90vw, 500px"><img src="img/opt/dsc1149-1200.jpg" alt="FLEUR Event Location - Lounge" width="1200" height="675" loading="lazy" decoding="async"></picture></div>
+                    <div class="event-gallery-img"><picture><source type="image/avif" srcset="img/opt/dsc1355-2-640.avif 640w, img/opt/dsc1355-2-1200.avif 1200w" sizes="(max-width: 768px) 90vw, 500px"><source type="image/webp" srcset="img/opt/dsc1355-2-640.webp 640w, img/opt/dsc1355-2-1200.webp 1200w" sizes="(max-width: 768px) 90vw, 500px"><img src="img/opt/dsc1355-2-1200.jpg" alt="FLEUR Event Location - Atmosphäre" width="1200" height="675" loading="lazy" decoding="async"></picture></div>
+                    <div class="event-gallery-img"><picture><source type="image/avif" srcset="img/opt/dsc4560-400.avif 400w, img/opt/dsc4560-687.avif 687w" sizes="(max-width: 768px) 90vw, 400px"><source type="image/webp" srcset="img/opt/dsc4560-400.webp 400w, img/opt/dsc4560-687.webp 687w" sizes="(max-width: 768px) 90vw, 400px"><img src="img/opt/dsc4560-687.jpg" alt="FLEUR Event" width="687" height="1200" loading="lazy" decoding="async"></picture></div>
+                    <div class="event-gallery-img"><picture><source type="image/avif" srcset="img/opt/dsc4684-400.avif 400w, img/opt/dsc4684-675.avif 675w" sizes="(max-width: 768px) 90vw, 400px"><source type="image/webp" srcset="img/opt/dsc4684-400.webp 400w, img/opt/dsc4684-675.webp 675w" sizes="(max-width: 768px) 90vw, 400px"><img src="img/opt/dsc4684-675.jpg" alt="FLEUR Atmosphere" width="675" height="1200" loading="lazy" decoding="async"></picture></div>
                 </div>
             </div>
         </section>
@@ -512,7 +515,7 @@
         <div class="footer-texture"></div>
         <div class="container">
             <div class="footer-bottom">
-                <p class="footer-copy">© 2025 FLEUR Baden-Baden. Alle Rechte vorbehalten.</p>
+                <p class="footer-copy">© <span class="js-year">2026</span> FLEUR Baden-Baden. Alle Rechte vorbehalten.</p>
                 <nav class="footer-legal">
                     <a href="/impressum">Impressum</a>
                     <a href="/datenschutz">Datenschutz</a>
