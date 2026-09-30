@@ -1965,8 +1965,13 @@ hr {
     align-items: flex-start;
 }
 
+.floorplan-row-toilets {
+    justify-content: flex-end;
+}
+
 .floorplan-row-dj {
-    justify-content: flex-start;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .floorplan-row-main {
@@ -1981,10 +1986,6 @@ hr {
     justify-content: space-between;
     align-items: flex-end;
     margin-top: var(--space-md);
-}
-
-.floorplan-spacer {
-    flex: 1;
 }
 
 .floorplan-area {
@@ -2059,6 +2060,7 @@ hr {
 
 .floorplan-hightable {
     min-width: 100px;
+    min-height: 52px;
 }
 
 .floorplan-bar {
@@ -3381,6 +3383,90 @@ hr {
     .booking-map-hint {
         text-align: center;
         width: 100%;
+    }
+
+    /* Grundriss-Reihen teilen sich die Breite, statt rechts rauszulaufen.
+       Noetig, seit in Reihe 1, 2 und 5 zusaetzliche Hightables stehen. */
+    /* Auf dem Handy lagen zwei 32px-Innenabstaende ineinander (.booking-map
+       und .floorplan) - von 390px blieben nur 173px nutzbare Breite uebrig. */
+    .booking-map {
+        padding: 14px;
+    }
+
+    .floorplan {
+        padding: 14px;
+    }
+
+    .floorplan-row {
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+
+    /* Untere Reihe traegt drei Elemente und braucht eine kleinere Basis,
+       damit Hightables und Entry nebeneinander passen. */
+    .floorplan-row-bottom > .floorplan-area,
+    .floorplan-row-bottom > .floorplan-entry {
+        flex: 1 1 72px;
+        min-width: 72px;
+    }
+
+    /* flex-basis statt 0: Bereiche teilen sich die Reihe, rutschen aber
+       in die naechste Zeile, statt unter die Lesbarkeitsgrenze zu schrumpfen. */
+    .floorplan-row > .floorplan-area {
+        flex: 1 1 88px;
+        min-width: 88px;
+        padding: 10px 6px;
+    }
+
+    .floorplan-vip,
+    .floorplan-hightable,
+    .floorplan-dj,
+    .floorplan-bar {
+        min-width: 88px;
+    }
+
+    .floorplan-chill {
+        width: auto;
+    }
+
+    .floorplan-area span {
+        font-size: 0.6rem;
+        letter-spacing: 0.06em;
+    }
+
+    .floorplan-vip span {
+        font-size: 0.65rem;
+    }
+
+    .floorplan-bookable-badge {
+        font-size: 0.5rem;
+        padding: 2px 7px;
+        white-space: nowrap;
+    }
+
+    .floorplan-entry {
+        flex: 1 1 72px;
+        min-width: 72px;
+        padding: 8px 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .floorplan-toilet {
+        padding: 6px 10px;
+    }
+
+    /* Untere Reihe traegt drei Elemente - Labels muessen enger sitzen,
+       sonst ragen HIGHTABLE und das Buchbar-Label aus ihrer Box. */
+    .floorplan-row-bottom .floorplan-area span {
+        font-size: 0.52rem;
+        letter-spacing: 0.02em;
+    }
+
+    .floorplan-row-bottom .floorplan-bookable-badge {
+        font-size: 0.46rem;
+        padding: 2px 5px;
     }
 }
 
