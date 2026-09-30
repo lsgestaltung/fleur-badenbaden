@@ -536,6 +536,10 @@
         cacheKey: 'fleur_announcement_cache',
         cacheDuration: 5 * 60 * 1000, // 5 minutes
 
+        // Eine Durchsage aus dem Bot gilt nur, solange sie frisch ist. Ohne
+        // diese Grenze bleibt eine Meldung ohne expiresAt ewig stehen.
+        maxAnnouncementAge: 14 * 24 * 60 * 60 * 1000,
+
         init() {
             this.announcementSection = document.getElementById('announcement');
             this.announcementText = document.getElementById('announcementText');
@@ -544,7 +548,102 @@
 
             if (!this.announcementSection) return;
 
+            // Sofort das naechste Event anzeigen, damit nie ein alter Stand
+            // aufblitzt, waehrend /api/data noch laedt.
+            this.applyNextEvent();
             this.loadAnnouncement();
+        },
+
+        /* ---- Automatischer Hinweis auf das naechste Event ----
+           Quelle sind die Event-Karten im Markup. Sie werden ohnehin
+           gepflegt, also gibt es keine zweite Liste, die veralten kann. */
+
+        // Datum in Berlin als YYYY-MM-DD. Ueber Intl statt Zeitzonen-Offset,
+        // damit die Sommerzeitumstellung Ende Oktober nichts verschiebt.
+        berlinDate(d) {
+            return new Intl.DateTimeFormat('en-CA', {
+                timeZone: 'Europe/Berlin',
+                year: 'numeric', month: '2-digit', day: '2-digit'
+            }).format(d);
+        },
+
+        // Ein Clubabend zaehlt bis 06:00 des Folgetages. Um 02:00 Uhr in der
+        // Nacht soll noch der Abend von gestern stehen, nicht schon der naechste.
+        currentClubDate() {
+            const jetzt = new Date();
+            const stunde = parseInt(new Intl.DateTimeFormat('de-DE', {
+                timeZone: 'Europe/Berlin', hour: '2-digit', hour12: false
+            }).format(jetzt), 10);
+
+            const heute = this.berlinDate(jetzt);
+            if (stunde >= 6) return heute;
+
+            const gestern = new Date(heute + 'T12:00:00Z');
+            gestern.setUTCDate(gestern.getUTCDate() - 1);
+            return gestern.toISOString().slice(0, 10);
+        },
+
+        nextEvent() {
+            const stichtag = this.currentClubDate();
+            let treffer = null;
+
+            document.querySelectorAll('.event-card[data-date]').forEach(karte => {
+                const datum = karte.dataset.date;
+                if (!/^\d{4}-\d{2}-\d{2}$/.test(datum)) return;
+                if (datum < stichtag) return;
+                if (treffer && datum >= treffer.datum) return;
+
+                const kuenstler = karte.querySelector('.event-artist');
+                if (!kuenstler || !kuenstler.textContent.trim()) return;
+
+                treffer = { datum, name: kuenstler.textContent.trim() };
+            });
+
+            return treffer;
+        },
+
+        nextEventText() {
+            const ev = this.nextEvent();
+            if (!ev) return null;
+
+            // Mittag UTC als Ankerzeit - so kippt das Datum in keiner Zeitzone.
+            const label = new Date(ev.datum + 'T12:00:00Z').toLocaleDateString('de-DE', {
+                timeZone: 'Europe/Berlin',
+                weekday: 'long', day: 'numeric', month: 'long'
+            });
+
+            return label + ': ' + ev.name;
+        },
+
+        applyNextEvent() {
+            const text = this.nextEventText();
+
+            // Kein kommendes Event: lieber nichts zeigen als etwas Altes.
+            if (!text) {
+                this.hide();
+                return false;
+            }
+
+            if (this.announcementText) this.announcementText.textContent = text;
+            this.show();
+            return true;
+        },
+
+        // Gilt die Durchsage aus dem Bot noch?
+        announcementIsFresh(a) {
+            if (!a || !a.active) return false;
+
+            if (a.expiresAt) return new Date(a.expiresAt) > new Date();
+
+            // Ohne Ablaufdatum entscheidet das Alter.
+            const stand = a.updatedAt || a.lastUpdated;
+            if (!stand) return false;
+
+            // Kein Mindestwert: liegt der Zeitstempel leicht in der Zukunft, weil
+            // Server- und Besucheruhr auseinanderlaufen, ist die Meldung erst
+            // recht aktuell und soll angezeigt werden.
+            const alter = Date.now() - new Date(stand).getTime();
+            return Number.isFinite(alter) && alter < this.maxAnnouncementAge;
         },
 
         async loadAnnouncement() {
@@ -570,26 +669,21 @@
 
             } catch (error) {
                 console.warn('Announcement load failed, using default:', error);
-                // Keep default content from HTML
+                // Der automatische Hinweis steht bereits - nichts weiter zu tun.
             }
         },
 
         updateUI(data) {
-            if (!data.announcement) return;
+            const a = data && data.announcement;
 
-            const { active, text, link, linkText, icon, expiresAt } = data.announcement;
-
-            // Check if expired
-            if (expiresAt && new Date(expiresAt) < new Date()) {
-                this.hide();
+            // Abgelaufen, abgeschaltet oder veraltet: nicht ausblenden, sondern
+            // auf das naechste Event zurueckfallen.
+            if (!a || !this.announcementIsFresh(a) || !a.text) {
+                this.applyNextEvent();
                 return;
             }
 
-            // Check if active
-            if (!active) {
-                this.hide();
-                return;
-            }
+            const { text, link, linkText, icon } = a;
 
             // Update content
             if (this.announcementText && text) {
