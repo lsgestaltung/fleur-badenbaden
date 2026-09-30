@@ -8,7 +8,7 @@ Club-Website für FLEUR (Sophienstraße 15, 76530 Baden-Baden). Kunde von LS Ges
 - **Events pflegen = Karte in `public/index.html` (`#eventsGrid`) anlegen.** Ausführlich: `docs/EVENTS-PFLEGEN.md`. Nichts anderes anfassen, Event-Seiten/Sitemap entstehen automatisch.
 - **Erzeugte Dateien nie von Hand bearbeiten:** `public/events/*`, `public/tisch-reservieren.html`, `public/geburtstag-feiern-baden-baden.html`, `public/sitemap.xml`. Quelle ist `scripts/build-pages.mjs` bzw. `scripts/seiten/*.html`. Nach Änderungen `npm run pages` ausführen und das Ergebnis mit committen.
 - **Domain:** Alle absoluten URLs (Canonical, og:, JSON-LD, Sitemap) auf `https://fleur-bar.de`. `fleur-badenbaden.de` ist **nicht registriert** – nie verwenden, auch nicht für Mailadressen.
-- **Kontakt-Mail:** `info@fleur.management`. Telefon/WhatsApp: `+49 176 61455163`.
+- **Kontakt-Mail:** überall `info@fleur.management` (auch Impressum/Datenschutz, keine andere Adresse verwenden). Telefon/WhatsApp: `+49 176 61455163`.
 - **Nichts erfinden:** Preise, Eintritt, Mindestverzehr, Kapazitäten nur mit Bestätigung des Kunden. Eintritt ist bewusst nirgends genannt (wird separat geklärt).
 - **Keine externen Ressourcen** (Google Fonts, CDNs, Tracking): Schriften liegen lokal in `public/fonts/`. Externe Einbindung ohne Einwilligung ist in DE abmahnfähig; die Datenschutzerklärung sagt ausdrücklich, dass nichts nachgeladen und nichts getrackt wird. Wer etwas Externes einbaut, muss `datenschutz.html` anpassen.
 - **Jobs:** Stellen stehen in `public/jobs.html` als Karte **und** als `JobPosting`-JSON-LD im `<head>` (Google Jobs). Beide gemeinsam ändern; bei neuer/geänderter Stelle `datePosted` aktualisieren, bei gestrichener Stelle das JSON-LD entfernen.
