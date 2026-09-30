@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /api/
 
-Sitemap: https://fleur-badenbaden.de/sitemap.xml
+Sitemap: https://fleur-bar.de/sitemap.xml
