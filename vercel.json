@@ -60,6 +60,7 @@
     { "source": "/tisch-reservieren", "destination": "/tisch-reservieren.html" },
     { "source": "/geburtstag-feiern-baden-baden", "destination": "/geburtstag-feiern-baden-baden.html" },
     { "source": "/weihnachtsfeier-baden-baden", "destination": "/weihnachtsfeier-baden-baden.html" },
+    { "source": "/anfragen", "destination": "/api/anfragen" },
     { "source": "/events", "destination": "/events/index.html" },
     { "source": "/events/:slug", "destination": "/events/:slug.html" }
   ]

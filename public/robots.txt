@@ -3,6 +3,7 @@
 User-agent: *
 Allow: /
 Disallow: /api/
+Disallow: /anfragen
 
 User-agent: GPTBot
 User-agent: OAI-SearchBot
@@ -14,5 +15,6 @@ User-agent: Google-Extended
 User-agent: Applebot-Extended
 Allow: /
 Disallow: /api/
+Disallow: /anfragen
 
 Sitemap: https://fleur-bar.de/sitemap.xml

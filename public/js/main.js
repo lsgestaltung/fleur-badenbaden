@@ -874,6 +874,7 @@
                     for (const feld of [form.elements.datum, form.elements.personen]) {
                         if (!feld.checkValidity()) { feld.reportValidity(); feld.focus(); return; }
                     }
+                    this.zaehlen(form, kanal);
                     const text = this.nachricht(form);
                     if (kanal === 'mail') {
                         const betreff = `Anfrage: ${form.elements.anlass.value || 'Reservierung'} am ${this.datumKurz(form.elements.datum.value)}`;
@@ -883,6 +884,16 @@
                     }
                 });
             });
+        },
+
+        // Anonymer Zaehler (nur Anlass/Kanal/Seite, keine Formularinhalte).
+        // sendBeacon ueberlebt das Oeffnen von WhatsApp bzw. des Mailprogramms.
+        zaehlen(form, kanal) {
+            try {
+                const daten = JSON.stringify({ anlass: form.elements.anlass.value, kanal, seite: location.pathname.replace(/\.html$/, '') });
+                if (navigator.sendBeacon) navigator.sendBeacon('/api/anfrage', new Blob([daten], { type: 'application/json' }));
+                else fetch('/api/anfrage', { method: 'POST', body: daten, keepalive: true, headers: { 'Content-Type': 'application/json' } });
+            } catch (e) { /* Zaehlen darf die Anfrage nie blockieren */ }
         },
 
         datumLang(wert) {
@@ -904,7 +915,7 @@
             if (f.getraenke.value.trim()) zeilen.push('', `Getränkewünsche: ${f.getraenke.value.trim()}`);
             if (f.wuensche.value.trim()) zeilen.push('', `Sonstiges: ${f.wuensche.value.trim()}`);
             if (f.name.value.trim()) zeilen.push('', `Name: ${f.name.value.trim()}`);
-            zeilen.push('', 'Danke!');
+            zeilen.push('', 'Danke!', '', `– Anfrage über fleur-bar.de${location.pathname.replace(/\.html$/, '')}`);
             return zeilen.join('\n');
         }
     };

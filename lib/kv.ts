@@ -171,4 +171,5 @@ export const DataStore = {
   },
 };
 
+export { redis };
 export default DataStore;

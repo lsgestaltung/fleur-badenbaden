@@ -57,6 +57,10 @@ const nextConfig = {
         destination: '/weihnachtsfeier-baden-baden.html',
       },
       {
+        source: '/anfragen',
+        destination: '/api/anfragen',
+      },
+      {
         source: '/events',
         destination: '/events/index.html',
       },
