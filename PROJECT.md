@@ -64,7 +64,7 @@ fleur-baden-baden/
 | Name | Hex | Verwendung |
 |------|-----|------------|
 | `--fleur-orange` | #ff8e28 | Primärfarbe, Akzente |
-| `--fleur-orange-light` | #F5A66A | Hover States |
+| `--fleur-orange-light` | #ffa552 | Hover States |
 | `--fleur-black` | #0A0A0A | Hintergrund |
 | `--fleur-anthracite` | #121212 | Sekundärer Hintergrund |
 | `--fleur-cream` | #F5F0E8 | Text |
