@@ -37,13 +37,21 @@
     { "source": "/impressum.html", "destination": "/impressum", "permanent": true },
     { "source": "/datenschutz.html", "destination": "/datenschutz", "permanent": true },
     { "source": "/jobs.html", "destination": "/jobs", "permanent": true },
-    { "source": "/event-location.html", "destination": "/event-location", "permanent": true }
+    { "source": "/event-location.html", "destination": "/event-location", "permanent": true },
+    { "source": "/tisch-reservieren.html", "destination": "/tisch-reservieren", "permanent": true },
+    { "source": "/geburtstag-feiern-baden-baden.html", "destination": "/geburtstag-feiern-baden-baden", "permanent": true },
+    { "source": "/events/index.html", "destination": "/events", "permanent": true },
+    { "source": "/events/:slug.html", "destination": "/events/:slug", "permanent": true }
   ],
   "rewrites": [
     { "source": "/", "destination": "/index.html" },
     { "source": "/impressum", "destination": "/impressum.html" },
     { "source": "/datenschutz", "destination": "/datenschutz.html" },
     { "source": "/jobs", "destination": "/jobs.html" },
-    { "source": "/event-location", "destination": "/event-location.html" }
+    { "source": "/event-location", "destination": "/event-location.html" },
+    { "source": "/tisch-reservieren", "destination": "/tisch-reservieren.html" },
+    { "source": "/geburtstag-feiern-baden-baden", "destination": "/geburtstag-feiern-baden-baden.html" },
+    { "source": "/events", "destination": "/events/index.html" },
+    { "source": "/events/:slug", "destination": "/events/:slug.html" }
   ]
 }

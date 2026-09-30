@@ -53,6 +53,17 @@ fleur-badenbaden/
 - 💾 **Vercel KV** für Datenpersistenz
 - 🚀 **Auto-Deploy** via GitHub → Vercel
 
+## Events & Unterseiten
+
+Neue Events wie bisher als Karte in `public/index.html` (`#eventsGrid`) anlegen. Alles Weitere erzeugt `scripts/build-pages.mjs` automatisch vor jedem Build:
+
+- eine Seite pro Event unter `/events/<datum>-<name>` (mit Event-Schema für Google)
+- die Übersicht `/events`
+- die Inhaltsseiten aus `scripts/seiten/*.html` (`/tisch-reservieren`, `/geburtstag-feiern-baden-baden`)
+- `public/sitemap.xml`
+
+Lokal: `npm run pages`. Die erzeugten Dateien nicht von Hand bearbeiten – Texte der Inhaltsseiten in `scripts/seiten/` ändern.
+
 ## Deployment
 
 Siehe [DEPLOYMENT.md](./DEPLOYMENT.md) für die vollständige Anleitung.
