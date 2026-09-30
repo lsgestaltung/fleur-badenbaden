@@ -754,6 +754,46 @@
     };
 
     // ============================================
+    // NAECHSTE EVENTS
+    // Vergangene Termine ausblenden, die naechsten drei zeigen, Rest per Button.
+    // Gleiche Stichtags-Logik wie der Banner: ein Clubabend zaehlt bis 06:00.
+    // ============================================
+    const EventsNext = {
+        anzahl: 3,
+
+        init() {
+            const grid = document.getElementById('eventsGrid');
+            if (!grid) return;
+
+            const stichtag = AnnouncementLoader.currentClubDate();
+            const karten = [...grid.querySelectorAll('.event-card[data-date]')]
+                .filter(k => /^\d{4}-\d{2}-\d{2}$/.test(k.dataset.date))
+                .sort((a, b) => a.dataset.date.localeCompare(b.dataset.date));
+            const kommend = karten.filter(k => k.dataset.date >= stichtag);
+
+            karten.forEach(k => k.classList.toggle('is-past', k.dataset.date < stichtag));
+            kommend.forEach((k, i) => k.classList.toggle('is-later', i >= this.anzahl));
+
+            const leer = document.getElementById('eventsEmpty');
+            if (leer) leer.hidden = kommend.length > 0;
+
+            const btn = document.getElementById('eventsMore');
+            if (!btn) return;
+            if (kommend.length <= this.anzahl) { btn.hidden = true; return; }
+
+            const beschriftung = offen => offen ? 'Weniger anzeigen' : `Alle Termine anzeigen (${kommend.length})`;
+            btn.textContent = beschriftung(false);
+            btn.hidden = false;
+            btn.addEventListener('click', () => {
+                const offen = grid.classList.toggle('show-all');
+                btn.setAttribute('aria-expanded', String(offen));
+                btn.textContent = beschriftung(offen);
+                if (!offen) grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        }
+    };
+
+    // ============================================
     // EVENT WEEKDAY CALCULATOR
     // ============================================
     const EventWeekday = {
@@ -885,6 +925,7 @@
         Preloader.init();
         AnnouncementLoader.init();
         EventWeekday.init();
+        EventsNext.init();
         CookieBanner.init();
 
         console.log('FLEUR Baden-Baden - Website initialized');
