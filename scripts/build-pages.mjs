@@ -478,13 +478,25 @@ function inhaltsSeite(datei, events, heute) {
         .replace('{{BROTKRUMEN}}', brotkrumenHtml(krumen))
         .replace('{{EVENTS}}', eventRaster(kommend.length ? kommend : events,
             { titelOutline: 'NÄCHSTE', titelFilled: 'EVENTS' }));
+    // FAQ-Schema aus dem sichtbaren FAQ-Block ableiten – so koennen Text und
+    // strukturierte Daten nie auseinanderlaufen.
+    const faq = [...koerper.matchAll(/<h3 class="faq-q">([\s\S]*?)<\/h3>\s*<p class="faq-a">([\s\S]*?)<\/p>/g)]
+        .map(([, q, a]) => ({
+            '@type': 'Question',
+            name: text(q),
+            acceptedAnswer: { '@type': 'Answer', text: text(a) },
+        }));
+    const faqSchema = faq.length
+        ? [{ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq }]
+        : [];
+
     return {
         pfad: meta.pfad,
         html: layout({
             pfad: meta.pfad,
             titel: meta.titel,
             beschreibung: meta.beschreibung,
-            schema: [brotkrumen(krumen), ...(meta.schema || [])],
+            schema: [brotkrumen(krumen), ...faqSchema, ...(meta.schema || [])],
             inhalt: koerper.split('\n').map(z => z ? '        ' + z : z).join('\n'),
         }),
     };

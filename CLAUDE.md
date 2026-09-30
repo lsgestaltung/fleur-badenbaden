@@ -37,7 +37,10 @@ Club-Website für FLEUR (Sophienstraße 15, 76530 Baden-Baden). Kunde von LS Ges
 | Dresscode | Smart Casual, Hemden gern gesehen, lange Hosen, keine kurzen Hosen/Sandalen; je Event anders möglich | FAQ in `index.html` (+ JSON-LD), Event-Seite in `build-pages.mjs`, `scripts/seiten/tisch-reservieren.html` |
 | Musik | House/Tech-House, dazu Urban-/RnB-Nächte | FAQ, `index.html` Meta |
 | Resident DJ | Niklas Beuscher | `index.html` |
+| Getränke-Bundle | Individuelles Getränkepaket zur Lounge/zum Hightable nach Absprache (keine Preise genannt) | FAQ in `index.html` (+ JSON-LD), NightClub-`hasOfferCatalog`, `scripts/seiten/*`, `public/llms.txt` |
 | Private Location | bis 180 Gäste, Full Service, 4–6 Wochen Vorlauf fürs Wochenende | `event-location.html`, `scripts/seiten/geburtstag-feiern-baden-baden.html` |
+
+**KI-Sichtbarkeit:** `public/llms.txt` ist das Faktenblatt für ChatGPT, Perplexity & Co. – bei geänderten Fakten mitpflegen. Inhaltsseiten beginnen mit einer „Kurz gesagt“-Antwort; FAQ-Blöcke dort als `<h3 class="faq-q">` + `<p class="faq-a">` schreiben, das FAQPage-Schema erzeugt der Generator daraus automatisch.
 
 **FAQ-Regel:** Sichtbare FAQ (`.faq-question`) und `FAQPage`-JSON-LD im `<head>` von `index.html` müssen Frage für Frage identisch sein.
 

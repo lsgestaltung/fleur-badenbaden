@@ -1,4 +1,17 @@
+# Suchmaschinen und KI-Assistenten (ChatGPT, Perplexity, Claude, Gemini u. a.)
+# ausdrücklich willkommen – die Seite soll als Quelle zitiert werden.
 User-agent: *
+Allow: /
+Disallow: /api/
+
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: PerplexityBot
+User-agent: ClaudeBot
+User-agent: Claude-SearchBot
+User-agent: Google-Extended
+User-agent: Applebot-Extended
 Allow: /
 Disallow: /api/
 

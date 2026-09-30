@@ -5167,8 +5167,7 @@ a[href^="mailto:"]::after,
 }
 .footer-sub-info a { color: var(--fleur-cream); }
 
-/* ============================================
-   EVENT LOCATION im Poster-Look
+/* =====================================   EVENT LOCATION im Poster-Look
    ============================================ */
 
 /* Hero: Deco-Rahmen wie auf der Startseite */
@@ -5383,3 +5382,22 @@ a[href^="mailto:"]::after,
 .legal-section ul { margin: 0 0 var(--space-sm) 1.2em; list-style: square; color: var(--fleur-cream); }
 .legal-section li::marker { color: var(--fleur-orange); }
 .legal-back { margin-top: clamp(32px, 5vw, 56px); }
+=======
+/* Inhaltsseiten: Kurzantwort, Schritte, FAQ */
+.content-summary {
+    padding: 22px 24px;
+    border: 1px solid rgba(255, 142, 40, .45);
+    background: rgba(255, 142, 40, .06);
+}
+.content-page ol.content-steps { list-style: decimal; }
+.content-page .faq-block .faq-q {
+    font-family: var(--font-display);
+    font-weight: normal;
+    font-size: 1.1rem;
+    line-height: 1.4;
+    letter-spacing: .01em;
+    color: var(--fleur-cream);
+    margin: 22px 0 6px;
+}
+.content-page .faq-block .faq-q:first-child { margin-top: 4px; }
+.content-page .faq-block .faq-a { margin-bottom: 0; }

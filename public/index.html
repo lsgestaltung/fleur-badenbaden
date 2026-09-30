@@ -52,7 +52,7 @@
         "@id": "https://fleur-bar.de/#nightclub",
         "name": "FLEUR Baden-Baden",
         "alternateName": "FLEUR",
-        "description": "Premium Nightclub für House & Tech-House Music in Baden-Baden. VIP Lounge, Tischreservierung, exklusive Events.",
+        "description": "Club in Baden-Baden (Sophienstraße 15) für House, Tech-House und Urban-Nächte, Freitag und Samstag ab 23 Uhr. VIP Lounge und Hightables reservierbar, individuelle Getränke-Bundles nach Absprache, Location für private Feiern bis 180 Gäste.",
         "url": "https://fleur-bar.de",
         "telephone": "+4917661455163",
         "email": "info@fleur.management",
@@ -107,7 +107,7 @@
         ],
         "hasOfferCatalog": {
             "@type": "OfferCatalog",
-            "name": "Tischreservierungen",
+            "name": "Reservierungen & Feiern",
             "itemListElement": [
                 {
                     "@type": "Offer",
@@ -124,9 +124,37 @@
                         "name": "Hightable Reservierung",
                         "description": "Stehtische für Gruppen"
                     }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Getränke-Bundle nach Absprache",
+                        "description": "Individuell zusammengestelltes Getränkepaket für Lounge oder Hightable, z. B. für Geburtstage und Gruppen"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Geburtstag feiern",
+                        "description": "Geburtstagsfeier mit reservierter Lounge und Getränke-Bundle in der Clubnacht",
+                        "url": "https://fleur-bar.de/geburtstag-feiern-baden-baden"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Private Anmietung der Location",
+                        "description": "Exklusive Anmietung für private Feiern und Firmenevents bis 180 Gäste, auf Wunsch mit Barteam, Catering und DJ",
+                        "url": "https://fleur-bar.de/event-location"
+                    }
                 }
             ]
-        }
+        },
+        "maximumAttendeeCapacity": 180,
+        "publicAccess": true
     }
     </script>
 
@@ -183,7 +211,7 @@
                 "name": "Wie reserviere ich einen Tisch?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Per WhatsApp unter +49 176 61455163. Zur Wahl stehen die VIP Lounge mit eigenem Flaschenkühler und die Hightables, also Stehtische für Gruppen. Schreib uns Datum, Personenzahl und Bereich, wir melden uns mit allem Weiteren."
+                    "text": "Per WhatsApp unter +49 176 61455163 oder an info@fleur.management. Zur Wahl stehen die VIP Lounge mit eigenem Flaschenkühler und die Hightables, also Stehtische für Gruppen. Dazu stellst du dir nach Absprache ein individuelles Getränke-Bundle für den Abend zusammen. Schreib uns Datum, Personenzahl und Bereich, wir melden uns mit allem Weiteren."
                 }
             },
             {
@@ -192,6 +220,14 @@
                 "acceptedAnswer": {
                     "@type": "Answer",
                     "text": "In der Sophienstraße 15, mitten in der Innenstadt von Baden-Baden. Aus Karlsruhe bist du mit dem Auto in rund 40 Minuten da, aus Rastatt und Bühl in etwa 20 Minuten."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Kann ich im FLEUR meinen Geburtstag feiern?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Ja – mit reservierter VIP Lounge oder Hightable in der Clubnacht und einem Getränke-Bundle, das du nach Absprache individuell zusammenstellst. Für größere Runden kannst du die ganze Location privat mieten. Alles dazu unter fleur-bar.de/geburtstag-feiern-baden-baden."
                 }
             },
             {
@@ -871,12 +907,17 @@
 
                     <div class="faq-item">
                         <h3 class="faq-question">Wie reserviere ich einen Tisch?</h3>
-                        <p class="faq-answer">Per WhatsApp unter <a href="https://wa.me/4917661455163">+49 176 61455163</a>. Zur Wahl stehen die <a href="#booking">VIP Lounge</a> mit eigenem Flaschenkühler und die Hightables, also Stehtische für Gruppen. Schreib uns Datum, Personenzahl und Bereich, wir melden uns mit allem Weiteren.</p>
+                        <p class="faq-answer">Per WhatsApp unter <a href="https://wa.me/4917661455163">+49 176 61455163</a> oder an <a href="mailto:info@fleur.management">info@fleur.management</a>. Zur Wahl stehen die <a href="#booking">VIP Lounge</a> mit eigenem Flaschenkühler und die Hightables, also Stehtische für Gruppen. Dazu stellst du dir nach Absprache ein individuelles Getränke-Bundle für den Abend zusammen. Schreib uns Datum, Personenzahl und Bereich, wir melden uns mit allem Weiteren.</p>
                     </div>
 
                     <div class="faq-item">
                         <h3 class="faq-question">Wo finde ich euch?</h3>
                         <p class="faq-answer">In der Sophienstraße 15, mitten in der Innenstadt von Baden-Baden (<a href="https://maps.google.com/?q=Sophienstraße+15+Baden-Baden" target="_blank" rel="noopener">Route in Google Maps</a>). Aus Karlsruhe bist du mit dem Auto in rund 40 Minuten da, aus Rastatt und Bühl in etwa 20 Minuten.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3 class="faq-question">Kann ich im FLEUR meinen Geburtstag feiern?</h3>
+                        <p class="faq-answer">Ja – mit reservierter VIP Lounge oder Hightable in der Clubnacht und einem Getränke-Bundle, das du nach Absprache individuell zusammenstellst. Für größere Runden kannst du die ganze Location privat mieten. Alles dazu unter <a href="/geburtstag-feiern-baden-baden">Geburtstag feiern</a>.</p>
                     </div>
 
                     <div class="faq-item">
