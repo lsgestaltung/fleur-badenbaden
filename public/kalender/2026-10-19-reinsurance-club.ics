@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//FLEUR Baden-Baden//Events//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:2026-10-19-reinsurance-club@fleur-bar.de
+DTSTAMP:20260930T191844Z
+DTSTART:20261019T210000Z
+DTEND:20261020T030000Z
+SUMMARY:REINSURANCE CLUB – FLEUR Baden-Baden
+DESCRIPTION:REINSURANCE CLUB im FLEUR Baden-Baden: Montag\, 19. Oktober 202
+ 6\, ab 23:00 Uhr in der Sophienstraße 15. Tische in VIP Lounge oder am Hi
+ ghtable per WhatsApp reservieren.\n\nhttps://fleur-bar.de/events/2026-10-1
+ 9-reinsurance-club
+LOCATION:FLEUR Baden-Baden\, Sophienstraße 15\, 76530 Baden-Baden
+URL:https://fleur-bar.de/events/2026-10-19-reinsurance-club
+END:VEVENT
+END:VCALENDAR

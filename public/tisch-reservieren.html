@@ -130,6 +130,58 @@
                     <p>Zur Lounge oder zum Hightable stellst du dir nach Absprache ein individuelles Getränke-Bundle für den Abend zusammen – ideal für Geburtstage und Gruppen. Sag uns bei der Reservierung, was ihr trinken möchtet und wie viele ihr seid.</p>
                 </div>
 
+                <div class="legal-section" id="anfrage">
+                    <form class="anfrage" novalidate>
+            <h2 class="anfrage-titel">Anfrage stellen</h2>
+            <p class="anfrage-intro">Sag uns kurz, was du vorhast – wir stimmen Bereich und Getränke-Bundle individuell mit dir ab.</p>
+            <div class="anfrage-grid">
+                <label class="anfrage-feld"><span>Anlass</span>
+                    <select name="anlass"><option value="">Bitte wählen</option><option>Geburtstag</option><option>Abend mit Freunden</option><option>Firmenfeier / Weihnachtsfeier</option><option>Anderer Anlass</option></select>
+                </label>
+                <label class="anfrage-feld"><span>Datum *</span>
+                    <input type="date" name="datum" required>
+                </label>
+                <label class="anfrage-feld"><span>Personen *</span>
+                    <input type="number" name="personen" min="1" max="500" inputmode="numeric" required>
+                </label>
+                <label class="anfrage-feld"><span>Dein Name</span>
+                    <input type="text" name="name" autocomplete="name">
+                </label>
+            </div>
+            <fieldset class="anfrage-bereich">
+                <legend>Bereich</legend>
+                        <label class="anfrage-option">
+                            <input type="radio" name="bereich" value="VIP Lounge" checked>
+                            <span><strong>VIP Lounge</strong><small>Lounge-Tische mit Flaschenkühler</small></span>
+                        </label>
+                        <label class="anfrage-option">
+                            <input type="radio" name="bereich" value="Hightable">
+                            <span><strong>Hightable</strong><small>Stehtische für Gruppen</small></span>
+                        </label>
+                        <label class="anfrage-option">
+                            <input type="radio" name="bereich" value="Private Feier">
+                            <span><strong>Private Feier</strong><small>die ganze Location oder Teilbereiche</small></span>
+                        </label>
+                        <label class="anfrage-option">
+                            <input type="radio" name="bereich" value="Weiß ich noch nicht">
+                            <span><strong>Weiß ich noch nicht</strong><small>wir beraten dich</small></span>
+                        </label>
+            </fieldset>
+            <p class="anfrage-hinweis" hidden>Clubnächte sind freitags und samstags. Für andere Tage frag gern eine private Feier an.</p>
+            <label class="anfrage-feld"><span>Getränkewünsche</span>
+                <textarea name="getraenke" rows="3" placeholder="Was trinkt ihr gern? Auch alkoholfrei – wir stellen euer Bundle zusammen."></textarea>
+            </label>
+            <label class="anfrage-feld"><span>Sonstige Wünsche</span>
+                <textarea name="wuensche" rows="2" placeholder="z. B. Überraschung zum Geburtstag, Deko, Uhrzeit"></textarea>
+            </label>
+            <div class="anfrage-aktionen">
+                <button type="submit" class="btn btn-primary" data-kanal="whatsapp">Per WhatsApp senden</button>
+                <button type="submit" class="btn btn-secondary" data-kanal="mail">Per E-Mail senden</button>
+            </div>
+            <p class="anfrage-klein">Die Anfrage öffnet WhatsApp bzw. dein Mailprogramm mit einer vorbereiteten Nachricht an info@fleur.management – abgeschickt wird erst, wenn du dort auf Senden tippst.</p>
+        </form>
+                </div>
+
                 <div class="legal-section">
                     <h2>Gut zu wissen</h2>
                     <dl class="event-facts">
@@ -413,6 +465,7 @@
                     <a href="/events">Events</a>
                     <a href="/tisch-reservieren" class="active" aria-current="page">Tisch reservieren</a>
                     <a href="/geburtstag-feiern-baden-baden">Geburtstag feiern</a>
+                    <a href="/weihnachtsfeier-baden-baden">Weihnachtsfeier</a>
                     <a href="/event-location">Event Location</a>
                     <a href="/jobs">Jobs</a>
             </nav>

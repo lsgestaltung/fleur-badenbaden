@@ -4,6 +4,12 @@ const nextConfig = {
   async headers() {
     return [
       {
+        source: '/kalender/:path*',
+        headers: [
+          { key: 'Content-Type', value: 'text/calendar; charset=utf-8' },
+        ],
+      },
+      {
         source: '/api/:path*',
         headers: [
           { key: 'X-Content-Type-Options', value: 'nosniff' },
@@ -45,6 +51,10 @@ const nextConfig = {
       {
         source: '/geburtstag-feiern-baden-baden',
         destination: '/geburtstag-feiern-baden-baden.html',
+      },
+      {
+        source: '/weihnachtsfeier-baden-baden',
+        destination: '/weihnachtsfeier-baden-baden.html',
       },
       {
         source: '/events',

@@ -42,6 +42,10 @@ Club-Website für FLEUR (Sophienstraße 15, 76530 Baden-Baden). Kunde von LS Ges
 
 **KI-Sichtbarkeit:** `public/llms.txt` ist das Faktenblatt für ChatGPT, Perplexity & Co. – bei geänderten Fakten mitpflegen. Inhaltsseiten beginnen mit einer „Kurz gesagt“-Antwort; FAQ-Blöcke dort als `<h3 class="faq-q">` + `<p class="faq-a">` schreiben, das FAQPage-Schema erzeugt der Generator daraus automatisch.
 
+**Anfrage-Formular:** In `scripts/seiten/*.html` erzeugt `{{ANFRAGE}}` bzw. `{{ANFRAGE:Anlass|Bereich}}` das Formular (Logik: `LoungeAnfrage` in `main.js`). Es sendet nichts an einen Server, sondern öffnet WhatsApp/Mail mit fertiger Nachricht. Bewusst **ohne Preise, Mindestumsätze oder benannte Pakete** – so gewünscht.
+
+**Kalender:** Der Generator schreibt pro Event `public/kalender/<slug>.ics` (UTC-Zeiten, Ende 05:00). Event-Seiten verlinken .ics + Google Kalender, `main.js` hängt an jede Event-Karte „+ in kalender speichern“.
+
 **FAQ-Regel:** Sichtbare FAQ (`.faq-question`) und `FAQPage`-JSON-LD im `<head>` von `index.html` müssen Frage für Frage identisch sein.
 
 ## Design
