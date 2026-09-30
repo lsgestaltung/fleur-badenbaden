@@ -82,13 +82,13 @@
                 "@type": "OpeningHoursSpecification",
                 "dayOfWeek": "Friday",
                 "opens": "23:00",
-                "closes": "04:00"
+                "closes": "05:00"
             },
             {
                 "@type": "OpeningHoursSpecification",
                 "dayOfWeek": "Saturday",
                 "opens": "23:00",
-                "closes": "04:00"
+                "closes": "05:00"
             }
         ],
         "sameAs": [
@@ -477,7 +477,7 @@
                 "@type": "Event",
                 "name": "LUIS SARANDA at FLEUR",
                 "startDate": "2026-10-24T23:00:00+02:00",
-                "endDate": "2026-10-25T05:00:00+02:00",
+                "endDate": "2026-10-25T05:00:00+01:00",
                 "eventStatus": "https://schema.org/EventScheduled",
                 "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
                 "location": {
@@ -508,8 +508,8 @@
             "item": {
                 "@type": "Event",
                 "name": "TIDEY at FLEUR",
-                "startDate": "2026-10-30T23:00:00+02:00",
-                "endDate": "2026-10-31T05:00:00+02:00",
+                "startDate": "2026-10-30T23:00:00+01:00",
+                "endDate": "2026-10-31T05:00:00+01:00",
                 "eventStatus": "https://schema.org/EventScheduled",
                 "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
                 "location": {
@@ -540,8 +540,8 @@
             "item": {
                 "@type": "Event",
                 "name": "Halloween - FLEUR x LEOS KEYS BANDIT at FLEUR",
-                "startDate": "2026-10-31T23:00:00+02:00",
-                "endDate": "2026-10-32T05:00:00+02:00",
+                "startDate": "2026-10-31T23:00:00+01:00",
+                "endDate": "2026-11-01T05:00:00+01:00",
                 "eventStatus": "https://schema.org/EventScheduled",
                 "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
                 "location": {
@@ -613,7 +613,7 @@
                 "name": "Wann hat FLEUR Baden-Baden geöffnet?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "FLEUR Baden-Baden hat Freitag und Samstag von 23:00 bis 04:00 Uhr geöffnet."
+                    "text": "FLEUR Baden-Baden hat Freitag und Samstag ab 23:00 Uhr geöffnet. Open End – je nach Nacht bis 3, 4 oder 5 Uhr."
                 }
             }
         ]
@@ -621,6 +621,15 @@
     </script>
 </head>
 <body>
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+        <symbol id="deco-ecke" viewBox="0 0 100 100">
+            <path d="M100 30A70 70 0 0 1 30 100" fill="none" stroke="currentColor" stroke-width="3" vector-effect="non-scaling-stroke"/>
+            <g stroke="currentColor" stroke-width="2.5" stroke-linecap="round" vector-effect="non-scaling-stroke">
+                <path d="M4.3 0.8L65 11.5"/><path d="M3.8 1.6L57.5 24.9"/><path d="M3.2 2.2L47.1 36.8"/><path d="M2.8 2.8L46.7 46.7"/>
+                <path d="M2.2 3.2L36.8 47.1"/><path d="M1.6 3.8L24.9 57.5"/><path d="M0.8 4.3L11.5 65"/>
+            </g>
+        </symbol>
+    </svg>
     <!-- Custom Cursor -->
     <div class="cursor" aria-hidden="true">
         <div class="cursor-dot"></div>
@@ -678,10 +687,13 @@
             </div>
 
             <div class="hero-content">
-                <div class="hero-corner hero-corner-tl"></div>
-                <div class="hero-corner hero-corner-tr"></div>
-                <div class="hero-corner hero-corner-bl"></div>
-                <div class="hero-corner hero-corner-br"></div>
+                <div class="deco-frame deco-frame--hero" aria-hidden="true">
+                    <i class="df-edge df-t"></i><i class="df-edge df-r"></i><i class="df-edge df-b"></i><i class="df-edge df-l"></i>
+                    <svg class="df-corner df-tl"><use href="#deco-ecke"/></svg>
+                    <svg class="df-corner df-tr"><use href="#deco-ecke"/></svg>
+                    <svg class="df-corner df-bl"><use href="#deco-ecke"/></svg>
+                    <svg class="df-corner df-br"><use href="#deco-ecke"/></svg>
+                </div>
 
                 <span class="hero-tagline">Un Espace de Nuit</span>
 
@@ -734,18 +746,16 @@
         </div>
 
         <!-- Events Section -->
-        <section id="events" class="events">
+        <section id="events" class="events events--next">
             <div class="container">
-                <header class="section-header">
+                <header class="section-header center">
                     <h2 class="section-title">
-                        <span class="section-title-outline">OKTOBER</span>
+                        <span class="section-title-outline">NÄCHSTE</span>
                         <span class="section-title-filled">EVENTS</span>
                     </h2>
                 </header>
-            </div>
 
-            <div class="events-scroll-container">
-                <div class="events-scroll">
+                <div class="events-grid" id="eventsGrid">
                     <article class="event-card" data-date="2026-10-02">
                         <div class="event-card-date">
                             <span class="event-day">FR</span>
@@ -759,7 +769,7 @@
                             </div>
                         </div>
                         <a href="https://wa.me/4917661455163?text=Hi,%20ich%20möchte%20gerne%20für%20den%202.%20Oktober%20(Flo%20Gotti)%20einen%20Tisch%20reservieren." class="event-cta" target="_blank">
-                            <span>Tisch</span>
+                            <span>Tisch reservieren</span>
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                         </a>
                     </article>
@@ -778,7 +788,7 @@
                             </div>
                         </div>
                         <a href="https://wa.me/4917661455163?text=Hi,%20ich%20möchte%20gerne%20für%20den%203.%20Oktober%20(Urban%20Fleur)%20einen%20Tisch%20reservieren." class="event-cta" target="_blank">
-                            <span>Tisch</span>
+                            <span>Tisch reservieren</span>
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                         </a>
                     </article>
@@ -797,7 +807,7 @@
                             </div>
                         </div>
                         <a href="https://wa.me/4917661455163?text=Hi,%20ich%20möchte%20gerne%20für%20den%209.%20Oktober%20(1%20Year%20Fleur)%20einen%20Tisch%20reservieren." class="event-cta" target="_blank">
-                            <span>Tisch</span>
+                            <span>Tisch reservieren</span>
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                         </a>
                     </article>
@@ -816,7 +826,7 @@
                             </div>
                         </div>
                         <a href="https://wa.me/4917661455163?text=Hi,%20ich%20möchte%20gerne%20für%20den%2010.%20Oktober%20(1%20Year%20Fleur)%20einen%20Tisch%20reservieren." class="event-cta" target="_blank">
-                            <span>Tisch</span>
+                            <span>Tisch reservieren</span>
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                         </a>
                     </article>
@@ -834,7 +844,7 @@
                             </div>
                         </div>
                         <a href="https://wa.me/4917661455163?text=Hi,%20ich%20möchte%20gerne%20für%20den%2016.%20Oktober%20(Sticx)%20einen%20Tisch%20reservieren." class="event-cta" target="_blank">
-                            <span>Tisch</span>
+                            <span>Tisch reservieren</span>
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                         </a>
                     </article>
@@ -852,7 +862,7 @@
                             </div>
                         </div>
                         <a href="https://wa.me/4917661455163?text=Hi,%20ich%20möchte%20gerne%20für%20den%2017.%20Oktober%20(Lumes)%20einen%20Tisch%20reservieren." class="event-cta" target="_blank">
-                            <span>Tisch</span>
+                            <span>Tisch reservieren</span>
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                         </a>
                     </article>
@@ -870,7 +880,7 @@
                             </div>
                         </div>
                         <a href="https://wa.me/4917661455163?text=Hi,%20ich%20möchte%20gerne%20für%20den%2018.%20Oktober%20(Reinsurance%20Club)%20einen%20Tisch%20reservieren." class="event-cta" target="_blank">
-                            <span>Tisch</span>
+                            <span>Tisch reservieren</span>
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                         </a>
                     </article>
@@ -888,7 +898,7 @@
                             </div>
                         </div>
                         <a href="https://wa.me/4917661455163?text=Hi,%20ich%20möchte%20gerne%20für%20den%2019.%20Oktober%20(Reinsurance%20Club)%20einen%20Tisch%20reservieren." class="event-cta" target="_blank">
-                            <span>Tisch</span>
+                            <span>Tisch reservieren</span>
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                         </a>
                     </article>
@@ -906,7 +916,7 @@
                             </div>
                         </div>
                         <a href="https://wa.me/4917661455163?text=Hi,%20ich%20möchte%20gerne%20für%20den%2020.%20Oktober%20(Reinsurance%20Club)%20einen%20Tisch%20reservieren." class="event-cta" target="_blank">
-                            <span>Tisch</span>
+                            <span>Tisch reservieren</span>
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                         </a>
                     </article>
@@ -924,7 +934,7 @@
                             </div>
                         </div>
                         <a href="https://wa.me/4917661455163?text=Hi,%20ich%20möchte%20gerne%20für%20den%2023.%20Oktober%20(Frizzo%20x%20Dex)%20einen%20Tisch%20reservieren." class="event-cta" target="_blank">
-                            <span>Tisch</span>
+                            <span>Tisch reservieren</span>
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                         </a>
                     </article>
@@ -942,7 +952,7 @@
                             </div>
                         </div>
                         <a href="https://wa.me/4917661455163?text=Hi,%20ich%20möchte%20gerne%20für%20den%2024.%20Oktober%20(Luis%20Saranda)%20einen%20Tisch%20reservieren." class="event-cta" target="_blank">
-                            <span>Tisch</span>
+                            <span>Tisch reservieren</span>
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                         </a>
                     </article>
@@ -960,7 +970,7 @@
                             </div>
                         </div>
                         <a href="https://wa.me/4917661455163?text=Hi,%20ich%20möchte%20gerne%20für%20den%2030.%20Oktober%20(Tidey)%20einen%20Tisch%20reservieren." class="event-cta" target="_blank">
-                            <span>Tisch</span>
+                            <span>Tisch reservieren</span>
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                         </a>
                     </article>
@@ -979,14 +989,23 @@
                             </div>
                         </div>
                         <a href="https://wa.me/4917661455163?text=Hi,%20ich%20möchte%20gerne%20für%20den%2031.%20Oktober%20(Halloween)%20einen%20Tisch%20reservieren." class="event-cta" target="_blank">
-                            <span>Tisch</span>
+                            <span>Tisch reservieren</span>
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                         </a>
                     </article>
+                </div>
 
+                <p class="events-empty" id="eventsEmpty" hidden>
+                    Neue Termine folgen in Kürze &ndash; aktuell auf
+                    <a href="https://instagram.com/fleurbadenbaden" target="_blank" rel="noopener">@fleurbadenbaden</a>
+                </p>
+
+                <div class="events-more">
+                    <button type="button" class="events-more-btn" id="eventsMore" aria-controls="eventsGrid" aria-expanded="false" hidden>
+                        Alle Termine anzeigen
+                    </button>
                 </div>
             </div>
-            <p class="events-scroll-hint">← Swipe für mehr Events →</p>
         </section>
 
         <!-- Divider Marquee -->
@@ -1065,6 +1084,13 @@
                         <div class="booking-map-container">
                             <!-- Floor Plan - Clean Design without background -->
                             <div class="floorplan">
+                                <div class="deco-frame deco-frame--plan" aria-hidden="true">
+                                    <i class="df-edge df-t"></i><i class="df-edge df-r"></i><i class="df-edge df-b"></i><i class="df-edge df-l"></i>
+                                    <svg class="df-corner df-tl"><use href="#deco-ecke"/></svg>
+                                    <svg class="df-corner df-tr"><use href="#deco-ecke"/></svg>
+                                    <svg class="df-corner df-bl"><use href="#deco-ecke"/></svg>
+                                    <svg class="df-corner df-br"><use href="#deco-ecke"/></svg>
+                                </div>
                                 <!-- Row 0: Toiletten, rechts oberhalb der Lounge -->
                                 <div class="floorplan-row floorplan-row-toilets">
                                     <div class="floorplan-toilets">
@@ -1151,6 +1177,13 @@
 
                 <!-- Niklas Beuscher - Only Resident DJ -->
                 <div class="resident-card">
+                    <div class="deco-frame deco-frame--dj" aria-hidden="true">
+                        <i class="df-edge df-t"></i><i class="df-edge df-r"></i><i class="df-edge df-b"></i><i class="df-edge df-l"></i>
+                        <svg class="df-corner df-tl"><use href="#deco-ecke"/></svg>
+                        <svg class="df-corner df-tr"><use href="#deco-ecke"/></svg>
+                        <svg class="df-corner df-bl"><use href="#deco-ecke"/></svg>
+                        <svg class="df-corner df-br"><use href="#deco-ecke"/></svg>
+                    </div>
                     <div class="resident-badge">Resident DJ</div>
                     <div class="resident-image-carousel" id="niklasCarousel">
                         <picture><source type="image/avif" srcset="img/opt/a7401077-450.avif 450w" sizes="(max-width: 768px) 90vw, 500px"><source type="image/webp" srcset="img/opt/a7401077-450.webp 450w" sizes="(max-width: 768px) 90vw, 500px"><img src="img/opt/a7401077-450.jpg" alt="Niklas Beuscher" class="resident-img active" data-index="0" width="450" height="800" loading="lazy" decoding="async"></picture>
@@ -1246,7 +1279,7 @@
 
                     <div class="faq-item">
                         <h3 class="faq-question">Wann hat FLEUR geöffnet?</h3>
-                        <p class="faq-answer">Wir haben <strong>Freitag und Samstag von 23:00 bis 04:00 Uhr</strong> geöffnet. Your Energy is Your Outfit!</p>
+                        <p class="faq-answer">Wir haben <strong>Freitag und Samstag ab 23:00 Uhr</strong> geöffnet. Open End – je nach Nacht bis 3, 4 oder 5 Uhr. Your Energy is Your Outfit!</p>
                     </div>
 
                     <div class="faq-item">
@@ -1284,8 +1317,9 @@
                         <div class="footer-col">
                             <h3 class="footer-title">Öffnungszeiten</h3>
                             <p class="footer-hours">
-                                Freitag: 23:00 – 04:00<br>
-                                Samstag: 23:00 – 04:00
+                                Freitag: ab 23:00<br>
+                                Samstag: ab 23:00<br>
+                                <span class="footer-hours-note">Open End</span>
                             </p>
                         </div>
 
