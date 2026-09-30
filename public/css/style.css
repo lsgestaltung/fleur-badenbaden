@@ -8,9 +8,9 @@
    ============================================ */
 :root {
     /* Colors - Primary */
-    --fleur-orange: #ff7200;
-    --fleur-orange-light: #ff9233;
-    --fleur-orange-dark: #cc5b00;
+    --fleur-orange: #ff8e28;   /* gemessen an den Social-Postings, vorher #ff7200 */
+    --fleur-orange-light: #ffa552;
+    --fleur-orange-dark: #e0730f;
     --fleur-orange-rgb: 255, 114, 0;
 
     /* Colors - Neutral */
@@ -27,8 +27,13 @@
     --fleur-gold: #D4AF37;
 
     /* Typography */
-    --font-display: 'TOX Typewriter', 'Courier New', monospace;
+    --font-display: 'TOX Typewriter', 'Courier Prime', 'Courier New', monospace;
     --font-body: 'TOX Typewriter', 'Courier Prime', 'Courier New', monospace;
+    --font-light: 'Courier Prime', 'Courier New', monospace;
+
+    /* Poster-Look (Stufe 2) - Farben gemessen am Juli-Posting */
+    --fleur-poster: var(--fleur-orange);
+    --fleur-ink: #0a0a0a;
 
     /* Spacing */
     --space-xs: 0.5rem;
@@ -60,6 +65,17 @@
    FONTS
    ============================================ */
 /* TOX Typewriter - Local Custom Font */
+/* Zweite Schreibmaschinen-Schrift der Postings: duenn und sauber, fuer [fr], Einlass,
+   Hinweise. Deckt zugleich Zeichen ab, die in Tox fehlen (ß, –, ·) - der Browser holt
+   sie automatisch hier, weil Courier Prime im Stack direkt nach Tox steht. */
+@font-face {
+    font-family: 'Courier Prime';
+    src: url('../fonts/courier-prime.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
 @font-face {
     font-family: 'TOX Typewriter';
     src: url('../fonts/tox-typewriter.woff2') format('woff2'),
@@ -354,7 +370,7 @@ h1, h2, h3, h4, h5, h6 {
 .btn-outline {
     background: transparent;
     color: var(--fleur-cream);
-    border-color: rgba(255, 114, 0, 0.4);
+    border-color: rgba(255, 142, 40, 0.4);
     padding: 0.75rem 1.5rem;
 }
 
@@ -367,7 +383,7 @@ h1, h2, h3, h4, h5, h6 {
 .btn-outline:hover {
     border-color: var(--fleur-orange);
     color: var(--fleur-orange);
-    background: rgba(255, 114, 0, 0.1);
+    background: rgba(255, 142, 40, 0.1);
 }
 
 .btn-outline:hover svg {
@@ -396,7 +412,7 @@ h1, h2, h3, h4, h5, h6 {
     background: rgba(10, 10, 10, 0.95);
     backdrop-filter: blur(10px);
     padding: 0.75rem 0;
-    border-bottom: 1px solid rgba(255, 114, 0, 0.2);
+    border-bottom: 1px solid rgba(255, 142, 40, 0.2);
 }
 
 .nav {
@@ -494,7 +510,7 @@ h1, h2, h3, h4, h5, h6 {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(255, 114, 0, 0.1) 0%, transparent 50%);
+    background: linear-gradient(135deg, rgba(255, 142, 40, 0.1) 0%, transparent 50%);
     pointer-events: none;
 }
 
@@ -665,7 +681,7 @@ h1, h2, h3, h4, h5, h6 {
     left: 0;
     right: 0;
     height: 50%;
-    background: radial-gradient(ellipse at top, rgba(255, 114, 0, 0.15) 0%, transparent 70%);
+    background: radial-gradient(ellipse at top, rgba(255, 142, 40, 0.15) 0%, transparent 70%);
     pointer-events: none;
 }
 
@@ -676,61 +692,19 @@ h1, h2, h3, h4, h5, h6 {
     max-width: 1000px;
 }
 
-/* Corner Decorations - Now Orange */
-.hero-corner {
-    position: absolute;
-    width: 60px;
-    height: 60px;
-    border: 1px solid rgba(255, 114, 0, 0.4);
-}
 
-.hero-corner-tl {
-    top: 0;
-    left: 0;
-    border-right: none;
-    border-bottom: none;
-}
 
-.hero-corner-tl::before {
-    content: '✦';
-    position: absolute;
-    top: -20px;
-    left: -20px;
-    color: var(--fleur-orange);
-    opacity: 0.7;
-    font-size: 12px;
-}
 
-.hero-corner-tr {
-    top: 0;
-    right: 0;
-    border-left: none;
-    border-bottom: none;
-}
 
-.hero-corner-tr::before {
-    content: '✦';
-    position: absolute;
-    top: -20px;
-    right: -20px;
-    color: var(--fleur-orange);
-    opacity: 0.7;
-    font-size: 12px;
-}
 
-.hero-corner-bl {
-    bottom: 0;
-    left: 0;
-    border-right: none;
-    border-top: none;
-}
 
-.hero-corner-br {
-    bottom: 0;
-    right: 0;
-    border-left: none;
-    border-top: none;
-}
+
+
+
+
+
+
+
 
 .hero-tagline {
     display: block;
@@ -932,18 +906,18 @@ h1, h2, h3, h4, h5, h6 {
     padding: var(--space-md) 0;
     padding-left: var(--space-sm);
     border-left: 3px solid transparent;
-    border-top: 1px solid rgba(255, 114, 0, 0.2);
+    border-top: 1px solid rgba(255, 142, 40, 0.2);
     transition: all var(--transition-base);
     position: relative;
 }
 
 .event-item:hover {
     border-left-color: var(--fleur-orange);
-    background: rgba(255, 114, 0, 0.05);
+    background: rgba(255, 142, 40, 0.05);
 }
 
 .event-item:last-child {
-    border-bottom: 1px solid rgba(255, 114, 0, 0.2);
+    border-bottom: 1px solid rgba(255, 142, 40, 0.2);
 }
 
 .event-date {
@@ -952,7 +926,7 @@ h1, h2, h3, h4, h5, h6 {
     align-items: center;
     min-width: 70px;
     padding: var(--space-sm);
-    background: rgba(255, 114, 0, 0.1);
+    background: rgba(255, 142, 40, 0.1);
     border-radius: 4px;
     transition: all var(--transition-base);
 }
@@ -1025,7 +999,7 @@ h1, h2, h3, h4, h5, h6 {
 .event-badge {
     display: inline-block;
     padding: 0.25rem 0.75rem;
-    background: rgba(255, 114, 0, 0.2);
+    background: rgba(255, 142, 40, 0.2);
     color: var(--fleur-orange);
     font-size: 0.625rem;
     letter-spacing: 0.1em;
@@ -1078,7 +1052,7 @@ h1, h2, h3, h4, h5, h6 {
     right: 0;
     width: 50%;
     height: 100%;
-    background: linear-gradient(to left, rgba(255, 114, 0, 0.05), transparent);
+    background: linear-gradient(to left, rgba(255, 142, 40, 0.05), transparent);
     pointer-events: none;
 }
 
@@ -1116,7 +1090,7 @@ h1, h2, h3, h4, h5, h6 {
     gap: var(--space-md);
     padding: var(--space-md);
     background: var(--fleur-anthracite);
-    border: 1px solid rgba(255, 114, 0, 0.2);
+    border: 1px solid rgba(255, 142, 40, 0.2);
     transition: all var(--transition-base);
     cursor: pointer;
 }
@@ -1124,7 +1098,7 @@ h1, h2, h3, h4, h5, h6 {
 .booking-option:hover,
 .booking-option.active {
     border-color: var(--fleur-orange);
-    background: rgba(255, 114, 0, 0.1);
+    background: rgba(255, 142, 40, 0.1);
 }
 
 .booking-option-icon {
@@ -1133,7 +1107,7 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(255, 114, 0, 0.2);
+    background: rgba(255, 142, 40, 0.2);
     border-radius: 50%;
     transition: background var(--transition-base);
 }
@@ -1191,7 +1165,7 @@ h1, h2, h3, h4, h5, h6 {
    ============================================ */
 .booking-map {
     background: var(--fleur-anthracite);
-    border: 1px solid rgba(255, 114, 0, 0.3);
+    border: 1px solid rgba(255, 142, 40, 0.3);
     padding: var(--space-md);
     position: relative;
 }
@@ -1214,9 +1188,9 @@ h1, h2, h3, h4, h5, h6 {
 .booking-map-placeholder {
     width: 100%;
     height: 100%;
-    background: rgba(255, 114, 0, 0.05);
+    background: rgba(255, 142, 40, 0.05);
     position: relative;
-    border: 1px solid rgba(255, 114, 0, 0.2);
+    border: 1px solid rgba(255, 142, 40, 0.2);
 }
 
 .map-area,
@@ -1235,15 +1209,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .map-area {
-    background: rgba(255, 114, 0, 0.25);
+    background: rgba(255, 142, 40, 0.25);
     border: 1px solid var(--fleur-orange);
     cursor: pointer;
 }
 
 /* FIX: No transform on hover - use box-shadow instead */
 .map-area:hover {
-    background: rgba(255, 114, 0, 0.5);
-    box-shadow: 0 0 20px rgba(255, 114, 0, 0.5);
+    background: rgba(255, 142, 40, 0.5);
+    box-shadow: 0 0 20px rgba(255, 142, 40, 0.5);
 }
 
 .map-area.active {
@@ -1303,8 +1277,8 @@ h1, h2, h3, h4, h5, h6 {
     right: 5%;
     width: 35%;
     height: 35%;
-    background: rgba(255, 114, 0, 0.1);
-    border: 1px dashed rgba(255, 114, 0, 0.4);
+    background: rgba(255, 142, 40, 0.1);
+    border: 1px dashed rgba(255, 142, 40, 0.4);
     font-size: 0.5rem;
     flex-direction: column;
     gap: 0.25rem;
@@ -1373,7 +1347,7 @@ h1, h2, h3, h4, h5, h6 {
     left: 0;
     width: 100%;
     height: 50%;
-    background: linear-gradient(to top, rgba(255, 114, 0, 0.05), transparent);
+    background: linear-gradient(to top, rgba(255, 142, 40, 0.05), transparent);
     pointer-events: none;
 }
 
@@ -1405,14 +1379,14 @@ h1, h2, h3, h4, h5, h6 {
 .dj-card {
     flex: 0 0 300px;
     background: var(--fleur-dark);
-    border: 1px solid rgba(255, 114, 0, 0.2);
+    border: 1px solid rgba(255, 142, 40, 0.2);
     transition: all var(--transition-base);
     overflow: hidden;
 }
 
 .dj-card:hover {
     border-color: var(--fleur-orange);
-    box-shadow: 0 10px 40px rgba(255, 114, 0, 0.2);
+    box-shadow: 0 10px 40px rgba(255, 142, 40, 0.2);
 }
 
 .dj-card.featured {
@@ -1466,12 +1440,12 @@ h1, h2, h3, h4, h5, h6 {
     justify-content: center;
     font-family: var(--font-display);
     font-size: 3rem;
-    color: rgba(255, 114, 0, 0.2);
+    color: rgba(255, 142, 40, 0.2);
     transition: all var(--transition-base);
 }
 
 .dj-card:hover .dj-image-placeholder {
-    color: rgba(255, 114, 0, 0.4);
+    color: rgba(255, 142, 40, 0.4);
 }
 
 .dj-info {
@@ -1547,7 +1521,7 @@ h1, h2, h3, h4, h5, h6 {
 .gallery-item {
     overflow: hidden;
     cursor: pointer;
-    border: 1px solid rgba(255, 114, 0, 0.2);
+    border: 1px solid rgba(255, 142, 40, 0.2);
     transition: all var(--transition-base);
 }
 
@@ -1583,21 +1557,21 @@ h1, h2, h3, h4, h5, h6 {
     width: 100%;
     height: 100%;
     min-height: 200px;
-    background: linear-gradient(135deg, rgba(255, 114, 0, 0.1) 0%, var(--fleur-anthracite) 100%);
+    background: linear-gradient(135deg, rgba(255, 142, 40, 0.1) 0%, var(--fleur-anthracite) 100%);
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: var(--font-display);
     font-size: 1rem;
-    color: rgba(255, 114, 0, 0.3);
+    color: rgba(255, 142, 40, 0.3);
     text-align: center;
     padding: var(--space-md);
     transition: all var(--transition-base);
 }
 
 .gallery-item:hover .gallery-placeholder {
-    background: linear-gradient(135deg, rgba(255, 114, 0, 0.2) 0%, var(--fleur-dark-grey) 100%);
-    color: rgba(255, 114, 0, 0.5);
+    background: linear-gradient(135deg, rgba(255, 142, 40, 0.2) 0%, var(--fleur-dark-grey) 100%);
+    color: rgba(255, 142, 40, 0.5);
 }
 
 .gallery-item-large .gallery-placeholder {
@@ -1674,7 +1648,7 @@ h1, h2, h3, h4, h5, h6 {
     grid-template-columns: repeat(2, 1fr);
     gap: var(--space-lg);
     padding-bottom: var(--space-lg);
-    border-bottom: 1px solid rgba(255, 114, 0, 0.2);
+    border-bottom: 1px solid rgba(255, 142, 40, 0.2);
 }
 
 @media (min-width: 768px) {
@@ -1723,8 +1697,8 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(255, 114, 0, 0.1);
-    border: 1px solid rgba(255, 114, 0, 0.3);
+    background: rgba(255, 142, 40, 0.1);
+    border: 1px solid rgba(255, 142, 40, 0.3);
     color: var(--fleur-orange);
     transition: all var(--transition-fast);
 }
@@ -1806,7 +1780,7 @@ hr {
     padding: calc(var(--header-height) + var(--space-xl)) 0 var(--space-lg);
     text-align: center;
     background: linear-gradient(180deg, var(--fleur-anthracite) 0%, var(--fleur-black) 100%);
-    border-bottom: 1px solid rgba(255, 114, 0, 0.2);
+    border-bottom: 1px solid rgba(255, 142, 40, 0.2);
 }
 
 .page-title {
@@ -1830,7 +1804,7 @@ hr {
 .legal-section {
     margin-bottom: var(--space-lg);
     padding-bottom: var(--space-md);
-    border-bottom: 1px solid rgba(255, 114, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 142, 40, 0.1);
 }
 
 .legal-section:last-of-type {
@@ -1891,7 +1865,7 @@ hr {
     text-align: center;
     padding-top: var(--space-md);
     margin-top: var(--space-sm);
-    border-top: 1px solid rgba(255, 114, 0, 0.1);
+    border-top: 1px solid rgba(255, 142, 40, 0.1);
     font-size: 0.75rem;
     color: var(--fleur-light-grey);
 }
@@ -1936,8 +1910,8 @@ hr {
     border-radius: 16px;
     padding: var(--space-md);
     box-shadow:
-        0 0 40px rgba(255, 114, 0, 0.15),
-        inset 0 0 60px rgba(255, 114, 0, 0.05);
+        0 0 40px rgba(255, 142, 40, 0.15),
+        inset 0 0 60px rgba(255, 142, 40, 0.05);
     position: relative;
     overflow: hidden;
     min-height: 400px;
@@ -1950,7 +1924,7 @@ hr {
     left: -2px;
     right: -2px;
     bottom: -2px;
-    border: 1px solid rgba(255, 114, 0, 0.3);
+    border: 1px solid rgba(255, 142, 40, 0.3);
     border-radius: 18px;
     pointer-events: none;
 }
@@ -1995,8 +1969,8 @@ hr {
 }
 
 .floorplan-area {
-    background: rgba(255, 114, 0, 0.1);
-    border: 1px solid rgba(255, 114, 0, 0.4);
+    background: rgba(255, 142, 40, 0.1);
+    border: 1px solid rgba(255, 142, 40, 0.4);
     border-radius: 8px;
     padding: var(--space-sm);
     text-align: center;
@@ -2010,9 +1984,9 @@ hr {
 
 .floorplan-area:hover,
 .floorplan-area.active {
-    background: rgba(255, 114, 0, 0.25);
+    background: rgba(255, 142, 40, 0.25);
     border-color: var(--fleur-orange);
-    box-shadow: 0 0 20px rgba(255, 114, 0, 0.3);
+    box-shadow: 0 0 20px rgba(255, 142, 40, 0.3);
 }
 
 .floorplan-area span {
@@ -2027,7 +2001,7 @@ hr {
 
 /* Specific Areas */
 .floorplan-vip {
-    background: linear-gradient(135deg, rgba(255, 114, 0, 0.2) 0%, rgba(255, 114, 0, 0.1) 100%);
+    background: linear-gradient(135deg, rgba(255, 142, 40, 0.2) 0%, rgba(255, 142, 40, 0.1) 100%);
     border-color: var(--fleur-orange);
     min-width: 120px;
     min-height: 60px;
@@ -2055,7 +2029,7 @@ hr {
 .floorplan-dancefloor {
     flex: 1;
     min-height: 100px;
-    background: rgba(255, 114, 0, 0.08);
+    background: rgba(255, 142, 40, 0.08);
     border-style: dashed;
 }
 
@@ -2070,8 +2044,8 @@ hr {
 }
 
 .floorplan-bar {
-    background: rgba(255, 114, 0, 0.15);
-    border: 1px solid rgba(255, 114, 0, 0.5);
+    background: rgba(255, 142, 40, 0.15);
+    border: 1px solid rgba(255, 142, 40, 0.5);
     border-radius: 8px;
     padding: var(--space-sm) var(--space-lg);
     min-width: 120px;
@@ -2163,7 +2137,7 @@ hr {
     padding: 30px;
     max-width: 380px;
     width: 100%;
-    box-shadow: 0 0 60px rgba(255, 114, 0, 0.3);
+    box-shadow: 0 0 60px rgba(255, 142, 40, 0.3);
     transform: translateY(20px);
     transition: transform 0.3s ease;
     z-index: 1;
@@ -2193,7 +2167,7 @@ hr {
 
 .booking-modal-close:hover {
     color: var(--fleur-orange);
-    background: rgba(255, 114, 0, 0.2);
+    background: rgba(255, 142, 40, 0.2);
 }
 
 .booking-modal-title {
@@ -2244,7 +2218,7 @@ hr {
 .booking-modal-field input,
 .booking-modal-field select {
     background: rgba(0, 0, 0, 0.5);
-    border: 1px solid rgba(255, 114, 0, 0.4);
+    border: 1px solid rgba(255, 142, 40, 0.4);
     border-radius: 8px;
     padding: 12px 14px;
     color: #fff;
@@ -2256,7 +2230,7 @@ hr {
 }
 
 .booking-modal-field select {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23E8793A' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10l-5 5z'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23FF8E28' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10l-5 5z'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right 12px center;
     padding-right: 36px;
@@ -2301,15 +2275,15 @@ hr {
 .resident-section {
     padding: var(--space-xl) 0;
     background: linear-gradient(180deg,
-        rgba(255, 114, 0, 0.08) 0%,
+        rgba(255, 142, 40, 0.08) 0%,
         var(--fleur-black) 50%,
-        rgba(255, 114, 0, 0.05) 100%);
+        rgba(255, 142, 40, 0.05) 100%);
 }
 
 .resident-card {
     background: linear-gradient(135deg,
-        rgba(255, 114, 0, 0.15) 0%,
-        rgba(255, 114, 0, 0.05) 100%);
+        rgba(255, 142, 40, 0.15) 0%,
+        rgba(255, 142, 40, 0.05) 100%);
     border: 2px solid var(--fleur-orange);
     border-radius: 20px;
     overflow: hidden;
@@ -2317,8 +2291,8 @@ hr {
     margin: var(--space-lg) auto 0;
     position: relative;
     box-shadow:
-        0 20px 60px rgba(255, 114, 0, 0.2),
-        inset 0 0 80px rgba(255, 114, 0, 0.05);
+        0 20px 60px rgba(255, 142, 40, 0.2),
+        inset 0 0 80px rgba(255, 142, 40, 0.05);
 }
 
 .resident-badge {
@@ -2362,7 +2336,7 @@ hr {
     padding: var(--space-md);
     text-align: center;
     background: linear-gradient(180deg,
-        rgba(255, 114, 0, 0.1) 0%,
+        rgba(255, 142, 40, 0.1) 0%,
         transparent 100%);
 }
 
@@ -2458,7 +2432,7 @@ hr {
     height: 200px;
     border-radius: 12px;
     overflow: hidden;
-    border: 1px solid rgba(255, 114, 0, 0.3);
+    border: 1px solid rgba(255, 142, 40, 0.3);
     transition: all var(--transition-fast);
 }
 
@@ -2484,18 +2458,18 @@ hr {
 .booking {
     background: linear-gradient(180deg,
         var(--fleur-black) 0%,
-        rgba(255, 114, 0, 0.08) 50%,
+        rgba(255, 142, 40, 0.08) 50%,
         var(--fleur-black) 100%);
 }
 
 .booking-option {
-    background: rgba(255, 114, 0, 0.1);
-    border: 1px solid rgba(255, 114, 0, 0.3);
+    background: rgba(255, 142, 40, 0.1);
+    border: 1px solid rgba(255, 142, 40, 0.3);
 }
 
 .booking-option:hover,
 .booking-option.active {
-    background: rgba(255, 114, 0, 0.2);
+    background: rgba(255, 142, 40, 0.2);
     border-color: var(--fleur-orange);
 }
 
@@ -2559,11 +2533,11 @@ hr {
    ============================================ */
 .announcement {
     background: linear-gradient(90deg,
-        rgba(255, 114, 0, 0.15) 0%,
-        rgba(255, 114, 0, 0.25) 50%,
-        rgba(255, 114, 0, 0.15) 100%);
-    border-top: 1px solid rgba(255, 114, 0, 0.3);
-    border-bottom: 1px solid rgba(255, 114, 0, 0.3);
+        rgba(255, 142, 40, 0.15) 0%,
+        rgba(255, 142, 40, 0.25) 50%,
+        rgba(255, 142, 40, 0.15) 100%);
+    border-top: 1px solid rgba(255, 142, 40, 0.3);
+    border-bottom: 1px solid rgba(255, 142, 40, 0.3);
     padding: var(--space-sm) 0;
 }
 
@@ -2612,50 +2586,23 @@ hr {
     padding: var(--space-xl) 0 var(--space-lg);
     background: linear-gradient(180deg,
         var(--fleur-anthracite) 0%,
-        rgba(255, 114, 0, 0.05) 50%,
+        rgba(255, 142, 40, 0.05) 50%,
         var(--fleur-anthracite) 100%);
     position: relative;
 }
 
-.events-scroll-container {
-    overflow-x: auto;
-    overflow-y: hidden;
-    -webkit-overflow-scrolling: touch;
-    padding: 0 var(--space-md);
-    margin: var(--space-md) 0;
 
-    /* Hide scrollbar - Cross browser */
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE/Edge */
-}
 
-.events-scroll-container::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera */
-}
 
-.events-scroll {
-    display: flex;
-    gap: var(--space-md);
-    padding: var(--space-sm) 0;
-    width: max-content;
-}
-
-.events-scroll-hint {
-    text-align: center;
-    font-size: 0.75rem;
-    color: var(--fleur-orange);
-    opacity: 0.7;
-    margin-top: var(--space-sm);
-}
 
 /* Event Card */
 .event-card {
     flex-shrink: 0;
     width: 280px;
     background: linear-gradient(135deg,
-        rgba(255, 114, 0, 0.1) 0%,
+        rgba(255, 142, 40, 0.1) 0%,
         rgba(18, 18, 18, 0.95) 100%);
-    border: 1px solid rgba(255, 114, 0, 0.3);
+    border: 1px solid rgba(255, 142, 40, 0.3);
     border-radius: 16px;
     padding: var(--space-md);
     display: flex;
@@ -2667,13 +2614,13 @@ hr {
 .event-card:hover {
     border-color: var(--fleur-orange);
     transform: translateY(-4px);
-    box-shadow: 0 10px 40px rgba(255, 114, 0, 0.2);
+    box-shadow: 0 10px 40px rgba(255, 142, 40, 0.2);
 }
 
 .event-card-featured {
     border-color: var(--fleur-orange);
     background: linear-gradient(135deg,
-        rgba(255, 114, 0, 0.2) 0%,
+        rgba(255, 142, 40, 0.2) 0%,
         rgba(18, 18, 18, 0.95) 100%);
 }
 
@@ -2681,7 +2628,7 @@ hr {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: rgba(255, 114, 0, 0.15);
+    background: rgba(255, 142, 40, 0.15);
     border-radius: 8px;
     padding: var(--space-sm);
     align-self: flex-start;
@@ -2751,8 +2698,8 @@ hr {
 }
 
 .event-card .event-badge {
-    background: rgba(255, 114, 0, 0.2);
-    border: 1px solid rgba(255, 114, 0, 0.4);
+    background: rgba(255, 142, 40, 0.2);
+    border: 1px solid rgba(255, 142, 40, 0.4);
     color: var(--fleur-orange);
     padding: 2px 8px;
     border-radius: 4px;
@@ -2794,7 +2741,7 @@ hr {
     height: 240px; /* Portrait ratio 2:3 */
     border-radius: 12px;
     overflow: hidden;
-    border: 1px solid rgba(255, 114, 0, 0.3);
+    border: 1px solid rgba(255, 142, 40, 0.3);
     transition: all var(--transition-fast);
 }
 
@@ -2820,7 +2767,7 @@ hr {
 
 .booking-map {
     background: var(--fleur-anthracite);
-    border: 1px solid rgba(255, 114, 0, 0.3);
+    border: 1px solid rgba(255, 142, 40, 0.3);
     padding: var(--space-md);
     border-radius: 16px;
 }
@@ -2832,9 +2779,9 @@ hr {
 }
 
 .floorplan-bookable:hover {
-    background: rgba(255, 114, 0, 0.3);
+    background: rgba(255, 142, 40, 0.3);
     border-color: var(--fleur-orange);
-    box-shadow: 0 0 25px rgba(255, 114, 0, 0.4);
+    box-shadow: 0 0 25px rgba(255, 142, 40, 0.4);
 }
 
 .floorplan-bookable-badge {
@@ -2894,9 +2841,9 @@ hr {
 }
 
 .booking-status-bookable {
-    background: rgba(255, 114, 0, 0.2);
+    background: rgba(255, 142, 40, 0.2);
     color: var(--fleur-orange);
-    border: 1px solid rgba(255, 114, 0, 0.4);
+    border: 1px solid rgba(255, 142, 40, 0.4);
 }
 
 /* ============================================
@@ -2906,7 +2853,7 @@ hr {
     padding: var(--space-xl) 0;
     background: linear-gradient(180deg,
         var(--fleur-black) 0%,
-        rgba(255, 114, 0, 0.05) 50%,
+        rgba(255, 142, 40, 0.05) 50%,
         var(--fleur-black) 100%);
 }
 
@@ -2925,16 +2872,16 @@ hr {
 }
 
 .faq-item {
-    background: rgba(255, 114, 0, 0.05);
-    border: 1px solid rgba(255, 114, 0, 0.2);
+    background: rgba(255, 142, 40, 0.05);
+    border: 1px solid rgba(255, 142, 40, 0.2);
     border-radius: 12px;
     padding: var(--space-md);
     transition: all var(--transition-base);
 }
 
 .faq-item:hover {
-    border-color: rgba(255, 114, 0, 0.4);
-    background: rgba(255, 114, 0, 0.08);
+    border-color: rgba(255, 142, 40, 0.4);
+    background: rgba(255, 142, 40, 0.08);
 }
 
 .faq-question {
@@ -3010,17 +2957,17 @@ hr {
 /* Orange background tint for sections */
 .resident-section {
     background: linear-gradient(180deg,
-        rgba(255, 114, 0, 0.1) 0%,
+        rgba(255, 142, 40, 0.1) 0%,
         var(--fleur-black) 30%,
         var(--fleur-black) 70%,
-        rgba(255, 114, 0, 0.08) 100%);
+        rgba(255, 142, 40, 0.08) 100%);
 }
 
 /* Resident card with more orange */
 .resident-card {
     background: linear-gradient(135deg,
-        rgba(255, 114, 0, 0.2) 0%,
-        rgba(255, 114, 0, 0.08) 50%,
+        rgba(255, 142, 40, 0.2) 0%,
+        rgba(255, 142, 40, 0.08) 50%,
         rgba(18, 18, 18, 0.95) 100%);
 }
 
@@ -3062,9 +3009,6 @@ hr {
     }
 
     /* Fix events scroll container */
-    .events-scroll-container {
-        max-width: 100vw;
-    }
 
     /* Fix any absolute positioned elements */
     .hero::after {
@@ -3142,10 +3086,6 @@ hr {
     }
 
     /* Event cards centering */
-    .events-scroll {
-        padding-left: 16px;
-        padding-right: 16px;
-    }
 
     .event-card {
         width: 260px;
@@ -3222,10 +3162,6 @@ hr {
         padding-right: 12px;
     }
 
-    .events-scroll {
-        padding-left: 12px;
-        padding-right: 12px;
-    }
 
     .event-card {
         width: 240px;
@@ -3512,7 +3448,7 @@ hr {
 .event-hero-decor {
     position: absolute;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(255, 114, 0, 0.3) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(255, 142, 40, 0.3) 0%, transparent 70%);
     filter: blur(60px);
     pointer-events: none;
 }
@@ -3551,7 +3487,7 @@ hr {
     left: 0;
     right: 0;
     height: 50%;
-    background: radial-gradient(ellipse at top, rgba(255, 114, 0, 0.15) 0%, transparent 70%);
+    background: radial-gradient(ellipse at top, rgba(255, 142, 40, 0.15) 0%, transparent 70%);
     pointer-events: none;
     z-index: 1;
 }
@@ -3654,9 +3590,9 @@ hr {
 }
 
 .event-type-card:hover .event-type-card-inner {
-    border-color: rgba(255, 114, 0, 0.5);
+    border-color: rgba(255, 142, 40, 0.5);
     transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 60px rgba(255, 114, 0, 0.1);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 60px rgba(255, 142, 40, 0.1);
 }
 
 .event-type-card:hover .event-type-card-inner::before {
@@ -3675,7 +3611,7 @@ hr {
 }
 
 .event-type-card:hover .event-type-number {
-    color: rgba(255, 114, 0, 0.3);
+    color: rgba(255, 142, 40, 0.3);
 }
 
 .event-type-icon {
@@ -3684,13 +3620,13 @@ hr {
     margin-bottom: var(--space-md);
     color: var(--fleur-orange);
     padding: 12px;
-    background: rgba(255, 114, 0, 0.1);
+    background: rgba(255, 142, 40, 0.1);
     border-radius: 12px;
     transition: all var(--transition-base);
 }
 
 .event-type-card:hover .event-type-icon {
-    background: rgba(255, 114, 0, 0.2);
+    background: rgba(255, 142, 40, 0.2);
     transform: scale(1.05);
 }
 
@@ -3775,7 +3711,7 @@ hr {
     content: '';
     position: absolute;
     inset: 0;
-    border: 1px solid rgba(255, 114, 0, 0.2);
+    border: 1px solid rgba(255, 142, 40, 0.2);
     border-radius: 12px;
     pointer-events: none;
     transition: border-color var(--transition-base);
@@ -3827,7 +3763,7 @@ hr {
     left: 50%;
     width: 150px;
     height: 150px;
-    background: radial-gradient(circle, rgba(255, 114, 0, 0.2) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(255, 142, 40, 0.2) 0%, transparent 70%);
     transform: translate(-50%, -50%);
     opacity: 0;
     transition: opacity var(--transition-slow);
@@ -3835,7 +3771,7 @@ hr {
 }
 
 .event-service-card:hover {
-    border-color: rgba(255, 114, 0, 0.5);
+    border-color: rgba(255, 142, 40, 0.5);
     transform: translateY(-4px);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
 }
@@ -3851,13 +3787,13 @@ hr {
     margin: 0 auto var(--space-md);
     color: var(--fleur-orange);
     padding: 14px;
-    background: rgba(255, 114, 0, 0.1);
+    background: rgba(255, 142, 40, 0.1);
     border-radius: 50%;
     transition: all var(--transition-base);
 }
 
 .event-service-card:hover .event-service-icon {
-    background: rgba(255, 114, 0, 0.2);
+    background: rgba(255, 142, 40, 0.2);
     transform: scale(1.1);
 }
 
@@ -3885,8 +3821,8 @@ hr {
     padding: 4px 12px;
     font-size: 0.7rem;
     color: var(--fleur-orange);
-    background: rgba(255, 114, 0, 0.1);
-    border: 1px solid rgba(255, 114, 0, 0.3);
+    background: rgba(255, 142, 40, 0.1);
+    border: 1px solid rgba(255, 142, 40, 0.3);
     border-radius: 20px;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -3902,8 +3838,8 @@ hr {
 .event-cta-box {
     position: relative;
     padding: var(--space-xl);
-    background: linear-gradient(145deg, rgba(255, 114, 0, 0.05) 0%, transparent 100%);
-    border: 1px solid rgba(255, 114, 0, 0.2);
+    background: linear-gradient(145deg, rgba(255, 142, 40, 0.05) 0%, transparent 100%);
+    border: 1px solid rgba(255, 142, 40, 0.2);
     border-radius: 16px;
     max-width: 600px;
     margin: 0 auto;
@@ -3999,7 +3935,7 @@ hr {
 }
 
 .event-faq-item:hover {
-    border-color: rgba(255, 114, 0, 0.3);
+    border-color: rgba(255, 142, 40, 0.3);
     transform: translateY(-2px);
 }
 
@@ -4219,7 +4155,7 @@ hr {
 
 .event-addon-card input:checked + .event-addon-content {
     border-color: var(--fleur-orange);
-    background: rgba(255, 114, 0, 0.1);
+    background: rgba(255, 142, 40, 0.1);
 }
 
 .event-addon-icon {
@@ -4626,3 +4562,465 @@ a[href^="mailto:"]::after,
     position: absolute;
     inset: -14px -6px;
 }
+
+/* ============================================
+   STUFE 2 · POSTER-LOOK
+   Gestaltung nach den Social-Media-Postings: Orange als Flaeche,
+   Runen-Muster Ton in Ton, Art-deco-Rahmen, Schreibmaschinen-Listen.
+   ============================================ */
+
+.sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+/* ---------- Art-deco-Rahmen ----------
+   Innenlinie mit nach innen gewoelbten Ecken, Strahlen aus der Aussenecke.
+   --df-box = Kantenlaenge einer Ecke; Linie liegt bei 30 %, Radius 70 %. */
+.deco-frame {
+    --df-box: clamp(58px, 8vw, 92px);
+    --df-sw: 3px;
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    color: var(--fleur-ink);
+    z-index: 1;
+}
+
+.df-edge { position: absolute; border: 0 solid currentColor; }
+.df-t { top:    calc(var(--df-box) * .3 - var(--df-sw) / 2); left: var(--df-box); right: var(--df-box); border-top-width: var(--df-sw); }
+.df-b { bottom: calc(var(--df-box) * .3 - var(--df-sw) / 2); left: var(--df-box); right: var(--df-box); border-bottom-width: var(--df-sw); }
+.df-l { left:   calc(var(--df-box) * .3 - var(--df-sw) / 2); top: var(--df-box); bottom: var(--df-box); border-left-width: var(--df-sw); }
+.df-r { right:  calc(var(--df-box) * .3 - var(--df-sw) / 2); top: var(--df-box); bottom: var(--df-box); border-right-width: var(--df-sw); }
+
+.df-corner { position: absolute; width: var(--df-box); height: var(--df-box); overflow: visible; }
+.df-tl { top: 0; left: 0; }
+.df-tr { top: 0; right: 0; transform: scaleX(-1); }
+.df-bl { bottom: 0; left: 0; transform: scaleY(-1); }
+.df-br { bottom: 0; right: 0; transform: scale(-1, -1); }
+
+/* ---------- Events als Monatsplakat ---------- */
+.events--poster {
+    background: var(--fleur-black);
+    padding: clamp(56px, 9vw, 120px) clamp(12px, 4vw, 48px);
+}
+.events--poster::before { display: none; }
+
+.poster {
+    position: relative;
+    max-width: 980px;
+    margin: 0 auto;
+    color: var(--fleur-ink);
+    background-color: var(--fleur-poster);
+    background-image: url('../img/muster-orange.svg');
+    background-size: clamp(210px, 30vw, 300px) auto;
+    background-position: 50% 0;
+    border: 3px solid var(--fleur-ink);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, .55);
+    padding: clamp(84px, 13vw, 132px) clamp(34px, 9vw, 112px) clamp(64px, 10vw, 104px);
+}
+
+.poster-head { margin-bottom: clamp(36px, 6vw, 60px); }
+
+.poster-title {
+    font-family: var(--font-display);
+    font-weight: normal;
+    font-size: clamp(2.6rem, 8vw, 5.4rem);
+    line-height: .95;
+    letter-spacing: .01em;
+    text-transform: uppercase;
+    margin: 0;
+    color: var(--fleur-ink);
+}
+.poster-year { font-family: var(--font-light); letter-spacing: .02em; }
+
+.poster-sub {
+    font-family: var(--font-display);
+    font-size: clamp(.95rem, 2vw, 1.35rem);
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    margin: .5em 0 0;
+}
+
+.poster-list {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(14px, 2.2vw, 22px);
+}
+
+/* Jede Event-Karte wird zu einer Plakatzeile:  [fr] 2. okt • special
+                                                name                    tisch → */
+.events--poster .event-card {
+    display: grid;
+    grid-template-columns: max-content 1fr auto;
+    grid-template-areas: "date special cta" "name name cta";
+    column-gap: .8em;
+    row-gap: .15em;
+    align-items: baseline;
+    padding: 0;
+    min-height: 0;
+    background: none;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    transform: none;
+    color: var(--fleur-ink);
+    text-transform: lowercase;
+    width: auto;
+    max-width: none;
+    flex: none;
+    margin: 0;
+}
+.events--poster .event-card::before,
+.events--poster .event-card::after { display: none; }
+.events--poster .event-card:hover { transform: none; box-shadow: none; }
+
+.events--poster .event-card-content { display: contents; }
+
+.events--poster .event-card-date {
+    grid-area: date;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    white-space: nowrap;
+    align-items: baseline;
+    gap: .45em;
+    padding: 0;
+    width: auto; height: auto; min-width: 0;
+    background: none;
+    border: 0;
+    border-radius: 0;
+    font-family: var(--font-display);
+    font-size: clamp(1.25rem, 2.6vw, 1.75rem);
+    line-height: 1.1;
+    color: var(--fleur-ink);
+}
+.events--poster .event-day {
+    font-family: var(--font-light);
+    font-size: .82em;
+    letter-spacing: 0;
+    color: inherit;
+    order: 0;
+}
+.events--poster .event-day::before { content: '['; }
+.events--poster .event-day::after  { content: ']'; }
+.events--poster .event-day,
+.events--poster .event-num,
+.events--poster .event-month { display: inline; margin: 0; }
+.events--poster .event-num,
+.events--poster .event-month {
+    font-family: var(--font-display);
+    font-size: 1em;
+    line-height: inherit;
+    letter-spacing: 0;
+    color: inherit;
+}
+.events--poster .event-num { order: 1; }
+.events--poster .event-num::after { content: '.'; }
+.events--poster .event-month { order: 2; margin-left: -.2em; }
+
+.events--poster .event-special {
+    grid-area: special;
+    align-self: baseline;
+    display: inline;
+    padding: 0;
+    background: none;
+    border: 0;
+    border-radius: 0;
+    font-family: var(--font-display);
+    font-size: clamp(.95rem, 1.9vw, 1.2rem);
+    letter-spacing: .01em;
+    color: var(--fleur-ink);
+    text-transform: lowercase;
+}
+.events--poster .event-special::before { content: '•\00a0'; }
+
+.events--poster .event-artist {
+    grid-area: name;
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: normal;
+    font-size: clamp(1.05rem, 2.2vw, 1.4rem);
+    letter-spacing: .03em;
+    line-height: 1.25;
+    color: var(--fleur-ink);
+    text-transform: lowercase;
+}
+
+/* Uhrzeit steht einmal im Plakatfuss ("Einlass 23 Uhr").
+   Weicht ein Abend ab, die Zeit als event-special eintragen. */
+.events--poster .event-meta { display: none; }
+
+.events--poster .event-cta {
+    grid-area: cta;
+    align-self: center;
+    display: inline-flex;
+    align-items: center;
+    gap: .35em;
+    min-height: 44px;
+    padding: 0 .1em;
+    background: none;
+    border: 0;
+    border-radius: 0;
+    font-family: var(--font-light);
+    font-size: clamp(.9rem, 1.7vw, 1.05rem);
+    letter-spacing: .02em;
+    color: var(--fleur-ink);
+    text-transform: lowercase;
+    text-decoration: underline;
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: .25em;
+    white-space: nowrap;
+}
+.events--poster .event-cta svg { width: 1em; height: 1em; transition: transform .2s ease; }
+.events--poster .event-cta:hover,
+.events--poster .event-cta:focus-visible { background: none; color: var(--fleur-ink); text-decoration-thickness: 3px; }
+.events--poster .event-cta:hover svg { transform: translateX(3px); }
+
+/* ---------- Plakatfuss ---------- */
+.poster-foot {
+    margin-top: clamp(44px, 7vw, 72px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: .55em;
+}
+
+/* Doppelrahmen wie das "free entry"-Feld der Postings */
+.poster-stamp {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 52px;
+    padding: .7em 1.6em;
+    margin-bottom: .8em;
+    font-family: var(--font-display);
+    font-size: clamp(1.05rem, 2.2vw, 1.3rem);
+    letter-spacing: .03em;
+    text-transform: lowercase;
+    color: var(--fleur-ink);
+    border: 2px solid var(--fleur-ink);
+    border-radius: 3px;
+    transition: background .2s ease, color .2s ease;
+}
+.poster-stamp::before {
+    content: '';
+    position: absolute;
+    inset: 4px;
+    border: 1.5px solid currentColor;
+    border-radius: 14px;
+    pointer-events: none;
+}
+.poster-stamp:hover,
+.poster-stamp:focus-visible { background: var(--fleur-ink); color: var(--fleur-poster); }
+
+.poster-note {
+    margin: 0;
+    font-family: var(--font-light);
+    font-size: clamp(.9rem, 1.7vw, 1.05rem);
+    letter-spacing: .02em;
+    text-transform: lowercase;
+    color: var(--fleur-ink);
+}
+
+.poster-logo {
+    width: clamp(130px, 22vw, 190px);
+    height: auto;
+    margin-top: 1.1em;
+}
+
+/* ---------- schmal ---------- */
+@media (max-width: 560px) {
+    .events--poster .event-card {
+        grid-template-columns: 1fr auto;
+        grid-template-areas: "date cta" "special cta" "name cta";
+        row-gap: .1em;
+    }
+    .events--poster .event-special { font-size: .95rem; }
+    .deco-frame { --df-sw: 2.5px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .events--poster .event-cta svg,
+    .poster-stamp { transition: none; }
+}
+
+/* ---------- Hero: Rahmen wie auf dem Januar-Posting ---------- */
+.hero-content { padding: clamp(92px, 12vw, 132px) clamp(40px, 8vw, 110px); }
+.deco-frame--hero {
+    --df-box: clamp(52px, 7vw, 84px);
+    --df-sw: 2px;
+    color: rgba(245, 240, 232, .78);
+}
+
+/* ---------- Resident DJ als Einzel-Poster (Januar-Posting) ----------
+   Schwarz, cremeweisser Deco-Rahmen, Schwarzweissfoto innerhalb des Rahmens,
+   Name in Tox, Genres in der duennen Schreibmaschine. */
+.resident-card {
+    --dj-box: clamp(48px, 6vw, 70px);
+    background: var(--fleur-black) url('../img/muster-dunkel.svg') 50% 0 / 240px auto;
+    border: 2px solid rgba(245, 240, 232, .85);
+    border-radius: 0;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, .6);
+    overflow: visible;
+    padding: calc(var(--dj-box) + 6px) calc(var(--dj-box) * .3 + 16px) calc(var(--dj-box) * .6);
+}
+.deco-frame--dj {
+    --df-box: var(--dj-box);
+    --df-sw: 2px;
+    color: rgba(245, 240, 232, .85);
+}
+.resident-card .resident-image-carousel { border-radius: 0; filter: grayscale(1) contrast(1.05); }
+.resident-card .resident-info {
+    position: relative;
+    z-index: 2;
+    background: none;
+    padding: clamp(22px, 4vw, 34px) var(--space-sm) var(--space-sm);
+}
+.resident-card .resident-badge {
+    z-index: 2;
+    top: calc(var(--dj-box) + 20px);
+    left: calc(var(--dj-box) * .3 + 30px);
+    border-radius: 0;
+    font-family: var(--font-display);
+    letter-spacing: .08em;
+}
+.resident-card .resident-name {
+    font-family: var(--font-display);
+    font-size: clamp(1.9rem, 4.2vw, 2.6rem);
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--fleur-cream);
+    margin-bottom: .2em;
+}
+.resident-card .resident-genre {
+    font-family: var(--font-light);
+    font-size: clamp(.95rem, 1.8vw, 1.1rem);
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--fleur-cream);
+}
+.resident-card .resident-bio { color: #a8a39b; }
+.resident-card .btn-outline-orange {
+    position: relative;
+    border-radius: 3px;
+    border-color: var(--fleur-cream);
+    color: var(--fleur-cream);
+    background: none;
+    text-transform: lowercase;
+    font-family: var(--font-display);
+    letter-spacing: .04em;
+}
+.resident-card .btn-outline-orange::before {
+    content: '';
+    position: absolute;
+    inset: 3px;
+    border: 1px solid currentColor;
+    border-radius: 12px;
+    pointer-events: none;
+}
+.resident-card .btn-outline-orange:hover { background: var(--fleur-cream); color: var(--fleur-black); }
+
+/* Zentrierte Ueberschriften: Titel und Strich gemeinsam mittig
+   (vorher stand der Titel links, nur der Strich war zentriert). */
+.section-header.center { text-align: center; }
+.section-header.center .section-title { align-items: center; justify-content: center; }
+
+/* Der Rahmen haelt den Hero zusammen; der Scroll-Hinweis kreuzte seine Unterkante. */
+.hero-scroll { display: none; }
+
+/* ---------- Tischreservierung: Hallenplan im Deco-Rahmen ---------- */
+.booking-map {
+    background: none;
+    border: 0;
+    padding: 0;
+    box-shadow: none;
+}
+.booking-map::before,
+.floorplan::before { display: none; }
+
+.floorplan {
+    --plan-box: clamp(40px, 5vw, 64px);
+    /* Muster hier gedimmt: die Grundriss-Flaechen sind halbtransparent */
+    background:
+        linear-gradient(rgba(10, 10, 10, .62), rgba(10, 10, 10, .62)),
+        var(--fleur-black) url('../img/muster-dunkel.svg') 50% 0 / 240px auto;
+    border: 2px solid var(--fleur-orange);
+    border-radius: 0;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, .5);
+    /* oben/unten volle Eckhoehe, sonst schneiden Toiletten und Hightables die Boegen */
+    padding: calc(var(--plan-box) + 8px) calc(var(--plan-box) * .3 + 20px);
+}
+.deco-frame--plan {
+    --df-box: var(--plan-box);
+    --df-sw: 1.5px;
+    color: var(--fleur-orange);
+}
+.floorplan .floorplan-row { position: relative; z-index: 2; }
+.floorplan-area,
+.floorplan-toilet,
+.floorplan-entry,
+.floorplan-bookable-badge { border-radius: 2px; }
+
+/* Buchungsoptionen: flach und eckig wie die Plakatzeilen */
+.booking-option {
+    background: none;
+    border: 1px solid rgba(245, 240, 232, .16);
+    border-radius: 0;
+    box-shadow: none;
+    min-height: 0;
+    padding: 18px 22px;
+    gap: 18px;
+    align-items: center;
+}
+.booking-option:hover,
+.booking-option.active {
+    background: rgba(255, 142, 40, .06);
+    border-color: var(--fleur-orange);
+    transform: none;
+}
+.booking-option-icon {
+    flex: 0 0 auto;
+    width: 44px;
+    height: 44px;
+    border-radius: 0;
+    background: none;
+    border: 1.5px solid var(--fleur-orange);
+}
+.booking-option-content h3 { font-family: var(--font-display); letter-spacing: .03em; }
+.booking-status { border-radius: 2px; }
+
+/* ---------- FAQ als Programmheft: Liste statt Kaesten ---------- */
+.faq-grid { column-gap: clamp(32px, 6vw, 80px); row-gap: 0; }
+.faq-item {
+    background: none;
+    border: 0;
+    border-top: 1px solid rgba(245, 240, 232, .14);
+    border-radius: 0;
+    box-shadow: none;
+    padding: 28px 0 34px;
+    min-height: 0;
+}
+.faq-item:hover { background: none; transform: none; border-color: rgba(255, 142, 40, .5); }
+.faq-question {
+    font-family: var(--font-display);
+    font-size: clamp(1.05rem, 1.8vw, 1.2rem);
+    letter-spacing: .02em;
+    line-height: 1.35;
+    color: var(--fleur-orange);
+    margin-bottom: .7em;
+}
+.faq-answer { color: #d6d1c9; line-height: 1.75; }
+
+/* ---------- Footer: Muster dunkel wie auf dem Januar-Posting ---------- */
+.footer {
+    background-color: var(--fleur-anthracite);
+    background-image: url('../img/muster-dunkel.svg');
+    background-size: 260px auto;
+    background-position: 50% 0;
+}
+.hero-content { max-width: min(1000px, calc(100vw - 28px)); }
+.hero-info { justify-content: center; align-items: center; text-align: center; }
