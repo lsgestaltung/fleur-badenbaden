@@ -19,6 +19,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { revalidatePath } from 'next/cache';
 import DataStore from '@/lib/kv';
 import type { TelegramUpdate, Event } from '@/lib/types';
+import { statistik, ANLAESSE } from '@/lib/anfragen';
 
 // Environment variables
 const BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN!;
@@ -298,10 +299,33 @@ const commands: Record<string, (chatId: number, args: string) => Promise<void>> 
 MAALEEK x KEZRULESEVERYTHING</code>
 
 <b>📊 System:</b>
+/anfragen - Anfragen über die Website
 /status - Aktueller Status
 /events - Events anzeigen
 
 <i>Tipp: Datum-Format ist D.MM oder DD.MM</i>
+    `.trim());
+  },
+
+  async anfragen(chatId) {
+    const d = await statistik(7, 2);
+    const g = d.gesamt;
+    const m = d.monate[0];
+    const woche = d.tage.reduce((sum, t) => sum + (t.zahlen.summe || 0), 0);
+    const W = 'anlass:firmenfeier-weihnachtsfeier';
+    const zeilen = Object.entries(ANLAESSE)
+      .map(([k, label]) => [label, g[`anlass:${k}`] || 0] as const)
+      .filter(([, v]) => v > 0)
+      .map(([label, v]) => `${label}: <b>${v}</b>`);
+    await sendMessage(chatId, `
+<b>📨 Anfragen über die Website</b>
+
+<b>🎄 Weihnachtsfeier:</b> ${m.zahlen[W] || 0} diesen Monat · ${g[W] || 0} gesamt
+
+<b>Alle Anlässe:</b> ${m.zahlen.summe || 0} diesen Monat · ${woche} in 7 Tagen · ${g.summe || 0} gesamt
+${zeilen.length ? '\n' + zeilen.join('\n') : ''}
+
+<i>Gezählt wird das Absenden des Formulars (WhatsApp/Mail). Details: fleur-bar.de/anfragen</i>
     `.trim());
   },
 

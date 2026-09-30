@@ -5167,8 +5167,7 @@ a[href^="mailto:"]::after,
 }
 .footer-sub-info a { color: var(--fleur-cream); }
 
-/* ============================================
-   EVENT LOCATION im Poster-Look
+/* =====================================   EVENT LOCATION im Poster-Look
    ============================================ */
 
 /* Hero: Deco-Rahmen wie auf der Startseite */
@@ -5383,3 +5382,133 @@ a[href^="mailto:"]::after,
 .legal-section ul { margin: 0 0 var(--space-sm) 1.2em; list-style: square; color: var(--fleur-cream); }
 .legal-section li::marker { color: var(--fleur-orange); }
 .legal-back { margin-top: clamp(32px, 5vw, 56px); }
+=======
+/* Inhaltsseiten: Kurzantwort, Schritte, FAQ */
+.content-summary {
+    padding: 22px 24px;
+    border: 1px solid rgba(255, 142, 40, .45);
+    background: rgba(255, 142, 40, .06);
+}
+.content-page ol.content-steps { list-style: decimal; }
+.content-page .faq-block .faq-q {
+    font-family: var(--font-display);
+    font-weight: normal;
+    font-size: 1.1rem;
+    line-height: 1.4;
+    letter-spacing: .01em;
+    color: var(--fleur-cream);
+    margin: 22px 0 6px;
+}
+.content-page .faq-block .faq-q:first-child { margin-top: 4px; }
+.content-page .faq-block .faq-a { margin-bottom: 0; }
+
+/* In Kalender speichern */
+.event-kalender {
+    flex: 1 1 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px 14px;
+    margin: 6px 0 0;
+    font-family: var(--font-light);
+    font-size: .95rem;
+    color: var(--fleur-cream);
+}
+.event-kalender svg { width: 18px; height: 18px; color: var(--fleur-orange); flex: none; }
+.event-kalender a { color: var(--fleur-orange); text-decoration: underline; text-underline-offset: 3px; }
+.event-kalender a:hover { color: var(--fleur-orange-light); }
+.event-card .event-kalender-link {
+    align-self: flex-start;
+    margin-top: 4px;
+    font-family: var(--font-light);
+    font-size: .9rem;
+    text-transform: lowercase;
+    color: var(--fleur-ink);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+.event-card .event-kalender-link:hover { text-decoration-thickness: 2px; }
+
+/* Anfrage-Formular (Lounge / Geburtstag / Weihnachtsfeier) */
+.anfrage {
+    position: relative;
+    padding: clamp(24px, 4vw, 36px);
+    background: var(--fleur-black) url('../img/muster-dunkel.svg') 0 0 / 240px auto;
+    border: 1px solid rgba(245, 240, 232, .22);
+}
+.anfrage::before {
+    content: '';
+    position: absolute;
+    inset: 6px;
+    border: 1px solid rgba(255, 142, 40, .45);
+    pointer-events: none;
+}
+.anfrage > * { position: relative; }
+.anfrage .anfrage-titel { margin-bottom: 6px; }
+.anfrage-intro { margin-bottom: 18px; }
+.anfrage-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px 18px;
+    margin-bottom: 18px;
+}
+@media (max-width: 560px) { .anfrage-grid { grid-template-columns: minmax(0, 1fr); } }
+.anfrage-feld { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+.anfrage-grid .anfrage-feld { margin-bottom: 0; }
+.anfrage-feld > span,
+.anfrage-bereich legend {
+    font-family: var(--font-display);
+    font-size: .9rem;
+    letter-spacing: .04em;
+    text-transform: lowercase;
+    color: var(--fleur-orange);
+}
+.anfrage input[type="date"],
+.anfrage input[type="number"],
+.anfrage input[type="text"],
+.anfrage select,
+.anfrage textarea {
+    width: 100%;
+    min-height: 46px;
+    padding: 10px 12px;
+    font-family: var(--font-light);
+    font-size: 1rem;
+    color: var(--fleur-cream);
+    background: rgba(10, 10, 10, .85);
+    border: 1px solid rgba(245, 240, 232, .35);
+    border-radius: 0;
+    color-scheme: dark;
+}
+.anfrage textarea { resize: vertical; min-height: 0; }
+.anfrage input:focus-visible,
+.anfrage select:focus-visible,
+.anfrage textarea:focus-visible { outline: 2px solid var(--fleur-orange); outline-offset: 1px; border-color: var(--fleur-orange); }
+.anfrage-bereich { border: 0; margin: 0 0 16px; padding: 0; }
+.anfrage-bereich legend { margin-bottom: 8px; }
+.anfrage-bereich { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.anfrage-bereich legend { grid-column: 1 / -1; }
+@media (max-width: 560px) { .anfrage-bereich { grid-template-columns: minmax(0, 1fr); } }
+.anfrage-option {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    padding: 12px 12px;
+    border: 1px solid rgba(245, 240, 232, .25);
+    cursor: pointer;
+    transition: border-color .2s ease, background .2s ease;
+}
+.anfrage-option:hover { border-color: var(--fleur-orange); }
+.anfrage-option:has(input:checked) { border-color: var(--fleur-orange); background: rgba(255, 142, 40, .1); }
+.anfrage-option input { accent-color: var(--fleur-orange); margin-top: 4px; width: 18px; height: 18px; flex: none; }
+.anfrage-option strong { display: block; font-family: var(--font-display); font-weight: normal; color: var(--fleur-cream); }
+.anfrage-option small { display: block; font-family: var(--font-light); font-size: .88rem; color: var(--fleur-cream); opacity: .85; }
+.anfrage-hinweis {
+    margin: 0 0 14px;
+    padding: 10px 12px;
+    border-left: 3px solid var(--fleur-orange);
+    background: rgba(255, 142, 40, .08);
+}
+.anfrage-aktionen { display: flex; flex-wrap: wrap; gap: 12px; margin: 6px 0 12px; }
+.anfrage-aktionen .btn { white-space: nowrap; }
+@media (max-width: 560px) { .anfrage-aktionen .btn { flex: 1 1 100%; justify-content: center; text-align: center; } }
+.content-page .legal-section .anfrage-klein { font-size: .85rem; opacity: .85; margin: 0; }

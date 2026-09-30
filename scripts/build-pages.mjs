@@ -111,6 +111,16 @@ function waLink(e) {
     return `${WHATSAPP}?text=${encodeURIComponent(`Hi, ich möchte gerne für den ${d}. ${MONATE[m - 1]} (${wofuer}) einen Tisch reservieren.`)}`;
 }
 
+/** Wie schreiben(), ignoriert aber die DTSTAMP-Zeile beim Vergleich */
+function schreibenOhneStempel(datei, inhalt) {
+    const ohne = t => t.replace(/^DTSTAMP:.*$/m, '');
+    const alt = fs.existsSync(datei) ? fs.readFileSync(datei, 'utf8') : null;
+    if (alt === null || ohne(alt) !== ohne(inhalt)) {
+        fs.mkdirSync(path.dirname(datei), { recursive: true });
+        fs.writeFileSync(datei, inhalt);
+    }
+}
+
 function schreiben(datei, inhalt) {
     fs.mkdirSync(path.dirname(datei), { recursive: true });
     const alt = fs.existsSync(datei) ? fs.readFileSync(datei, 'utf8') : null;
@@ -168,6 +178,7 @@ const FUSS_LINKS = [
     ['/events', 'Events'],
     ['/tisch-reservieren', 'Tisch reservieren'],
     ['/geburtstag-feiern-baden-baden', 'Geburtstag feiern'],
+    ['/weihnachtsfeier-baden-baden', 'Weihnachtsfeier'],
     ['/event-location', 'Event Location'],
     ['/jobs', 'Jobs'],
 ];
@@ -306,6 +317,126 @@ function brotkrumenHtml(teile) {
     ).join('<span aria-hidden="true"> / </span>')}</nav>`;
 }
 
+// ---------------------------------------------------------------- Kalender
+
+const KALENDER_DIR = path.join(PUBLIC, 'kalender');
+const ORT = 'FLEUR Baden-Baden, Sophienstraße 15, 76530 Baden-Baden';
+
+/** ISO mit Offset -> 20261002T210000Z */
+const utcStempel = iso => new Date(iso).toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
+
+const icsText = s => String(s).replace(/\\/g, '\\\\').replace(/\n/g, '\\n').replace(/([,;])/g, '\\$1');
+
+/** Zeilen nach RFC 5545 auf 75 Oktette falten (Folgezeilen: Leerzeichen + 74) */
+function falten(zeile) {
+    const teile = [];
+    let rest = zeile, max = 75;
+    while (Buffer.byteLength(rest, 'utf8') > max) {
+        let n = max;
+        while (Buffer.byteLength(rest.slice(0, n), 'utf8') > max) n--;
+        teile.push(rest.slice(0, n));
+        rest = rest.slice(n);
+        max = 74;
+    }
+    teile.push(rest);
+    return teile.join('\r\n ');
+}
+
+function kalenderDaten(e) {
+    return {
+        start: utcStempel(isoBerlin(e.date, e.hh, e.mm)),
+        ende: utcStempel(isoBerlin(e.date, 5, 0, 1)),
+        titel: `${e.name} – FLEUR Baden-Baden`,
+        text: `${beschreibungEvent(e)}\n\n${SITE}${e.url}`,
+    };
+}
+
+function icsDatei(e) {
+    const k = kalenderDaten(e);
+    const zeilen = [
+        'BEGIN:VCALENDAR',
+        'VERSION:2.0',
+        'PRODID:-//FLEUR Baden-Baden//Events//DE',
+        'CALSCALE:GREGORIAN',
+        'METHOD:PUBLISH',
+        'BEGIN:VEVENT',
+        `UID:${e.slug}@fleur-bar.de`,
+        `DTSTAMP:${utcStempel(new Date().toISOString())}`,
+        `DTSTART:${k.start}`,
+        `DTEND:${k.ende}`,
+        `SUMMARY:${icsText(k.titel)}`,
+        `DESCRIPTION:${icsText(k.text)}`,
+        `LOCATION:${icsText(ORT)}`,
+        `URL:${SITE}${e.url}`,
+        'END:VEVENT',
+        'END:VCALENDAR',
+    ];
+    return zeilen.map(falten).join('\r\n') + '\r\n';
+}
+
+function googleKalenderLink(e) {
+    const k = kalenderDaten(e);
+    const q = new URLSearchParams({ action: 'TEMPLATE', text: k.titel, dates: `${k.start}/${k.ende}`, details: k.text, location: ORT });
+    return `https://calendar.google.com/calendar/render?${q}`;
+}
+
+// ---------------------------------------------------------------- Anfrage-Formular
+
+const ANLAESSE = ['Geburtstag', 'Abend mit Freunden', 'Firmenfeier / Weihnachtsfeier', 'Anderer Anlass'];
+const BEREICHE = [
+    ['VIP Lounge', 'Lounge-Tische mit Flaschenkühler'],
+    ['Hightable', 'Stehtische für Gruppen'],
+    ['Private Feier', 'die ganze Location oder Teilbereiche'],
+    ['Weiß ich noch nicht', 'wir beraten dich'],
+];
+
+/**
+ * Anfrage ohne Preise/Pakete: sammelt Anlass, Datum, Personen, Bereich und
+ * Getränkewünsche und baut daraus eine WhatsApp- oder Mail-Nachricht
+ * (Logik in main.js: LoungeAnfrage). Es werden keine Daten an einen Server geschickt.
+ */
+function anfrageFormular(anlass = '', bereich = '') {
+    const opt = ANLAESSE.map(a => `<option${a === anlass ? ' selected' : ''}>${esc(a)}</option>`).join('');
+    const radios = BEREICHE.map(([b, hint], i) => `
+                <label class="anfrage-option">
+                    <input type="radio" name="bereich" value="${esc(b)}"${(bereich ? b === bereich : i === 0) ? ' checked' : ''}>
+                    <span><strong>${esc(b)}</strong><small>${esc(hint)}</small></span>
+                </label>`).join('');
+    return `<form class="anfrage" novalidate>
+    <h2 class="anfrage-titel">Anfrage stellen</h2>
+    <p class="anfrage-intro">Sag uns kurz, was du vorhast – wir stimmen Bereich und Getränke-Bundle individuell mit dir ab.</p>
+    <div class="anfrage-grid">
+        <label class="anfrage-feld"><span>Anlass</span>
+            <select name="anlass"><option value="">Bitte wählen</option>${opt}</select>
+        </label>
+        <label class="anfrage-feld"><span>Datum *</span>
+            <input type="date" name="datum" required>
+        </label>
+        <label class="anfrage-feld"><span>Personen *</span>
+            <input type="number" name="personen" min="1" max="500" inputmode="numeric" required>
+        </label>
+        <label class="anfrage-feld"><span>Dein Name</span>
+            <input type="text" name="name" autocomplete="name">
+        </label>
+    </div>
+    <fieldset class="anfrage-bereich">
+        <legend>Bereich</legend>${radios}
+    </fieldset>
+    <p class="anfrage-hinweis" hidden>Clubnächte sind freitags und samstags. Für andere Tage frag gern eine private Feier an.</p>
+    <label class="anfrage-feld"><span>Getränkewünsche</span>
+        <textarea name="getraenke" rows="3" placeholder="Was trinkt ihr gern? Auch alkoholfrei – wir stellen euer Bundle zusammen."></textarea>
+    </label>
+    <label class="anfrage-feld"><span>Sonstige Wünsche</span>
+        <textarea name="wuensche" rows="2" placeholder="z. B. Überraschung zum Geburtstag, Deko, Uhrzeit"></textarea>
+    </label>
+    <div class="anfrage-aktionen">
+        <button type="submit" class="btn btn-primary" data-kanal="whatsapp">Per WhatsApp senden</button>
+        <button type="submit" class="btn btn-secondary" data-kanal="mail">Per E-Mail senden</button>
+    </div>
+    <p class="anfrage-klein">Die Anfrage öffnet WhatsApp bzw. dein Mailprogramm mit einer vorbereiteten Nachricht an info@fleur.management – abgeschickt wird erst, wenn du dort auf Senden tippst.</p>
+</form>`;
+}
+
 // ---------------------------------------------------------------- Bausteine
 
 function karte(e) {
@@ -423,6 +554,12 @@ ${alter ? `                    <div><dt>Einlass</dt><dd>ab ${alter} Jahren, bitt
                 <div class="event-actions">
                     <a href="${esc(e.cta)}" class="btn btn-primary" target="_blank" rel="noopener">Tisch reservieren</a>
                     <a href="/tisch-reservieren" class="btn btn-secondary">Lounge &amp; Hightables</a>
+                    <p class="event-kalender">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="5" width="18" height="16"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+                        <span>In Kalender speichern:</span>
+                        <a href="/kalender/${e.slug}.ics" download="${e.slug}.ics">Apple / Outlook</a>
+                        <a href="${esc(googleKalenderLink(e))}" target="_blank" rel="noopener">Google</a>
+                    </p>
                 </div>
             </div>
         </section>
@@ -476,15 +613,28 @@ function inhaltsSeite(datei, events, heute) {
     const kommend = events.filter(e => e.date >= heute);
     let koerper = roh.slice(kopf[0].length).trim()
         .replace('{{BROTKRUMEN}}', brotkrumenHtml(krumen))
+        .replace(/\{\{ANFRAGE(?::([^|}]*))?(?:\|([^}]*))?\}\}/g, (_, anlass, bereich) => anfrageFormular(anlass || '', bereich || ''))
         .replace('{{EVENTS}}', eventRaster(kommend.length ? kommend : events,
             { titelOutline: 'NÄCHSTE', titelFilled: 'EVENTS' }));
+    // FAQ-Schema aus dem sichtbaren FAQ-Block ableiten – so koennen Text und
+    // strukturierte Daten nie auseinanderlaufen.
+    const faq = [...koerper.matchAll(/<h3 class="faq-q">([\s\S]*?)<\/h3>\s*<p class="faq-a">([\s\S]*?)<\/p>/g)]
+        .map(([, q, a]) => ({
+            '@type': 'Question',
+            name: text(q),
+            acceptedAnswer: { '@type': 'Answer', text: text(a) },
+        }));
+    const faqSchema = faq.length
+        ? [{ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq }]
+        : [];
+
     return {
         pfad: meta.pfad,
         html: layout({
             pfad: meta.pfad,
             titel: meta.titel,
             beschreibung: meta.beschreibung,
-            schema: [brotkrumen(krumen), ...(meta.schema || [])],
+            schema: [brotkrumen(krumen), ...faqSchema, ...(meta.schema || [])],
             inhalt: koerper.split('\n').map(z => z ? '        ' + z : z).join('\n'),
         }),
     };
@@ -512,6 +662,8 @@ function main() {
     fs.mkdirSync(EVENTS_DIR, { recursive: true });
     const aktuell = new Set(events.map(e => `${e.slug}.html`));
     for (const e of events) schreiben(path.join(EVENTS_DIR, `${e.slug}.html`), eventSeite(e, events));
+    fs.mkdirSync(KALENDER_DIR, { recursive: true });
+    for (const e of events) schreibenOhneStempel(path.join(KALENDER_DIR, `${e.slug}.ics`), icsDatei(e));
 
     // Bestehende Seiten ohne Karte: vergangen -> behalten (nur "Weitere Termine" auffrischen),
     // kommend -> entfernen (abgesagt oder umbenannt)
@@ -521,7 +673,13 @@ function main() {
         if (!/^\d{4}-\d{2}-\d{2}-.+\.html$/.test(f) || aktuell.has(f)) continue;
         const datum = f.slice(0, 10);
         const datei = path.join(EVENTS_DIR, f);
-        if (datum >= heute) { fs.unlinkSync(datei); console.log(`  entfernt (keine Karte mehr): ${f}`); continue; }
+        if (datum >= heute) {
+            fs.unlinkSync(datei);
+            const ics = path.join(KALENDER_DIR, f.replace(/\.html$/, '.ics'));
+            if (fs.existsSync(ics)) fs.unlinkSync(ics);
+            console.log(`  entfernt (keine Karte mehr): ${f}`);
+            continue;
+        }
         const alt = fs.readFileSync(datei, 'utf8');
         const neu = alt.replace(/<!-- weitere:start -->[\s\S]*?<!-- weitere:ende -->/,
             `<!-- weitere:start -->\n${(kommend.length ? kommend : events).map(karte).join('\n\n')}\n<!-- weitere:ende -->`);

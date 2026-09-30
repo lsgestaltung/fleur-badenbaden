@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//FLEUR Baden-Baden//Events//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:2026-10-17-lumes@fleur-bar.de
+DTSTAMP:20260930T191844Z
+DTSTART:20261017T210000Z
+DTEND:20261018T030000Z
+SUMMARY:LUMES – FLEUR Baden-Baden
+DESCRIPTION:LUMES im FLEUR Baden-Baden: Samstag\, 17. Oktober 2026\, ab 23:
+ 00 Uhr in der Sophienstraße 15. Einlass ab 21 Jahren. Tische in VIP Loung
+ e oder am Hightable per WhatsApp reservieren.\n\nhttps://fleur-bar.de/even
+ ts/2026-10-17-lumes
+LOCATION:FLEUR Baden-Baden\, Sophienstraße 15\, 76530 Baden-Baden
+URL:https://fleur-bar.de/events/2026-10-17-lumes
+END:VEVENT
+END:VCALENDAR

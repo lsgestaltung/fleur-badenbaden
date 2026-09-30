@@ -37,7 +37,20 @@ Club-Website für FLEUR (Sophienstraße 15, 76530 Baden-Baden). Kunde von LS Ges
 | Dresscode | Smart Casual, Hemden gern gesehen, lange Hosen, keine kurzen Hosen/Sandalen; je Event anders möglich | FAQ in `index.html` (+ JSON-LD), Event-Seite in `build-pages.mjs`, `scripts/seiten/tisch-reservieren.html` |
 | Musik | House/Tech-House, dazu Urban-/RnB-Nächte | FAQ, `index.html` Meta |
 | Resident DJ | Niklas Beuscher | `index.html` |
+| Getränke-Bundle | Individuelles Getränkepaket zur Lounge/zum Hightable nach Absprache (keine Preise genannt) | FAQ in `index.html` (+ JSON-LD), NightClub-`hasOfferCatalog`, `scripts/seiten/*`, `public/llms.txt` |
 | Private Location | bis 180 Gäste, Full Service, 4–6 Wochen Vorlauf fürs Wochenende | `event-location.html`, `scripts/seiten/geburtstag-feiern-baden-baden.html` |
+
+**KI-Sichtbarkeit:** `public/llms.txt` ist das Faktenblatt für ChatGPT, Perplexity & Co. – bei geänderten Fakten mitpflegen. Inhaltsseiten beginnen mit einer „Kurz gesagt“-Antwort; FAQ-Blöcke dort als `<h3 class="faq-q">` + `<p class="faq-a">` schreiben, das FAQPage-Schema erzeugt der Generator daraus automatisch.
+
+**Anfrage-Formular:** In `scripts/seiten/*.html` erzeugt `{{ANFRAGE}}` bzw. `{{ANFRAGE:Anlass|Bereich}}` das Formular (Logik: `LoungeAnfrage` in `main.js`). Es sendet nichts an einen Server, sondern öffnet WhatsApp/Mail mit fertiger Nachricht. Bewusst **ohne Preise, Mindestumsätze oder benannte Pakete** – so gewünscht.
+
+**Anfrage-Zähler:** Beim Absenden schickt `LoungeAnfrage` zusätzlich per `sendBeacon` `{anlass, kanal, seite}` an `/api/anfrage` (anonym: keine Inhalte, keine IP, kein Cookie; in `datenschutz.html` Abschnitt 5 erwähnt). Gezählt wird in Upstash Redis (`lib/anfragen.ts`: Hashes `fleur:anfragen:gesamt|monat:YYYY-MM|tag:YYYY-MM-DD`, Tage laufen nach 400 Tagen ab). Auswertung:
+- `https://fleur-bar.de/anfragen`: Basic Auth, beliebiger Benutzername, Passwort = Env `STATS_SECRET` (ohne die Variable liefert die Seite 503). `?format=json` gibt Rohdaten.
+- Telegram-Bot: `/anfragen`.
+- Jede WhatsApp-/Mail-Nachricht endet mit „– Anfrage über fleur-bar.de/<seite>“, damit man Formular-Anfragen im Postfach erkennt.
+Neuer Anlass im Formular → `ANLAESSE` in `lib/anfragen.ts` ergänzen; neue Seite mit Formular → `SEITEN` ergänzen, sonst lehnt die API mit 400 ab.
+
+**Kalender:** Der Generator schreibt pro Event `public/kalender/<slug>.ics` (UTC-Zeiten, Ende 05:00). Event-Seiten verlinken .ics + Google Kalender, `main.js` hängt an jede Event-Karte „+ in kalender speichern“.
 
 **FAQ-Regel:** Sichtbare FAQ (`.faq-question`) und `FAQPage`-JSON-LD im `<head>` von `index.html` müssen Frage für Frage identisch sein.
 
