@@ -1,11 +1,13 @@
 # FLEUR Baden-Baden - Projekt-Dokumentation
 
+> Aktuelle Arbeitsregeln: `CLAUDE.md`. Events pflegen: `docs/EVENTS-PFLEGEN.md`.
+
 ## Übersicht
 
 **Projekt:** FLEUR Baden-Baden Website
 **Typ:** Premium Nightclub Website mit dynamischem Content-Management
 **Agentur:** [lsgestaltung.de](https://lsgestaltung.de)
-**Live URL:** https://fleur-badenbaden.vercel.app
+**Live URL:** https://fleur-bar.de
 **Repository:** https://github.com/lsgestaltung/fleur-badenbaden
 
 ---
@@ -61,7 +63,7 @@ fleur-baden-baden/
 
 | Name | Hex | Verwendung |
 |------|-----|------------|
-| `--fleur-orange` | #E8793A | Primärfarbe, Akzente |
+| `--fleur-orange` | #ff8e28 | Primärfarbe, Akzente |
 | `--fleur-orange-light` | #F5A66A | Hover States |
 | `--fleur-black` | #0A0A0A | Hintergrund |
 | `--fleur-anthracite` | #121212 | Sekundärer Hintergrund |
