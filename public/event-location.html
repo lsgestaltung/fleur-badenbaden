@@ -33,9 +33,6 @@
     <meta name="geo.position" content="48.7606;8.2408">
     <meta name="ICBM" content="48.7606, 8.2408">
 
-    <!-- Preload Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <!-- Favicon -->
     <link rel="icon" href="/favicon.ico" sizes="32x32">
@@ -132,6 +129,15 @@
     </script>
 </head>
 <body>
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+        <symbol id="deco-ecke" viewBox="0 0 100 100">
+            <path d="M100 30A70 70 0 0 1 30 100" fill="none" stroke="currentColor" stroke-width="3" vector-effect="non-scaling-stroke"/>
+            <g stroke="currentColor" stroke-width="2.5" stroke-linecap="round" vector-effect="non-scaling-stroke">
+                <path d="M4.3 0.8L65 11.5"/><path d="M3.8 1.6L57.5 24.9"/><path d="M3.2 2.2L47.1 36.8"/><path d="M2.8 2.8L46.7 46.7"/>
+                <path d="M2.2 3.2L36.8 47.1"/><path d="M1.6 3.8L24.9 57.5"/><path d="M0.8 4.3L11.5 65"/>
+            </g>
+        </symbol>
+    </svg>
     <!-- Custom Cursor -->
     <div class="cursor" aria-hidden="true">
         <div class="cursor-dot"></div>
@@ -193,11 +199,13 @@
             <div class="event-hero-decor event-hero-decor-2"></div>
 
             <div class="event-hero-content">
-                <!-- Corner Decorations -->
-                <div class="hero-corner hero-corner-tl"></div>
-                <div class="hero-corner hero-corner-tr"></div>
-                <div class="hero-corner hero-corner-bl"></div>
-                <div class="hero-corner hero-corner-br"></div>
+                <div class="deco-frame deco-frame--hero" aria-hidden="true">
+                    <i class="df-edge df-t"></i><i class="df-edge df-r"></i><i class="df-edge df-b"></i><i class="df-edge df-l"></i>
+                    <svg class="df-corner df-tl"><use href="#deco-ecke"/></svg>
+                    <svg class="df-corner df-tr"><use href="#deco-ecke"/></svg>
+                    <svg class="df-corner df-bl"><use href="#deco-ecke"/></svg>
+                    <svg class="df-corner df-br"><use href="#deco-ecke"/></svg>
+                </div>
 
                 <span class="hero-tagline">Deine exklusive Location</span>
                 <h1 class="event-hero-title">
@@ -260,9 +268,6 @@
                             </div>
                             <h3>Firmenevents</h3>
                             <p>Teambuildings, Produktpräsentationen, Firmenfeiern - professionell und stilvoll.</p>
-                            <div class="event-type-arrow">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                            </div>
                         </div>
                     </div>
 
@@ -274,9 +279,6 @@
                             </div>
                             <h3>Geburtstage</h3>
                             <p>Feiere deinen besonderen Tag in exklusivem Ambiente mit deinen Liebsten.</p>
-                            <div class="event-type-arrow">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                            </div>
                         </div>
                     </div>
 
@@ -288,9 +290,6 @@
                             </div>
                             <h3>Private Feiern</h3>
                             <p>JGA, Jubiläen, Hochzeitsfeiern - dein privates Event in stilvollem Rahmen.</p>
-                            <div class="event-type-arrow">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                            </div>
                         </div>
                     </div>
 
@@ -302,9 +301,6 @@
                             </div>
                             <h3>Workshops</h3>
                             <p>Yoga, Pilates, Seminare - nutze unsere Räumlichkeiten für kreative Formate.</p>
-                            <div class="event-type-arrow">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -377,8 +373,7 @@
 
                 <div class="event-services-grid">
                     <div class="event-service-card">
-                        <div class="event-service-glow"></div>
-                        <div class="event-service-icon">
+                                                <div class="event-service-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><path d="M6 1v3M10 1v3M14 1v3"/></svg>
                         </div>
                         <h3>Barkeeper</h3>
@@ -387,8 +382,7 @@
                     </div>
 
                     <div class="event-service-card">
-                        <div class="event-service-glow"></div>
-                        <div class="event-service-icon">
+                                                <div class="event-service-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
                         </div>
                         <h3>Catering</h3>
@@ -397,8 +391,7 @@
                     </div>
 
                     <div class="event-service-card">
-                        <div class="event-service-glow"></div>
-                        <div class="event-service-icon">
+                                                <div class="event-service-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="5.5" cy="17.5" r="2.5"/><circle cx="17.5" cy="15.5" r="2.5"/><path d="M8 17V5l12-2v12"/></svg>
                         </div>
                         <h3>DJ</h3>
@@ -407,8 +400,7 @@
                     </div>
 
                     <div class="event-service-card">
-                        <div class="event-service-glow"></div>
-                        <div class="event-service-icon">
+                                                <div class="event-service-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                         </div>
                         <h3>Licht & Technik</h3>
@@ -417,8 +409,7 @@
                     </div>
 
                     <div class="event-service-card">
-                        <div class="event-service-glow"></div>
-                        <div class="event-service-icon">
+                                                <div class="event-service-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                         </div>
                         <h3>Security</h3>
@@ -427,8 +418,7 @@
                     </div>
 
                     <div class="event-service-card">
-                        <div class="event-service-glow"></div>
-                        <div class="event-service-icon">
+                                                <div class="event-service-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
                         </div>
                         <h3>Deko & Branding</h3>
@@ -439,10 +429,13 @@
 
                 <div class="event-cta-section">
                     <div class="event-cta-box">
-                        <div class="event-cta-box-corner event-cta-box-corner-tl"></div>
-                        <div class="event-cta-box-corner event-cta-box-corner-tr"></div>
-                        <div class="event-cta-box-corner event-cta-box-corner-bl"></div>
-                        <div class="event-cta-box-corner event-cta-box-corner-br"></div>
+                        <div class="deco-frame deco-frame--cta" aria-hidden="true">
+                            <i class="df-edge df-t"></i><i class="df-edge df-r"></i><i class="df-edge df-b"></i><i class="df-edge df-l"></i>
+                            <svg class="df-corner df-tl"><use href="#deco-ecke"/></svg>
+                            <svg class="df-corner df-tr"><use href="#deco-ecke"/></svg>
+                            <svg class="df-corner df-bl"><use href="#deco-ecke"/></svg>
+                            <svg class="df-corner df-br"><use href="#deco-ecke"/></svg>
+                        </div>
                         <h3>Bereit für dein Event?</h3>
                         <p>Erzähl uns von deiner Vision und wir machen sie Realität.</p>
                         <button class="btn btn-primary btn-large" id="openEventModalBottom">
