@@ -5,14 +5,15 @@ CALSCALE:GREGORIAN
 METHOD:PUBLISH
 BEGIN:VEVENT
 UID:2026-10-16-sticx@fleur-bar.de
-DTSTAMP:20260930T191844Z
+DTSTAMP:20261001T132719Z
 DTSTART:20261016T210000Z
 DTEND:20261017T030000Z
-SUMMARY:STICX – FLEUR Baden-Baden
-DESCRIPTION:STICX im FLEUR Baden-Baden: Freitag\, 16. Oktober 2026\, ab 23:
- 00 Uhr in der Sophienstraße 15. Einlass ab 18 Jahren. Tische in VIP Loung
- e oder am Hightable per WhatsApp reservieren.\n\nhttps://fleur-bar.de/even
- ts/2026-10-16-sticx
+SUMMARY:Wiesnparty: STICX – FLEUR Baden-Baden
+DESCRIPTION:Wiesnparty: STICX im FLEUR Baden-Baden: Freitag\, 16. Oktober 2
+ 026\, ab 23:00 Uhr in der Sophienstraße 15. Einlass ab 18 Jahren. Dressco
+ de: Tracht only – Dirndl & Lederhosen. Tische in VIP Lounge oder am High
+ table per WhatsApp reservieren.\n\nhttps://fleur-bar.de/events/2026-10-16-
+ sticx
 LOCATION:FLEUR Baden-Baden\, Sophienstraße 15\, 76530 Baden-Baden
 URL:https://fleur-bar.de/events/2026-10-16-sticx
 END:VEVENT

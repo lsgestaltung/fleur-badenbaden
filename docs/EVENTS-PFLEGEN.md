@@ -40,6 +40,7 @@ Karten **chronologisch** einfügen (das Skript sortiert zwar selbst, aber so ble
 | `event-meta` | ja | Beginn, Format `23:00 Uhr` |
 | `event-cta` | ja | WhatsApp-Link mit vorausgefülltem Text. Wird 1:1 auf die Event-Seite übernommen. |
 | Klasse `event-card-featured` | nein | Aktuell ohne sichtbaren Unterschied. |
+| `data-dresscode` | nein | Eigener Dresscode für diesen Abend, z. B. `data-dresscode="Tracht only – Dirndl &amp; Lederhosen"` direkt hinter `data-date`. Ersetzt auf der Event-Seite den Standard (Smart Casual) und steht in der Google-Beschreibung. Auf der Karte selbst zusätzlich kurz in `event-meta` nennen (`23:00 Uhr · Tracht only`). |
 
 **Nicht** nötig: JSON-LD, Sitemap, Event-Seite, Banner – das erledigen Skript und `main.js`.
 
@@ -77,7 +78,7 @@ URL-Bildung (`slugify`, identisch in Skript und `main.js`): Kleinbuchstaben, ä�
 | **Monatswechsel** | Neue Karten ergänzen. Alte Karten *können* bleiben (werden automatisch ausgeblendet) oder gelöscht werden – ihre Event-Seiten bleiben als Archiv erhalten und zeigen „Dieser Abend liegt schon hinter uns“. |
 | **Keine kommenden Events** | Startseite zeigt „Neue Termine folgen in Kürze“ mit Instagram-Link. |
 | **Zwei Events am selben Tag mit gleichem Namen** | Build bricht ab (doppelte URL) – Namen unterscheiden. |
-| **Eigener Dresscode für ein Event** | Aktuell nur als `event-special` oder im Instagram-Post; die Event-Seite zeigt den Standard-Dresscode. |
+| **Eigener Dresscode für ein Event** | Attribut `data-dresscode` an der Karte setzen (siehe Tabelle oben). Ohne Attribut gilt der Standard-Dresscode. |
 
 ---
 

@@ -136,8 +136,8 @@ function eventsLesen() {
     const bereich = html.slice(start, html.indexOf('id="eventsEmpty"', start));
 
     const events = [];
-    for (const m of bereich.matchAll(/<article class="([^"]*event-card[^"]*)" data-date="([^"]+)">([\s\S]*?)<\/article>/g)) {
-        const [, klassen, date, inner] = m;
+    for (const m of bereich.matchAll(/<article class="([^"]*event-card[^"]*)" data-date="([^"]+)"([^>]*)>([\s\S]*?)<\/article>/g)) {
+        const [, klassen, date, attribute, inner] = m;
         if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) throw new Error(`Ungültiges data-date: ${date}`);
         const artist = text((inner.match(/class="event-artist">([\s\S]*?)<\/h3>/) || [])[1] || '');
         if (!artist) throw new Error(`Event ${date} ohne .event-artist`);
@@ -145,8 +145,9 @@ function eventsLesen() {
         const meta = text((inner.match(/class="event-meta">([\s\S]*?)<\/div>/) || [])[1] || '');
         const zeit = (meta.match(/(\d{1,2}):(\d{2})/) || [null, '23', '00']);
         const cta = (inner.match(/<a href="([^"]+)"[^>]*class="event-cta"/) || [])[1];
+        const dresscode = text((attribute.match(/data-dresscode="([^"]*)"/) || [])[1] || '');
         events.push({
-            date, artist, special: special || null,
+            date, artist, special: special || null, dresscode: dresscode || null,
             hh: Number(zeit[1]), mm: Number(zeit[2]),
             featured: klassen.includes('event-card-featured'),
             ctaKarte: cta ? decode(cta) : null,
@@ -520,10 +521,12 @@ function eventSchema(e) {
     return s;
 }
 
+const DRESSCODE_STANDARD = 'Smart Casual, lange Hosen, keine Sandalen';
+
 function beschreibungEvent(e) {
     const alter = mindestalter(e.date);
     return `${e.name} im FLEUR Baden-Baden: ${datumLang(e.date)}, ab ${e.uhrzeit} Uhr in der Sophienstraße 15.` +
-        (alter ? ` Einlass ab ${alter} Jahren.` : '') + ' Tische in VIP Lounge oder am Hightable per WhatsApp reservieren.';
+        (alter ? ` Einlass ab ${alter} Jahren.` : '') + (e.dresscode ? ` Dresscode: ${e.dresscode}.` : '') + ' Tische in VIP Lounge oder am Hightable per WhatsApp reservieren.';
 }
 
 function eventSeite(e, alle) {
@@ -548,7 +551,7 @@ ${e.special ? `                <span class="event-special">${esc(e.special)}</sp
                     <div><dt>Datum</dt><dd>${datumLang(e.date)}</dd></div>
                     <div><dt>Beginn</dt><dd>${e.uhrzeit} Uhr, Ende offen</dd></div>
                     <div><dt>Ort</dt><dd><a href="https://maps.google.com/?q=Sophienstra%C3%9Fe+15+Baden-Baden" target="_blank" rel="noopener">FLEUR, Sophienstraße 15, 76530 Baden-Baden</a></dd></div>
-${alter ? `                    <div><dt>Einlass</dt><dd>ab ${alter} Jahren, bitte Ausweis mitbringen</dd></div>\n` : ''}                    <div><dt>Dresscode</dt><dd>Smart Casual, lange Hosen, keine Sandalen</dd></div>
+${alter ? `                    <div><dt>Einlass</dt><dd>ab ${alter} Jahren, bitte Ausweis mitbringen</dd></div>\n` : ''}                    <div><dt>Dresscode</dt><dd>${esc(e.dresscode || DRESSCODE_STANDARD)}</dd></div>
                 </dl>
                 <p class="event-text">${esc(beschreibungEvent(e))}</p>
                 <div class="event-actions">
