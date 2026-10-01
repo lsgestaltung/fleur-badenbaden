@@ -34,7 +34,7 @@ Club-Website für FLEUR (Sophienstraße 15, 76530 Baden-Baden). Kunde von LS Ges
 |---|---|---|
 | Öffnungszeiten | Fr & Sa ab 23:00, Open End (je nach Nacht 3–5 Uhr) | `index.html` (Hero, Marquee, Banner-Default, FAQ sichtbar + FAQPage-JSON-LD, Footer, `openingHoursSpecification` closes 05:00), `jobs.html` Footer, `scripts/seiten/*`, Footer in `build-pages.mjs` |
 | Mindestalter | Fr 18, Sa 21 (andere Tage: keine Angabe) | FAQ in `index.html` (+ JSON-LD), `mindestalter()` in `build-pages.mjs`, `scripts/seiten/*` |
-| Dresscode | Smart Casual, Hemden gern gesehen, lange Hosen, keine kurzen Hosen/Sandalen; je Event anders möglich | FAQ in `index.html` (+ JSON-LD), Event-Seite in `build-pages.mjs`, `scripts/seiten/tisch-reservieren.html` |
+| Dresscode | Smart Casual, Hemden gern gesehen, lange Hosen, keine kurzen Hosen/Sandalen; je Event anders möglich über `data-dresscode` an der Karte (`DRESSCODE_STANDARD` im Generator) | FAQ in `index.html` (+ JSON-LD), Event-Seite in `build-pages.mjs`, `scripts/seiten/tisch-reservieren.html` |
 | Musik | House/Tech-House, dazu Urban-/RnB-Nächte | FAQ, `index.html` Meta |
 | Resident DJ | Niklas Beuscher | `index.html` |
 | Getränke-Bundle | Individuelles Getränkepaket zur Lounge/zum Hightable nach Absprache (keine Preise genannt) | FAQ in `index.html` (+ JSON-LD), NightClub-`hasOfferCatalog`, `scripts/seiten/*`, `public/llms.txt` |
